@@ -1,0 +1,130 @@
+{
+	"tourneyCategory": [{
+		"name": "Open to State",
+		"id": 0
+	}, {
+		"name": "B' Level",
+		"id": 1
+	}, {
+		"name": "Club tournament",
+		"id": 1
+	}, {
+		"name": "Non medalist",
+		"id": 2
+	}, {
+		"name": "District Level",
+		"id": 3
+	}, {
+		"name": "Open to all",
+		"id": 4
+	}, {
+		"name": "Corporate",
+		"id": 5
+	}, {
+		"name": "University Level",
+		"id": 6
+	}, {
+		"name": "Others",
+		"id": 7
+	}],
+
+	"ageCategory": [{
+		"name": "Under 13",
+		"id": 0
+	}, {
+		"name": "Under 15",
+		"id": 1
+	}, {
+		"name": "Under 17",
+		"id": 1
+	}, {
+		"name": "Under 19",
+		"id": 2
+	}, {
+		"name": "Veterans 45+",
+		"id": 3
+	}, {
+		"name": "Veterans",
+		"id": 4
+	}, {
+		"name": "Veterans 35+",
+		"id": 5
+	}, {
+		"name": "Veterans 40+",
+		"id": 6
+	}, {
+		"name": "No age limit",
+		"id": 7
+	}, {
+		"name": "Others",
+		"id": 8
+	}],
+
+	"matchCategory": [{
+		"name": "Men's Doubles",
+		"boolVal": false,
+		"entryfee": "NULL",
+		"matchtype": "NULL",
+		"id": 0
+	}, {
+		"name": "Men's Singles",
+		"boolVal": false,
+		"entryfee": "NULL",
+		"matchtype": "NULL",
+		"id": 1
+	}, {
+		"name": "Women's Doubles",
+		"boolVal": false,
+		"entryfee": "NULL",
+		"matchtype": "NULL",
+		"id": 2
+	}, {
+		"name": "Women's Singles",
+		"boolVal": false,
+		"entryfee": "NULL",
+		"matchtype": "NULL",
+		"id": 3
+	}, {
+		"name": "Mixer Doubles",
+		"boolVal": false,
+		"entryfee": "NULL",
+		"matchtype": "NULL",
+		"id": 4
+	}, {
+		"name": "Team Event",
+		"boolVal": false,
+		"entryfee": "NULL",
+		"matchtype": "NULL",
+		"id": 5
+	}],
+
+	"matchType": [{
+		"name": "Knockout 30 points",
+		"id": 0
+	}, {
+		"name": "Knockout 21 points",
+		"id": 1
+	}, {
+		"name": "3 sets 21 points",
+		"id": 2
+	}],
+
+	"shuttleBrand": [{
+		"name": "Yonex",
+		"id": 0
+	}, {
+		"name": "Li Ning",
+		"id": 1
+	}, {
+		"name": "Others",
+		"id": 2
+	}],
+
+	"shuttleType": [{
+		"name": "Plastic: Mavis 350",
+		"shuttleBrand_id": 0
+	}, {
+		"name": "Feather: Mavis 300",
+		"shuttleBrand_id": 0
+	}]
+}

@@ -1,0 +1,21 @@
+<ion-view view-title="Signup" class="signupPage">
+    <ion-content class="padding ">
+        <div class="logo_section">
+            <h2>
+            <br>
+              <label>OTP</label>
+            </h2>
+
+        </div>
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Enter OTP</span>
+            <input type="number" placeholder="888 420" onKeyDown="if(this.value.length==6) return false;" ng-model="otpBjb.otp">
+          </label>
+          
+          <button class="button button-block button-custom" ng-click="verify(otpBjb)">Verify</button>
+          <div class="resendotp">SMS not recieved? please click <a href="#">Resend code</a></div>
+        </div>
+        
+    </ion-content>
+</ion-view>

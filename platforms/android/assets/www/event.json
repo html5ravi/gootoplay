@@ -1,0 +1,67 @@
+{
+	"Event_id": 1,
+	"eventTitle": "NGV Tournament",
+	"description": "test descritpion",
+	"where": "domlur",
+	"startDates": "2015-12-31T18:30:00.000Z",
+	"startTime": "1969-12-31T19:30:00.000Z",
+	"endTime": "1969-12-31T19:30:00.000Z",
+	"endDates": "2015-12-31T18:30:00.000Z",
+	"shuttleBrandType": "0",
+	"shuttleType": "0",
+	"contactList": [{
+		"contactId": null,
+		"number": "4545454545",
+		"name": "ravi"
+	}, {
+		"contactId": null,
+		"number": "3434343434",
+		"name": "mani"
+	}],
+	"prizeList": [{
+		"name": "1st",
+		"amount": "11111"
+	}, {
+		"name": "2nd",
+		"amount": "22222"
+	}, {
+		"name": "3rd",
+		"amount": "333333"
+	}],
+	"addOnsList": {
+		"trophy": true,
+		"medal": true,
+		"certificate": true,
+		"refreshment": true,
+		"lunch": true
+	},
+	"tourneyCategory": {
+		"tournament": "0",
+		"ageCategory": "1",
+		"matchCategory": [{
+			"name": "Men's Doubles",
+			"entryFees": "400",
+			"matchtype": "0"
+		}, {
+			"name": "Men's Singles",
+			"entryFees": "300",
+			"matchtype": "1"
+		}, {
+			"name": "Women's Doubles",
+			"entryFees": "400",
+			"matchtype": "0"
+		}, {
+			"name": "Women's Singles",
+			"entryFees": "350",
+			"matchtype": "1"
+		}, {
+			"name": "Mixer Doubles",
+			"entryFees": "345",
+			"matchtype": "1"
+		}, {
+			"name": "Team Event",
+			"entryFees": "354",
+			"matchtype": "0"
+		}]
+	}
+}
