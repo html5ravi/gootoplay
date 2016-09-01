@@ -1,0 +1,60 @@
+<ion-view view-title="Upcoming Events">
+  <ion-content class="padding upcoming_events">
+			<input type="text" name="search" ng-model="searchKeyword" class="searchField" placeholder="search by area, tournament title">
+			<ul class="event-list">
+				<li ng-repeat="status in event | filter: searchKeyword" ng-if="getDates(status.startDates) > now" class="list-item">
+					<time>
+						<span class="day">{{ getDates(status.startDates) | date:'dd' }}</span>
+						<span class="month">{{ getDates(status.startDates) | date:'MMM' }}</span>
+						<span class="year">{{ getDates(status.startDates) | date:'yyyy' }}</span>
+						<span class="time">- {{ getDates(status.startTime) | date:'HH:mm a' }}</span>
+					</time>
+					<div class="info">
+						<h2 class="title">{{status.eventTitle}}</h2>
+						<p class="desc">{{status.where}}</p>
+						<ul ng-repeat="list in status.tourneyCategory.matchCategory">
+							<li><span class="icon ion-person-stalker"></span> {{list.name}}</li>
+							<li>Entry Fee: <span class="fa fa-inr"></span> {{list.entryFees}}</li>
+						</ul>
+						
+
+						<ion-item class="item-stable more" ng-click="toggleGroup(status)" ng-class="{active: isGroupShown(status)}">
+				              <i class="icon" ng-class="isGroupShown(status) ? 'ion-minus' : 'ion-plus'"></i> Read more
+				        </ion-item>
+
+				        <section ng-show="isGroupShown(status)" class="item-accordion eventDetails">
+					        <ion-item >
+								<strong>Description</strong>: {{status.description}}       		
+			          		</ion-item>
+
+			          		<ion-item >
+								<strong>Shuttle</strong>: {{status.shuttleType}} - {{status.shuttleBrandType}}
+			          		</ion-item>
+			          		
+					        <h4>Contacts:</h4>
+							<ion-item class="item-accordion" ng-repeat="item in status.contactList" >
+								<strong>{{item.name}}</strong>: {{item.number}}		            		
+			          		</ion-item>
+
+			          		<h4>Prize List:</h4>
+			          		<ion-item ng-repeat="item in status.prizeList">
+								<strong>{{item.name}}</strong>: {{item.amount | currency:'&#x20B9;'}}            		
+			          		</ion-item>
+
+			          		<h4>Addon Details:</h4>
+			          		<ion-item>
+								<label ng-if="status.addOnsList.trophy">Trophy</label>
+								<label ng-if="status.addOnsList.medal">+ Medal</label>
+								<label ng-if="status.addOnsList.certificate">+ Certificate</label>
+								<label ng-if="status.addOnsList.lunch">+ Lunch</label>   		
+								<label ng-if="status.addOnsList.refreshment">+ Refreshment</label>
+			          		</ion-item>
+
+		          		</section>
+					</div>
+				</li>				
+			</ul>
+
+
+  </ion-content>
+</ion-view>

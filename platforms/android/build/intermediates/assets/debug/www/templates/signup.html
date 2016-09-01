@@ -1,0 +1,27 @@
+<ion-view view-title="Signup" class="signupPage">
+    <ion-content class="padding ">
+        <div class="logo_section">
+            <h2>
+            <br>
+              <label>Signup</label>
+            </h2>
+
+        </div>
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Full Name</span>
+            <input type="text" placeholder="Johnarthan Gerrad" ng-model="signupObj.name">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Mobile</span>
+            <input type="number" placeholder="888 420 3388" onKeyDown="if(this.value.length==10) return false;" ng-model="signupObj.mobile" value="8884203388">
+          </label>
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Email</span>
+            <input type="text" placeholder="john@suhr.com" ng-model="signupObj.email">
+          </label>
+          <button class="button button-block button-custom" ng-click="goToOTP(signupObj)">Submit</button>
+        </div>
+        
+    </ion-content>
+</ion-view>
