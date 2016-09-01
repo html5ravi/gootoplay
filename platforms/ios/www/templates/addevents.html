@@ -1,0 +1,231 @@
+<ion-view view-title="Add Event">
+  <ion-content>
+    
+  	<div class="card">
+		<div class="item item-divider positive">
+			Basic Information
+		</div>
+		<div class="item item-text-wrap">
+			<div class="list">
+				<label class="item item-input">
+					<input type="text" placeholder="Event Title" ng-model="saveEventData.eventTitle">
+				</label>
+				<label class="item item-input">
+					<textarea placeholder="Description" rows="1" ng-model="saveEventData.description" name="description"></textarea>
+				</label>
+				<label class="item item-input">
+					<input type="text" placeholder="Where" ng-model="saveEventData.where">
+					
+				</label>
+				<label class="item item-input">
+				    <span class="input-label">Start date</span>
+				    <input type="date" ng-model="saveEventData.sd">
+				</label>
+				<label class="item item-input">
+				    <span class="input-label">End date</span>
+				    <input type="date" ng-model="saveEventData.ed">
+				</label>
+				<label class="item item-input">
+				    <span class="input-label">Start time</span>
+				    <input type="time" ng-model="saveEventData.st">
+				</label>
+				<label class="item item-input">
+				    <span class="input-label">End time</span>
+				    <input type="time" ng-model="saveEventData.et">
+				</label>
+				
+				<label class="item item-input item-select">
+			    <div class="input-label">
+			      Shuttle Brand
+			    </div>
+
+			    <select ng-model="saveEventData.shuttleBrandType">
+			      <option value="">Choose Brand type</option>
+			      <option ng-repeat="status in shuttleBrand" value="{{status.name}}">{{status.name}}</option>
+			    </select>
+			  </label>
+			  <label class="item item-input item-select">
+			    <div class="input-label">
+			      Shuttle Type
+			    </div>
+
+			    <select ng-model="saveEventData.shuttleType">
+			      <option value="">Choose Shuttle type</option>
+			      <option ng-repeat="status in shuttleType" value="{{status.name}}">{{status.name}}</option>
+			    </select>
+			  </label>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider positive">
+			Contact Information
+		</div>
+		<div class="item item-text-wrap">
+			
+
+			<div class="list" ng-repeat="data in contacts track by $index">
+				<label class="item item-input">
+					<span class="input-label">Name</span>
+					<!-- <input type="text" placeholder="Jonnathan" ng-model="contacts.name"> -->
+					<input type='text' ng-model="contacts[$index].name" maxlength="25" />
+				</label>
+				<label class="item item-input">
+					<span class="input-label">Number</span>
+					<!-- <input type="tel" placeholder="8884203388" ng-model="contacts.number"> -->
+					<input type='text' ng-model='contacts[$index].number' maxlength="10" />
+				</label>
+				<a ng-click="removeContactField($index)" href="javascript:;" class="ion ion-ios-close-outline deleteBtn"></a>
+			</div>
+			<div class="addButton">
+				<button class="button button-positive" ng-click="addContactField()"><i class="icon ion-plus"></i></button>
+			</div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider positive">
+			Prize Information
+		</div>
+		<div class="item item-text-wrap">
+			<div class="list">
+				<div class="row" ng-repeat="data in prize track by $index">
+				  <div class="col">
+				  	<label class="item item-input" >
+						<input type="text" placeholder="Enter 1st Prize" ng-model="prize[$index].name">
+					</label>
+				  </div>
+				  <div class="col">
+				  	<label class="item item-input" >
+						<input type="tel" placeholder="Rs.10000" ng-model="prize[$index].amount">
+					</label>
+					<a ng-click="removePrizeField($index)" href="javascript:;" class="ion ion-ios-close-outline deleteBtn"></a>
+				  </div>
+				</div>
+				
+				
+				
+				
+			</div>
+			<div class="addButton"><button class="button button-positive" ng-click="addPrizeField()"><i class="icon ion-plus"></i></button></div>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider positive">
+			Addon Information
+		</div>
+		<div class="item item-text-wrap">
+			<ul class="list">
+		        <li class="item item-checkbox">
+		           <label class="checkbox">
+		             <input type="checkbox" ng-model="addOns.trophy">
+		           </label>
+		           Trophy
+		        </li>
+		        <li class="item item-checkbox">
+		           <label class="checkbox">
+		             <input type="checkbox" ng-model="addOns.medal">
+		           </label>
+		           Medal
+		        </li>
+		        <li class="item item-checkbox">
+		           <label class="checkbox">
+		             <input type="checkbox" ng-model="addOns.certificate">
+		           </label>
+		           Certificate
+		        </li>
+		        <li class="item item-checkbox">
+		           <label class="checkbox">
+		             <input type="checkbox" ng-model="addOns.refreshment">
+		           </label>
+		           Refreshment 
+		        </li>
+		        <li class="item item-checkbox">
+		           <label class="checkbox">
+		             <input type="checkbox" ng-model="addOns.lunch">
+		           </label>
+		           Lunch / Dinner
+		        </li>
+		      </ul>
+		</div>
+	</div>
+
+	<div class="card">
+		<div class="item item-divider positive">
+			<label class="item item-input item-select">
+			    <div class="input-label">
+			      Tournament Category
+			    </div>
+			    <select ng-model="tourneyCategorySave.tournament">
+			      <option value="">Choose Tournament</option>
+			      <option ng-repeat="status in tourneyCategory" value="{{status.id}}">{{status.name}}</option>
+			    </select>
+			</label>
+			<label class="item item-input item-select">
+			    <div class="input-label">
+			      Age Category
+			    </div>
+			    <select ng-model="tourneyCategorySave.ageCategory">
+			      <option value="">Choose Age Category</option>
+			      <option ng-repeat="status in ageCategory" value="{{status.id}}">{{status.name}}</option>
+			    </select>
+			</label>
+		</div>
+		<div class="item item-text-wrap">
+					
+					<ul class="list">
+        				<li ng-repeat="item in matchCategory track by $index">
+				        <ion-toggle ng-model="item.boolVal" ng-checked="item.boolVal" >
+				          {{ item.name}}
+				        </ion-toggle>
+				        <div class="padding matchTypes" ng-show="item.boolVal">
+				        	 <label class="item item-input">
+							    <span class="input-label">Entry fee</span>
+							    <input type="text" placeholder="Rs 0.00" ng-model="item.entryfee">
+							</label>
+							<label class="item item-input item-select">
+							    <div class="input-label">
+							      Match Type
+							    </div>
+							    <select ng-model="item.matchtype">
+							      <option value="">Choose Match type</option>
+							      <option ng-repeat="status in matchType" value="{{status.id}}">{{status.name}}</option>
+							    </select>
+							</label>
+						</div>
+						<!-- <div class="padding matchTypes" ng-show="item.checked">
+				        	 <label class="item item-input">
+							    <span class="input-label">Entry fee</span>
+							    <input type="text" placeholder="Rs 0.00" ng-model="tourneyCategorySave[$index].entryFee">
+							</label>
+							<label class="item item-input item-select">
+							    <div class="input-label">
+							      Match Type
+							    </div>
+							    <select ng-model="tourneyCategorySave[$index].matchType">
+							      <option value="">Choose Match type</option>
+							      <option ng-repeat="status in matchType" value="{{status.name}}">{{status.name}}</option>
+							    </select>
+							</label>
+						</div> -->
+						</li>
+				      </ul>
+
+				     	
+		</div>
+	</div>
+	<div class="padding">
+		<button class="button button-block button-positive" ng-click="saveEventBtn(saveEventData)">
+		  Save Event
+		</button>
+	</div>
+
+	<ul>
+      <li ng-repeat="tc in test">{{ tc.name }}</li>
+    </ul>
+
+
+  </ion-content>
+</ion-view>

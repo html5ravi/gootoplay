@@ -1,6 +1,63 @@
-var EventApp = angular.module('EventApp.controllers', ['firebase'])
+var EventApp = angular.module('EventApp.controllers', ['firebase','ionic'])
 
 EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$firebaseArray) {
+
+
+ /*==========================================
+        Push Notification
+ ===========================================*/ 
+    try{
+      var dev = device;
+    } catch(err){
+      dev = false;
+    }
+    if(dev){
+        var push = PushNotification.init({
+            android: {
+                senderID: "774496963477"
+            },
+            browser: {
+                pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+            },
+            ios: {
+                alert: "true",
+                badge: "true",
+                sound: "true"
+            },
+            windows: {}
+        });
+
+        push.on('registration', function(data) {
+            console.log(data.registrationId);
+            // make api call here
+            
+            var ref = new Firebase("https://gootoplay-84108.firebaseio.com/token");
+            var list = $firebaseArray(ref);
+            list.$add(data.registrationId).then(function(ref) {
+              var id = ref.key();
+              console.log("token id is:" + id);
+              list.$indexFor(id); // returns location in the array
+            });
+
+        });
+
+        push.on('notification', function(data) {
+            console.log(data.message);
+            console.log(data.title);
+            console.log(data.count);
+            console.log(data.sound);
+            console.log(data.image);
+            console.log(data.additionalData);
+        });
+
+        push.on('error', function(e) {
+            console.log(e.message);
+        });
+  }       
+/*==========================================
+        END Push Notification
+===========================================*/   
+
 
   $scope.loginData = {};
 
@@ -16,29 +73,41 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
   var database = app.database();
   var auth = app.auth();
 
+          $scope.getEvents = function(){
             var events         = new Firebase("https://gootoplay-84108.firebaseio.com/event");
             var events_obj    = $firebaseArray(events);
-            //var events_obj    = $firebase(events).$asArray();
-            $scope.now = new Date();
             $scope.event  = events_obj;
+          }
+
+        $scope.getEvents();
+
+        $scope.event.$watch(function(event) {
+          $scope.getEvents();
+          //console.log("from menu");
+        });
+            
+            $scope.now = new Date();
+            
             $scope.upcomingEvents = 0;
 
 
 
             //var list = $firebaseArray(ref);
-            events_obj.$loaded(function(x) {
-                x === events_obj; // true
-                console.log(x);
+            $scope.event.$loaded(function(x) {
+                x === $scope.event; // true
+                //console.log(x);
                 
                 
                 angular.forEach($scope.event, function(value, key){
                   if($scope.getDates(value.startDates) > $scope.now){
                     $scope.upcomingEvents ++;
                   }
+                  $scope.getEvents();
                 });
 
-                events_obj.$watch(function(event) {
-                  console.log(event);
+                $scope.event.$watch(function(event) {
+                  //console.log(event);
+                  $scope.getEvents();
                 });
 
               }, function(error) {
@@ -84,7 +153,7 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
 /*---------------------------------------------------------
           ADD EVENT
 ---------------------------------------------------------*/
-  EventApp.controller("AddEventCtrl",function($scope,$filter,$firebaseObject,$firebaseArray){
+  EventApp.controller("AddEventCtrl",function($scope,Api,$location,$filter,$firebaseObject,$firebaseArray){
     
   
 
@@ -111,31 +180,6 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
       $scope.removePrizeField = function(array_index) {
           $scope.prize.splice(array_index,1);
       }
-
-      /*var tCategory         = new Firebase("https://gootoplay.firebaseio.com/tourneyCategory");
-      var aCategory         = new Firebase("https://gootoplay.firebaseio.com/ageCategory");
-      var mCategory         = new Firebase("https://gootoplay.firebaseio.com/matchCategory");
-      //var mType             = new Firebase("https://gootoplay.firebaseio.com/matchType");
-      var shuttleBrand      = new Firebase("https://gootoplay.firebaseio.com/shuttleBrand");
-      var shuttleType       = new Firebase("https://gootoplay.firebaseio.com/shuttleType");
-
-      // download the data into a local object
-      var tCategory_Obj     = $firebaseArray(tCategory);
-      var aCategory_Obj     = $firebaseArray(aCategory);
-      var mCategory_Obj     = $firebaseArray(mCategory);
-      //var mType_Obj         = $firebaseObject(mType);
-      var shuttleBrand_Obj  = $firebaseArray(shuttleBrand);
-      var shuttleType_obj   = $firebaseArray(shuttleType);
-
-      $scope.tourneyCategory  = tCategory_Obj;
-      $scope.ageCategory      = aCategory_Obj;
-      $scope.matchCategory    = mCategory_Obj;
-      //$scope.matchtype        = mType_Obj;
-      $scope.shuttleBrand     = shuttleBrand_Obj;
-      $scope.shuttleType      = shuttleType_obj*/
-
-
-     
 
       $scope.tourneyCategory = [
         { name: "Open to State", id: 0 },
@@ -214,16 +258,24 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
         $scope.saveEventData.endDates   = $scope.saveEventData.ed.toString();
         $scope.saveEventData.timeStamp  = new Date().toString(); //Firebase.ServerValue.TIMESTAMP;
         
-        //console.log($scope.saveEventData.startDates.toString());
-        var ref = new Firebase("https://gootoplay-84108.firebaseio.com/event");
-        $scope.event = $firebaseArray(ref);
+        
+        Api.getEvent();
 
-        $scope.event.$add($scope.saveEventData);
-        /*var databaseRef = database.ref().child('event');
-        databaseRef.push().set($scope.saveEventData);*/
+        $scope.event.$watch(function(event) {
+          Api.getEvent();
+        });
 
-        //To get date from Firebase
-        //$scope.startDates = new Date(event.startDates);
+        $scope.event.$add($scope.saveEventData).then(function(ref) {
+          var id = ref.key();
+          console.log("added record with id " + id);
+          $scope.event.$indexFor(id); // returns location in the array
+          Api.getEvent();
+          $location.path("app/upcoming");
+        },function(){
+          console.log("Error on add function");
+        });
+
+       
         
 
 
@@ -317,19 +369,26 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
 /*---------------------------------------------------------
           DASHBOARD PAGE
 ---------------------------------------------------------*/
-  EventApp.controller("DashboardCtrl",function($scope,$timeout,$filter,roundProgressService,$firebaseObject,$firebaseArray,$timeout){
+  EventApp.controller("DashboardCtrl",function($scope,$rootScope,Api,$timeout,$filter,roundProgressService,$firebaseObject,$firebaseArray,$timeout){
 
-           var events         = new Firebase("https://gootoplay-84108.firebaseio.com/event");
-            var events_obj    = $firebaseArray(events);
-            //var events_obj    = $firebase(events).$asArray();
+
+
+         
+
+            Api.getEvent();
+
             $scope.now = new Date();
-            $scope.event  = events_obj;
             $scope.upcomingEvents = 0;
 
             
+            
+            $rootScope.events_obj.$watch(function(event) {
+                Api.getEvent();
+                //console.log("loading keep")
+            });
 
-            events_obj.$loaded(function(x) {
-                x === events_obj; // true
+            $rootScope.events_obj.$loaded(function(x) {
+                x === $rootScope.events_obj; // true
                 $scope.past_event_current = x.length;
                 angular.forEach(x, function(value, key){
                   if($scope.getDates(value.startDates) > $scope.now){
@@ -337,8 +396,8 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
                   }
                 });
 
-                events_obj.$watch(function(event) {
-                  console.log(event);
+                $rootScope.events_obj.$watch(function(event) {
+                  Api.getEvent();
                 });
 
               }, function(error) {
@@ -383,61 +442,36 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
               $scope.getDates = function(dataDate) {
                  return new Date(dataDate);
               };
-             
-
-            
-   
-
-          // var databaseRef = database.ref().child('chat');
-
-
-          // $scope.sendButton = function(){
-          //   var chat = {name:"username", message: textInput.value};
-          //   databaseRef.push().set(chat);
-          //   textInput.value = "";
-          // }
-
-
-
-
+          
   });
 
 
 /*---------------------------------------------------------
           UPCOMING EVENT PAGE
 ---------------------------------------------------------*/
-  EventApp.controller("UpcomingEventsCtrl",function($scope,$filter,$firebaseObject,$firebaseArray){
+  EventApp.controller("UpcomingEventsCtrl",function($scope,$filter,Api,$firebaseObject,$firebaseArray){
 
-            var events         = new Firebase("https://gootoplay-84108.firebaseio.com/event");
-            var events_obj    = $firebaseArray(events);
-            $scope.event  = events_obj;
+          // $scope.getEvents = function(){
+          //   var events         = new Firebase("https://gootoplay-84108.firebaseio.com/event");
+          //   var events_obj    = $firebaseArray(events);
+          //   $scope.event  = events_obj;
+          // }
+          
+          // $scope.getEvents();
+
+            Api.getEvent();
 
             $scope.now = new Date();
 
-             $scope.getDates = function(dataDate) {
-               return new Date(dataDate);
+            $scope.getDates = function(dataDate) {
+              return new Date(dataDate);
             };
-            console.log($scope.event);
+            
             //$scope.logdate = $filter('date')($scope.note.logdate, "EEEE, MMMM d");
 
 
 
 
-            $scope.groups = [];
-              for (var i=0; i<10; i++) {
-                $scope.groups[i] = {
-                  name: i,
-                  items: []
-                };
-                for (var j=0; j<3; j++) {
-                  $scope.groups[i].items.push(i + '-' + j);
-                }
-              }
-              
-              /*
-               * if given group is the selected group, deselect it
-               * else, select the given group
-               */
               $scope.toggleGroup = function(group) {
                 if ($scope.isGroupShown(group)) {
                   $scope.shownGroup = null;

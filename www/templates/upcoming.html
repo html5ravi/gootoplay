@@ -1,6 +1,7 @@
 <ion-view view-title="Upcoming Events">
   <ion-content class="padding upcoming_events">
-			<input type="text" name="search" ng-model="searchKeyword" class="searchField" placeholder="search by area, tournament title">
+			<!-- <input type="text" name="search" ng-model="searchKeyword" class="searchField" placeholder="search by area, tournament title"> -->
+			{{ event.startDates }}
 			<ul class="event-list">
 				<li ng-repeat="status in event | filter: searchKeyword" ng-if="getDates(status.startDates) > now" class="list-item">
 					<time>

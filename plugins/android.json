@@ -24,6 +24,10 @@
         },
         "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.event567425"
+        },
+        "phonegap-plugin-push": {
+            "SENDER_ID": "774496963477",
+            "PACKAGE_NAME": "com.ionicframework.event567425"
         }
     },
     "dependent_plugins": {}

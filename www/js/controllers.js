@@ -1,4 +1,4 @@
-var EventApp = angular.module('EventApp.controllers', ['firebase'])
+var EventApp = angular.module('EventApp.controllers', ['firebase','ionic'])
 
 EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$firebaseArray) {
 
@@ -24,10 +24,10 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
 
         $scope.getEvents();
 
-        $scope.event.$watch(function(event) {
-          $scope.getEvents();
-          console.log("from menu");
-        });
+        // $scope.event.$watch(function(event) {
+        //   $scope.getEvents();
+        //   //console.log("from menu");
+        // });
             
             $scope.now = new Date();
             
@@ -44,14 +44,10 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
                 angular.forEach($scope.event, function(value, key){
                   if($scope.getDates(value.startDates) > $scope.now){
                     $scope.upcomingEvents ++;
+                    console.log($scope.upcomingEvents)
                   }
                   $scope.getEvents();
-                });
-
-                $scope.event.$watch(function(event) {
-                  //console.log(event);
-                  $scope.getEvents();
-                });
+                });                
 
               }, function(error) {
                 console.error("Error:", error);
@@ -312,26 +308,22 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
 /*---------------------------------------------------------
           DASHBOARD PAGE
 ---------------------------------------------------------*/
-  EventApp.controller("DashboardCtrl",function($scope,Api,$timeout,$filter,roundProgressService,$firebaseObject,$firebaseArray,$timeout){
+  EventApp.controller("DashboardCtrl",function($scope,$rootScope,Api,$timeout,$filter,roundProgressService,$firebaseObject,$firebaseArray,$timeout){
 
-          // $scope.getEvents = function(){
-          //   var events         = new Firebase("https://gootoplay-84108.firebaseio.com/event");
-          //   var events_obj    = $firebaseArray(events);
-          //   $scope.event  = events_obj;
-          // }
-          Api.getEvent();
+
+
+         
+
+            Api.getEvent();
 
             $scope.now = new Date();
             $scope.upcomingEvents = 0;
 
             
             
-            $scope.event.$watch(function(event) {
-              Api.getEvent();
-            });
-
-            $scope.event.$loaded(function(x) {
-                x === $scope.event; // true
+          
+            $rootScope.events_obj.$loaded(function(x) {
+                x === $rootScope.events_obj; // true
                 $scope.past_event_current = x.length;
                 angular.forEach(x, function(value, key){
                   if($scope.getDates(value.startDates) > $scope.now){
@@ -339,7 +331,7 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
                   }
                 });
 
-                $scope.event.$watch(function(event) {
+                $rootScope.events_obj.$watch(function(event) {
                   Api.getEvent();
                 });
 
@@ -394,16 +386,19 @@ EventApp.controller('AppCtrl', function($scope, $ionicModal, $timeout, $filter,$
 ---------------------------------------------------------*/
   EventApp.controller("UpcomingEventsCtrl",function($scope,$filter,Api,$firebaseObject,$firebaseArray){
 
-          // $scope.getEvents = function(){
-          //   var events         = new Firebase("https://gootoplay-84108.firebaseio.com/event");
-          //   var events_obj    = $firebaseArray(events);
-          //   $scope.event  = events_obj;
-          // }
           
-          // $scope.getEvents();
+            var events         = new Firebase("https://gootoplay-84108.firebaseio.com/event");
+            var events_obj    = $firebaseArray(events);
+            $scope.event  = events_obj;
+          
+          
+           //console.log($scope.event);
 
-            Api.getEvent();
+            angular.forEach($scope.event, function(value, key){
+              console.log(value);
+            });
 
+           
             $scope.now = new Date();
 
             $scope.getDates = function(dataDate) {

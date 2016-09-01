@@ -441,3 +441,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cb60b3', end
 .upcoming_events .item.active.item-stable{background-color: rgba(229, 229, 229, 0.31);}
 .upcoming_events .more{border-bottom: 0px !important;border-left: 0px !important;border-right: 0px !important;}
 
+.eventDetails .item, .eventDetails h4{ text-align: left; }
+.eventDetails h4{ margin-left: 15px; }
+.searchField{ margin:0 0 20px 0; padding: 0 10px;}
