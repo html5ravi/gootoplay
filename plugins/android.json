@@ -8,27 +8,41 @@
     },
     "installed_plugins": {
         "cordova-plugin-console": {
-            "PACKAGE_NAME": "com.ionicframework.event567425"
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         },
         "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.event567425"
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "com.ionicframework.event567425"
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         },
         "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "com.ionicframework.event567425"
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.event567425"
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         },
         "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.event567425"
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         },
-        "phonegap-plugin-push": {
-            "SENDER_ID": "774496963477",
-            "PACKAGE_NAME": "com.ionicframework.event567425"
+        "cordova-plugin-facebook4": {
+            "APP_ID": "1698384740470458",
+            "APP_NAME": "Gootoplay",
+            "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "cordova-plugin-buildinfo": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "cordova-universal-links-plugin": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "cordova-plugin-browsertab": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
+        }
+    }
 }

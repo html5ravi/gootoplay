@@ -1,0 +1,60 @@
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button menuToggle icon-only>
+            <ion-icon name='menu'></ion-icon>
+        </button>
+        <ion-title>Events</ion-title>
+        <ion-buttons end>
+            <button (click)="goToaddEventPage()" ion-button icon-only>
+              <ion-icon name="add"></ion-icon>
+            </button>
+
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-card *ngFor="let item of eventListRef$ | async" (click)="openMenu(item)">
+        <ion-item class="eventTitle">
+            <h2>{{item.general.title}}
+                <p>{{item.created_at | timeAgo}}</p>
+            </h2>
+        </ion-item>
+        <div class="imgbg">
+            <h4>Start date: {{item.general.startdate | date:'dd-mm-yyyy'}}<br> End date: {{item.general.enddate | date:'dd-mm-yyyy'}}</h4>
+        </div>
+        <div class="countdown">
+            Some text
+        </div>
+        <ion-card-content>
+            <p>
+                <ion-icon name="pin"></ion-icon> Venue: {{item.general.where}}</p>
+            <p *ngFor="let c of item.contacts">
+                <ion-icon name="call"></ion-icon> {{c.name}}: {{c.mobile}}</p>
+        </ion-card-content>
+
+        <ion-row *ngFor="let status of item.matchList">
+            <ion-col>
+                <button ion-button icon-left clear small class="categoryName">
+                    <!--<ion-icon name="thumbs-up"></ion-icon>-->
+                    <div>{{status.ageCategory}} <span>Men's Doubles</span></div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button icon-left clear small>
+                    <!--<ion-icon name="text"></ion-icon>-->
+                    <div>Entry: {{status.entryFee}}</div>
+                </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+
+
+
+
+</ion-content>

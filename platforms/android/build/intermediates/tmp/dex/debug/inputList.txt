@@ -1,2 +1,0 @@
-/Applications/MAMP/htdocs/event/v1/Event/platforms/android/build/intermediates/classes/debug
-/Applications/MAMP/htdocs/event/v1/Event/platforms/android/build/intermediates/pre-dexed/debug/classes-c33b90f1baedbe0bf7b248b379ad53ae886aa75f.jar

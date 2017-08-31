@@ -2,11 +2,157 @@
 <items version="2" >
 
     <item
-        jar="/Applications/MAMP/htdocs/event/v1/Event/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/classes.jar"
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
         jumboMode="false"
+        optimize="true"
         revision="22.0.1"
-        sha1="55187d986780cb5db4b433256115b78c37c60422">
-        <dex dex="/Applications/MAMP/htdocs/event/v1/Event/platforms/android/build/intermediates/pre-dexed/debug/classes-c33b90f1baedbe0bf7b248b379ad53ae886aa75f.jar" />
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.3.1_4c3dbfa60443ce9693ddb558492509cb56f3b3ff.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ravig/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_c98b24e175142f8026e84cf43b53b6d2c2281291.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.3.1_b980e7196c320e36a222063102f9c6d23e132855.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/customtabs/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="807751a24cf96566fd8675517c94d8463cf364db">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-customtabs-25.3.1_54f1363af90678af158af01f7ea89a944f66411a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ravig/.gradle/caches/modules-2/files-2.1/com.google.zxing/core/3.3.0/73c49077166faa4c3c0059c5f583d1d7bd1475fe/core-3.3.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="73c49077166faa4c3c0059c5f583d1d7bd1475fe">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/core-3.3.0_bb28e74b07bfc115fd297ebf6a1c81f120f19631.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.26.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="e09663005d70dcedff0bb77211b9ac52d8b69421">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.26.0_fe7952e4d0847cb3fd1518c73951a15a6f430c0d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_8e9c2cef1b4281b1362ccc4eb4d895660365b8b6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/support-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.3.1_1f40afae6cbb94297559cee0ed06429cfc60efae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.3.1_aa3d0edf857c353403c02f65c7b6dc6db97897ef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.3.1_74bd12f7a61434fba54515ce2c7208abe0d1e1e4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.3.1_0d2ff7a3bd46b52fb17e8630353e2f795124ca17.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ravig/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_62b0e0b250f22e0d03a47e2e916fcb5668448ec5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.3.1_ad183311ce372ef0ea6a3c5710826f0edda1eae3.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/org.apache.cordova/CordovaLib/6.2.3/debug/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="4e4265862319e00e064492d17d77ec8ce4f9a242">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-6.2.3-debug_982376c738fb9a9e0ce1895fbc77736ed8f0bb13.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.3.1_409728ef69f2eeabea7e291e0513f25806524f99.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.3.1_b86c157327e2c16f03874b0e453df47d5e0acdef.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/ravig/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="22.0.1"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/Applications/MAMP/htdocs/Gootoplay/platforms/android/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0_4ef442e11113645738a1182377799bffb7228b5b.jar" />
     </item>
 
 </items>

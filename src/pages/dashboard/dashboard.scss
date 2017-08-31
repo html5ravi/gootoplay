@@ -1,0 +1,62 @@
+page-dashboard {}
+
+#menubar {
+    .content-md {
+        background: color($colors, yellow);
+        .item-md {
+            background: color($colors, yellow);
+            padding-left: 0px;
+            .item-inner {
+                padding-right: 0px;
+                border: 0px;
+                .label-md {
+                    margin: 13px 0px 13px 20px;
+                    .item-icon {
+                        margin-right: 20px;
+                    }
+                     :before {
+                        position: relative;
+                        top: 2px;
+                    }
+                }
+            }
+        }
+    }
+    .menuHeader {
+        padding: 0px;
+        width: 100%;
+        height: 200px;
+        background: #fff;
+        position: relative;
+        overflow: hidden;
+        img {
+            width: 100%;
+            z-index: 1;
+        }
+        span {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            z-index: 10;
+            left: 0;
+            top: 0;
+            background: rgba(0, 0, 0, 0.6);
+        }
+        p {
+            font-size: 16px;
+            color: #fff;
+            position: absolute;
+            z-index: 20;
+            left: 20px;
+            bottom: 0px;
+            line-height: 30px;
+            .icon {
+                margin-right: 20px;
+            }
+        }
+    }
+    .scroll-content {
+        margin-top: 200px;
+        overflow: auto;
+    }
+}

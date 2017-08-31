@@ -1,0 +1,218 @@
+<!--
+  Generated template for the AddEventPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title>Create Event</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <!-- **************************************************************************************** 
+                                              Add Event 
+    **************************************************************************************** -->
+
+    <!--General Information-->
+    <ion-card>
+        <ion-card-header>
+            General Details
+        </ion-card-header>
+
+        <ion-card-content class="outer-content">
+            <ion-list>
+                <ion-item>
+                    <ion-label color="primary" stacked>Title</ion-label>
+                    <ion-input type="text" placeholder="Enter tournament title" [(ngModel)]="saveEventData.title"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Start date</ion-label>
+                    <ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Start Time</ion-label>
+                    <ion-datetime placeholder="10:00 Am" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeStarts"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label>End date</ion-label>
+                    <ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose end date" [(ngModel)]="saveEventData.enddate"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label>End Time</ion-label>
+                    <ion-datetime placeholder="06:00 Pm" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeEnds"></ion-datetime>
+                </ion-item>
+                <ion-item>
+                    <ion-label color="primary" stacked>Where</ion-label>
+                    <ion-input type="text" placeholder="Enter address" [(ngModel)]="saveEventData.where"></ion-input>
+                </ion-item>
+            </ion-list>
+        </ion-card-content>
+
+    </ion-card>
+
+    <!--Contact Information-->
+    <ion-card>
+        <ion-card-header>
+            Contact Details
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-list *ngFor="let item of contacts;let i = index">
+                <ion-item>
+                    <ion-label>Name</ion-label>
+                    <ion-input type="text" [(ngModel)]="contacts[i].name"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Mobile</ion-label>
+                    <ion-input type="number" [(ngModel)]="contacts[i].mobile"></ion-input>
+                </ion-item>
+                <button ion-button round color="danger" (click)="removeContactField(i)">X</button>
+            </ion-list>
+
+            <button ion-button block color="success" (click)="addContactField()">Add Contact</button>
+        </ion-card-content>
+    </ion-card>
+
+    <!--Prize Details-->
+    <!--<ion-card>
+        <ion-card-header>
+            Prize Details
+        </ion-card-header>
+        <ion-card-content>
+            <ion-list *ngFor="let item of prize;let i = index">
+                <ion-item>
+                    <ion-label>Enter prize name</ion-label>
+                    <ion-input type="text" [(ngModel)]="prize[i].name" placeholder="1st Prize"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Prize Amount</ion-label>
+                    <ion-input type="number" [(ngModel)]="prize[i].amount" placeholder="10,000"></ion-input>
+                </ion-item>
+                <button ion-button round color="danger" (click)="removePrizeField(i)">X</button>
+            </ion-list>
+            <button ion-button block color="success" (click)="addPrizeField()">Add Prize</button>
+        </ion-card-content>
+    </ion-card>-->
+
+    <!--Trophy Information-->
+    <ion-card>
+        <ion-card-header>
+            Trophy Details
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-item>
+                <ion-label> Trophy</ion-label>
+                <ion-toggle checked="true" [(ngModel)]="trophys.trophy"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label> Medal</ion-label>
+                <ion-toggle checked="false" [(ngModel)]="trophys.medal"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label> Certificate</ion-label>
+                <ion-toggle checked="false" [(ngModel)]="trophys.certificate"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label> Refreshment</ion-label>
+                <ion-toggle checked="false" [(ngModel)]="trophys.refreshment"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label> Lunch</ion-label>
+                <ion-toggle checked="false" [(ngModel)]="trophys.lunch"></ion-toggle>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <!--Match Information-->
+    <ion-card>
+
+        <ion-card-header>
+            Match Details
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Event Type</ion-label>
+                <ion-select interface="popover" [(ngModel)]="tourneyCategorySave.eventType">
+                    <ion-option value="{{item.id}}" *ngFor="let item of tourneyCategory$ | async">{{item.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+
+            <ul class="categoryList" *ngFor="let item of matchList; let i =index">
+                <li>
+                    <label>Age Category</label>
+                    <span>: {{item.ageCategory}}</span>
+                    <a (click)="removeCategory(i)">x</a>
+                </li>
+                <li>
+                    <label>Match Category</label>
+                    <span>: {{item.matchCategory}}</span>
+                </li>
+                <li>
+                    <label>Match Type</label>
+                    <span>: {{item.matchType}}</span>
+                </li>
+                <li>
+                    <label>Entry Fee</label>
+                    <span>: {{item.entryFee}}</span>
+                </li>
+                <li *ngFor="let i of item.prize">
+                    <label>{{i.name}}</label>
+                    <span>: {{i.amount}}</span>
+                </li>
+            </ul>
+
+
+
+            <ion-list>
+                <ion-item>
+                    <ion-label>Age Category</ion-label>
+                    <ion-select interface="popover" [(ngModel)]="category.ageCategory">
+                        <ion-option value="{{item.name}}" *ngFor="let item of ageCategory$ | async">{{item.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Match Category</ion-label>
+                    <ion-select interface="popover" [(ngModel)]="category.matchCategory">
+                        <ion-option value="{{item.name}}" *ngFor="let item of matchCategory$ | async">{{item.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Match Type</ion-label>
+                    <ion-select interface="popover" [(ngModel)]="category.matchType">
+                        <ion-option value="{{item.name}}" *ngFor="let item of matchType$ | async">{{item.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Entry fee</ion-label>
+                    <ion-input type="number" [(ngModel)]="category.entryFee" placeholder="1000"></ion-input>
+                </ion-item>
+            </ion-list>
+            <ion-list *ngFor="let item of prize;let i = index">
+                <ion-item>
+                    <ion-label>Enter prize name</ion-label>
+                    <ion-input type="text" [(ngModel)]="prize[i].name" placeholder="1st Prize"></ion-input>
+                </ion-item>
+                <ion-item>
+                    <ion-label>Prize Amount</ion-label>
+                    <ion-input type="number" [(ngModel)]="prize[i].amount" placeholder="10,000"></ion-input>
+                </ion-item>
+                <button ion-button round color="danger" (click)="removePrizeField(i)">X</button>
+            </ion-list>
+            <button ion-button block color="success" (click)="addPrizeField()">Add Prize</button>
+
+            <button ion-button round color="success" (click)="addCategory(category)">Add category</button>
+
+        </ion-card-content>
+
+    </ion-card>
+
+    <button ion-button block color="success" (click)="AddEvent()">Add Event</button>
+</ion-content>
