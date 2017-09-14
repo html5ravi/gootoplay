@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
-
+// import { DashboardPage } from '../dashboard/dashboard';
 @Component({
   selector: 'page-welcome',
   templateUrl: 'welcome.html',
@@ -14,6 +14,7 @@ export class WelcomePage {
 
   login(){
   this.navCtrl.push(LoginPage);
+  //this.navCtrl.setRoot(DashboardPage);
   }
 
   signup(){

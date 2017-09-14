@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
-import { AddEventPage } from '../add-event/add-event';
-import {EventItem} from '../../models/event-item/event-item.interface';
+import {EventItem,FavItem} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { EditEventPage} from '../edit-event/edit-event';
-
-
+import {MyFav} from '../../models/myfav';
 
 
 @Component({
@@ -14,13 +12,58 @@ import { EditEventPage} from '../edit-event/edit-event';
 })
 export class EventListPage {
 
+  public isFavourite: boolean = false;
+  myFav = {} as MyFav;
+  myFavst : any = [];
+  newList:any =[];
+  public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
+  public myFavs:any = JSON.parse(localStorage.getItem("currentUserMyFavs"));
+  public dummyArrs : any;
   eventListRef$: FirebaseListObservable<EventItem[]>
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database:AngularFireDatabase, public actionsheetCtrl: ActionSheetController) {
+  eventFavRef$: FirebaseListObservable<FavItem[]>
+  public oneObj:any;
+  public twoObj:any =[];
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private database:AngularFireDatabase, 
+    public actionsheetCtrl: ActionSheetController,
+    public db:AngularFireDatabase
+    ) {
     this.eventListRef$ = this.database.list('Event-List');
+    this.eventFavRef$ = this.database.list(`profile/${this.currentUser.uid}/myfavs/`);
+
+    this.eventListRef$.subscribe(data=>{
+      //console.log(data)
+      this.newList = data;
+       this.eventFavRef$.subscribe(data=>{
+        //console.log(data)
+        this.twoObj=data;
+        for(let i=0;i<this.newList.length;i++){
+          for(let j=0;j<this.twoObj.length;j++){
+            if(this.newList[i].$key == this.twoObj[j].eventId){
+              this.newList[i].favourite = true;
+            }
+          }
+        }
+      });
+    });
+   
   }
 
-  goToaddEventPage(){
-    this.navCtrl.push(AddEventPage);
+
+  
+
+  isFavouriteFun(item){    
+    item.favourite = !item.favourite;
+      if(item.favourite){
+        this.db.object(`profile/${this.currentUser.uid}/myfavs/${item.$key}/`).set({"eventId":item.$key});        
+      }else{
+        this.db.list(`profile/${this.currentUser.uid}/myfavs`).remove(item.$key);
+      }        
+  }
+  goToEventDetails(){
+    
   }
 
   openMenu(eventItem:EventItem) {
@@ -42,12 +85,6 @@ export class EventListPage {
             this.navCtrl.push(EditEventPage,{eventId: eventItem.$key})
           }
         },
-        /*{
-          text: 'Play',
-          handler: () => {
-            console.log('Play clicked');
-          }
-        },*/
         {
           text: 'Favorite',
           handler: () => {
@@ -65,5 +102,6 @@ export class EventListPage {
     });
     actionSheet.present();
   }
+
  
 }

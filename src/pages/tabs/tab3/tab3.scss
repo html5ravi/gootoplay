@@ -1,0 +1,89 @@
+page-tab3 {
+    @import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,400italic");
+    @import url("//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+    @import url("https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css");
+    .table {
+        tr {
+            margin-bottom: 10px;
+            td {
+                position: relative;
+                time {
+                    color: rgb(255, 255, 255);
+                    text-align: center;
+                    text-transform: uppercase;
+                    span {
+                        display: none;
+                    }
+                    .day {
+                        display: block;
+                        font-size: 25pt;
+                        font-weight: 200;
+                        line-height: 1;
+                    }
+                    .month {
+                        display: block;
+                        font-size: 12pt;
+                        font-weight: 400;
+                        line-height: 26px;
+                    }
+                    .year {
+                        display: block;
+                        font-size: 10pt;
+                        font-weight: 500;
+                        line-height: 1;
+                    }
+                }
+                .favourite {
+                    position: absolute;
+                    z-index: 999;
+                    right: 10px;
+                    top: 10px;
+                }
+                a {
+                    color: color($colors, primary);
+                    cursor: pointer;
+                    text-decoration: none;
+                    &:hover,
+                    &:visited,
+                    &:active,
+                    &:link {
+                        text-decoration: none;
+                        color: color($colors, primary);
+                    }
+                }
+                .info {
+                    margin: 0;
+                    padding: 0;
+                    font-family: 'Lato', sans-serif;
+                    color: color($colors, dark);
+                    .title {
+                        font-size: 14px !important;
+                        font-weight: 400;
+                        span {
+                            display: block;
+                            font-size: 11px;
+                        }
+                    }
+                    label {
+                        font-size: 12px;
+                        span {
+                            font-size: 10px;
+                        }
+                    }
+                }
+                &:first-child {
+                    background: color($colors, yellow);
+                }
+            }
+            &:nth-child(odd) {
+                border-bottom: 2px solid color($colors, yellow);
+            }
+            &:nth-child(even) {
+                border-bottom: 2px solid color($colors, primary);
+                & td:first-child {
+                    background: color($colors, primary);
+                }
+            }
+        }
+    }
+}

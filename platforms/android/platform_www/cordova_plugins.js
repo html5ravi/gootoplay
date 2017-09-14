@@ -64,6 +64,14 @@ module.exports = [
         "clobbers": [
             "cordova.plugins.browsertab"
         ]
+    },
+    {
+        "id": "cordova-plugin-googleplus.GooglePlus",
+        "file": "plugins/cordova-plugin-googleplus/www/GooglePlus.js",
+        "pluginId": "cordova-plugin-googleplus",
+        "clobbers": [
+            "window.plugins.googleplus"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -79,7 +87,8 @@ module.exports.metadata =
     "cordova-plugin-buildinfo": "1.1.0",
     "cordova-universal-links-plugin": "1.2.1",
     "cordova-plugin-compat": "1.1.0",
-    "cordova-plugin-browsertab": "0.2.0"
+    "cordova-plugin-browsertab": "0.2.0",
+    "cordova-plugin-googleplus": "5.1.1"
 };
 // BOTTOM OF METADATA
 });

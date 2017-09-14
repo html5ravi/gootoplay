@@ -4,6 +4,10 @@ export interface EventItem{
     eventDate:Date,
     created_at?:Date
 }
+export interface FavItem{
+    eventId:string
+}
+
 export interface TournamentCatory{
     $key?:string,
     name:string,

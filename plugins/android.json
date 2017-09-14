@@ -38,6 +38,9 @@
         },
         "cordova-plugin-browsertab": {
             "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "cordova-plugin-googleplus": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         }
     },
     "dependent_plugins": {

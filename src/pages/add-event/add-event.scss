@@ -1,4 +1,37 @@
-page-add-event {}
+page-add-event {
+    .addCircle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+    .contactCard {
+        position: relative;
+        .closeBtn {
+            position: absolute;
+            z-index: 99;
+            right: -2px;
+            top: 0;
+            height: 86px;
+            width: 30px;
+        }
+    }
+    .prizeDetails {
+        background: #b8dcc3;
+        padding: 4px;
+        margin: 10px -10px;
+        .prizeCard {
+            position: relative;
+            .closeBtn {
+                position: absolute;
+                z-index: 99;
+                right: -2px;
+                top: 0;
+                height: 86px;
+                width: 30px;
+            }
+        }
+    }
+}
 
 .categoryList {
     margin: 0 0 15px 0;
