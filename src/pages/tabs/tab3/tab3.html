@@ -1,5 +1,5 @@
 <ion-content padding>
-    <table class="table table-bordered" *ngFor="let itemd of eventIds">
+    <!--<table class="table table-bordered" *ngFor="let itemd of eventIds">
         <tr *ngFor="let item of eventListRef$ | async;">
             <td width="20%" *ngIf="item.$key == itemd.eventId">
                 <time datetime="2014-07-20 0000">
@@ -17,5 +17,39 @@
                 </a>
             </td>
         </tr>
-    </table>
+    </table>-->
+
+    <section *ngFor="let itemd of eventIds">
+        <div *ngFor="let item of newList">
+            <div class="event_container" *ngIf="item.$key == itemd.eventId">
+                <div class="date_time">
+                    <time datetime="2014-07-20 0000">
+                    <span class="day">{{item.general.startdate | date:'dd'}}</span>
+                    <span class="month">{{item.general.startdate | date:'MMM'}}</span>
+                    <span class="year">{{item.general.startdate | date:'yyyy'}}</span>
+                </time>
+
+                </div>
+                <article class="event_cont">
+                    <img src="assets/img/{{item.banner}}" alt="">
+                    <div class="blur"></div>
+                    <a class="favourite" (click)="isFavouriteFun(item)">
+                        <div *ngIf="item.favourite;then yesTrue else noFalse"></div>
+                        <ng-template #yesTrue>
+                            <ion-icon name="heart"></ion-icon>
+                        </ng-template>
+                        <ng-template #noFalse>
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </ng-template>
+                    </a>
+                    <a (click)="goToEventDetails()" class="infoAnkr">
+                        <div class="info">
+                            <p class="title">{{item.general.title}} <span>{{item.created_at | timeAgo}}</span> </p>
+                            <label>Venue: <span>{{item.general.where}}</span></label>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
 </ion-content>

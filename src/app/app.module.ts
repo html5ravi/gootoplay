@@ -55,9 +55,7 @@ firebase.initializeApp(FIREBASE_CONFIG);
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    SuperTabsModule.forRoot(),
-    ScreenOrientation
-    
+    SuperTabsModule.forRoot()        
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -78,9 +76,10 @@ firebase.initializeApp(FIREBASE_CONFIG);
     Facebook,
     // AngularFireAuth,
     // AngularFireDatabase,
+    ScreenOrientation,
     GooglePlus,
     StatusBar,
-    SplashScreen,
+    SplashScreen,    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
