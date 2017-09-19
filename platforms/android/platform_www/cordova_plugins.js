@@ -72,6 +72,20 @@ module.exports = [
         "clobbers": [
             "window.plugins.googleplus"
         ]
+    },
+    {
+        "id": "es6-promise-plugin.Promise",
+        "file": "plugins/es6-promise-plugin/www/promise.js",
+        "pluginId": "es6-promise-plugin",
+        "runs": true
+    },
+    {
+        "id": "cordova-plugin-screen-orientation.screenorientation",
+        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+        "pluginId": "cordova-plugin-screen-orientation",
+        "clobbers": [
+            "cordova.plugins.screenorientation"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -88,7 +102,9 @@ module.exports.metadata =
     "cordova-universal-links-plugin": "1.2.1",
     "cordova-plugin-compat": "1.1.0",
     "cordova-plugin-browsertab": "0.2.0",
-    "cordova-plugin-googleplus": "5.1.1"
+    "cordova-plugin-googleplus": "5.1.1",
+    "es6-promise-plugin": "4.1.0",
+    "cordova-plugin-screen-orientation": "2.0.1"
 };
 // BOTTOM OF METADATA
 });

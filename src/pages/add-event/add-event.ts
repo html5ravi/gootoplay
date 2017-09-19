@@ -10,7 +10,8 @@ import {AngularFireAuth} from 'angularfire2/auth';
   templateUrl: 'add-event.html',
 })
 export class AddEventPage {
-  
+  public currentDate: string = new Date().toLocaleDateString();
+
 
   public saveEventData:any = {};
   public contacts:any = [{mobile:"",name:""}];
@@ -44,7 +45,9 @@ export class AddEventPage {
     this.afauth.authState.take(1).subscribe(data => {
       this.uid = data.uid;
     });
-
+    
+    this.saveEventData.startdate=this.currentDate;
+    console.log(this.currentDate)
   }
 
   

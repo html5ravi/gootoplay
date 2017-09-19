@@ -99,5 +99,21 @@
         "variables": {
             "REVERSED_CLIENT_ID": "com.googleusercontent.apps.90319476280-hh8s1ekqhqtn31tdacn3rs3tjabdrcu7"
         }
+    },
+    "cordova-plugin-screen-orientation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-screen-orientation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "es6-promise-plugin": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/vstirbu/PromisesPlugin.git"
+        },
+        "is_top_level": false,
+        "variables": {}
     }
 }

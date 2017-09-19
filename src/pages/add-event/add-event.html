@@ -33,7 +33,7 @@
                 </ion-item>
                 <ion-item>
                     <ion-label>Start date</ion-label>
-                    <ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>
+                    <ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>
                 </ion-item>
                 <ion-item>
                     <ion-label>Start Time</ion-label>
@@ -97,6 +97,10 @@
             <ion-item>
                 <ion-label> Medal</ion-label>
                 <ion-toggle checked="false" [(ngModel)]="trophys.medal"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label> Sports Goodies</ion-label>
+                <ion-toggle checked="false" [(ngModel)]="trophys.goodies"></ion-toggle>
             </ion-item>
             <ion-item>
                 <ion-label> Certificate</ion-label>

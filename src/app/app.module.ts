@@ -2,6 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -53,7 +55,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    SuperTabsModule.forRoot()
+    SuperTabsModule.forRoot(),
+    ScreenOrientation
     
   ],
   bootstrap: [IonicApp],

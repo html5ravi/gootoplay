@@ -41,10 +41,16 @@
         },
         "cordova-plugin-googleplus": {
             "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "es6-promise-plugin": {
             "PACKAGE_NAME": "io.ionic.gootoplay"
         }
     }
