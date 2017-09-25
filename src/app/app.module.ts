@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {IonicImageViewerModule} from 'ionic-img-viewer';
+
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -16,6 +18,7 @@ import firebase from 'firebase';
 import {Facebook } from '@ionic-native/facebook';
 import {GooglePlus } from '@ionic-native/google-plus';
 import { SuperTabsModule } from 'ionic2-super-tabs';
+import {Camera} from '@ionic-native/camera';
 
 import {TimeAgoPipe} from 'time-ago-pipe';
 
@@ -24,6 +27,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { EventListPage } from '../pages/event-list/event-list';
+import { EventDetailsPage } from '../pages/event-details/event-details';
 import { AddEventPage } from '../pages/add-event/add-event';
 import { ProfilePage } from '../pages/profile/profile';
 import { DashboardHomePage } from '../pages/dashboard-home/dashboard-home';
@@ -47,7 +51,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     DashboardHomePage,
     Tab1Page,
     Tab2Page,
-    Tab3Page
+    Tab3Page,
+    EventDetailsPage
   ],
   imports: [
     BrowserModule,
@@ -55,8 +60,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     AngularFireModule.initializeApp(FIREBASE_CONFIG),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    SuperTabsModule.forRoot()        
-  ],
+    SuperTabsModule.forRoot(),
+    IonicImageViewerModule  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -70,12 +75,15 @@ firebase.initializeApp(FIREBASE_CONFIG);
     DashboardHomePage,
     Tab1Page,
     Tab2Page,
-    Tab3Page
+    Tab3Page,
+    EventDetailsPage
   ],
   providers: [
     Facebook,
     // AngularFireAuth,
     // AngularFireDatabase,
+    Camera,
+    YoutubeVideoPlayer,    
     ScreenOrientation,
     GooglePlus,
     StatusBar,

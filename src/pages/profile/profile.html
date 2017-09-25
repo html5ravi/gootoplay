@@ -12,6 +12,7 @@
 
 <ion-content padding>
 
+    <button ion-button (click)="takePhoto()">upload pic</button>
 
     <ion-list>
         <ion-item>Full Name: {{ (profileData | async)?.displayName }}</ion-item>

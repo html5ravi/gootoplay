@@ -18,8 +18,8 @@
 
 <ion-content class="homepage">
     <super-tabs id="mainTabs" selectedTabIndex="1" toolbarColor="light" toolbarBackground="dark" indicatorColor="light" badgeColor="light" [config]="{ sideMenu: 'left' }" (tabSelect)="onTabSelect($event)">
-        <super-tab [root]="page1" icon="apps" title="All events" id="homeTab"></super-tab>
-        <!--<super-tab [root]="page2" icon="apps" title="Clubs" id="locationTab"></super-tab>-->
-        <super-tab [root]="page3" icon="heart" title="My Events" id="favouritesTab"></super-tab>
+        <super-tab [root]="page1" title="All events" id="homeTab"></super-tab>
+        <super-tab [root]="page2" title="Videos" id="locationTab"></super-tab>
+        <super-tab [root]="page3" title="My Events" id="favouritesTab"></super-tab>
     </super-tabs>
 </ion-content>

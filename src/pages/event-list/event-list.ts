@@ -4,7 +4,8 @@ import {EventItem,FavItem} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { EditEventPage} from '../edit-event/edit-event';
 import {MyFav} from '../../models/myfav';
-
+import { EventDetailsPage } from '../event-details/event-details';
+import { SuperTabsController } from 'ionic2-super-tabs';      
 
 @Component({
   selector: 'page-event-list',
@@ -28,8 +29,10 @@ export class EventListPage {
     public navParams: NavParams, 
     private database:AngularFireDatabase, 
     public actionsheetCtrl: ActionSheetController,
-    public db:AngularFireDatabase
+    public db:AngularFireDatabase,
+    private superTabsCtrl: SuperTabsController
     ) {
+    //this.superTabsCtrl.showToolbar(true);
     this.eventListRef$ = this.database.list('Event-List');
     this.eventFavRef$ = this.database.list(`profile/${this.currentUser.uid}/myfavs/`);
 
@@ -51,7 +54,10 @@ export class EventListPage {
    
   }
 
-
+ionViewDidLoad() {
+    console.log('ionViewDidLoad EventDetailsPage');
+    this.superTabsCtrl.showToolbar(true);
+  }
   
 
   isFavouriteFun(item){    
@@ -62,8 +68,9 @@ export class EventListPage {
         this.db.list(`profile/${this.currentUser.uid}/myfavs`).remove(item.$key);
       }        
   }
-  goToEventDetails(){
-    
+  goToEventDetails(eventItem:EventItem){
+    console.log(eventItem.$key)
+    this.navCtrl.push(EventDetailsPage,{eventId: eventItem.$key})
   }
 
   openMenu(eventItem:EventItem) {

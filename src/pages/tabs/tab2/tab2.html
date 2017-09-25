@@ -1,3 +1,46 @@
 <ion-content padding>
-    tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>tab 2<br>
+    <!--<section class="eventVideos">
+        <h4>Praksh Cup 2017 <span>10-Sep-2017</span> </h4>
+        <ion-slides class="image-slider" loop="true" slidesPerView="2" centeredSlides="true" spaceBetween="7">
+            <ion-slide (click)="openVideo()">
+                <div class="backdrop">
+                    <a>
+                        <ion-icon name="play" icon-only></ion-icon>
+                    </a>
+                </div>
+
+                <img src="http://img.youtube.com/vi/SDqrOtFhVPM/mqdefault.jpg">
+                <div class="thumb-cont">
+                    <h3>Semi Final</h3>
+                    <p>Amar Jith &amp; Yeshwanth Vs Abhishek &amp; Partner</p>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </section>-->
+
+    <section *ngFor="let carouselItem of carousel" class="eventVideos">
+        <h4>{{carouselItem.eventTitle}} <span>{{carouselItem.eventDate}}</span> </h4>
+        <!--<ion-content class="slider">-->
+        <ion-slides class="image-slider" loop="true" slidesPerView="2" centeredSlides="true" spaceBetween="7">
+            <ion-slide *ngFor="let item of carouselItem.videos; let i=index;">
+                <div class="backdrop">
+                    <div class="shadow">
+                        <a (click)="openVideo()">
+                            <ion-icon name="play" icon-only></ion-icon>
+                        </a>
+                    </div>
+                    <img src="http://img.youtube.com/vi/{{item.id}}/mqdefault.jpg">
+                </div>
+
+                <div class="thumb-cont">
+                    <h3>{{item.title}}</h3>
+                    <p>{{item.players}}</p>
+                </div>
+            </ion-slide>
+        </ion-slides>
+        <!--</ion-content>-->
+    </section>
+
+
+
 </ion-content>
