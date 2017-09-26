@@ -86,6 +86,7 @@ export class AddEventPage {
   }
   addCategory(obj) {
       obj.prize = this.prize;
+      obj.eventType = this.tourneyCategorySave.eventType;
       this.matchList.push(obj);
       this.category = {};
       this.prize = [{amount:"",name:""}];

@@ -33,19 +33,23 @@
                 </ion-item>
                 <ion-item>
                     <ion-label>Start date</ion-label>
-                    <ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>
+                    <!--<ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>-->
+                    <ion-input type="date" [(ngModel)]="saveEventData.startdate"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>Start Time</ion-label>
-                    <ion-datetime placeholder="10:00 Am" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeStarts"></ion-datetime>
+                    <!--<ion-datetime placeholder="10:00 Am" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeStarts"></ion-datetime>-->
+                    <ion-input type="time" [(ngModel)]="saveEventData.timeStarts"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>End date</ion-label>
-                    <ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose end date" [(ngModel)]="saveEventData.enddate"></ion-datetime>
+                    <!--<ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose end date" [(ngModel)]="saveEventData.enddate"></ion-datetime>-->
+                    <ion-input type="date" [(ngModel)]="saveEventData.enddate"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>End Time</ion-label>
-                    <ion-datetime placeholder="06:00 Pm" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeEnds"></ion-datetime>
+                    <!--<ion-datetime placeholder="06:00 Pm" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeEnds"></ion-datetime>-->
+                    <ion-input type="time" [(ngModel)]="saveEventData.timeEnds"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label color="primary" stacked>Where</ion-label>
@@ -70,7 +74,7 @@
                 </ion-item>
                 <ion-item>
                     <ion-label>Mobile</ion-label>
-                    <ion-input type="number" [(ngModel)]="contacts[i].mobile"></ion-input>
+                    <ion-input type="tel" maxlength="10" clearInput [(ngModel)]="contacts[i].mobile"></ion-input>
                 </ion-item>
                 <button ion-button class="closeBtn" color="danger" outline (click)="removeContactField(i)"><ion-icon name="close"></ion-icon></button>
             </ion-list>
@@ -128,7 +132,7 @@
             <ion-item>
                 <ion-label>Event Type</ion-label>
                 <ion-select interface="popover" [(ngModel)]="tourneyCategorySave.eventType">
-                    <ion-option value="{{item.id}}" *ngFor="let item of tourneyCategory$ | async">{{item.name}}</ion-option>
+                    <ion-option value="{{item.name}}" *ngFor="let item of tourneyCategory$ | async">{{item.name}}</ion-option>
                 </ion-select>
             </ion-item>
 

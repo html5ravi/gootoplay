@@ -1,20 +1,32 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import { SuperTabsController } from 'ionic2-super-tabs';
-
+import { NavController, NavParams, ViewController} from 'ionic-angular';
+import {AngularFireDatabase } from 'angularfire2/database';
+// import {EventItem} from '../../models/event-item/event-item.interface';
 @Component({
   selector: 'page-event-details',
   templateUrl: 'event-details.html',
 })
 export class EventDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private superTabsCtrl:SuperTabsController) {
-    
+  
+   public eventListRef$:any;
+   public eventObj:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase,private viewCtrl:ViewController) {
+    let eventId = navParams.get('eventId');
+    this.eventListRef$ = this.db.object(`Event-List/${eventId}`);
+    this.eventListRef$.subscribe(data=>{
+      this.eventObj = data;
+      console.log(data);
+    });    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventDetailsPage');
-    this.superTabsCtrl.showToolbar(false);
+    //this.superTabsCtrl.showToolbar(false)
+  }
+
+  dismissModal(){
+
+    this.viewCtrl.dismiss();
   }
 
 }

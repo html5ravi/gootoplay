@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController,ModalController } from 'ionic-angular';
 import {EventItem,FavItem} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { EditEventPage} from '../edit-event/edit-event';
 import {MyFav} from '../../models/myfav';
 import { EventDetailsPage } from '../event-details/event-details';
 import { SuperTabsController } from 'ionic2-super-tabs';      
+
+
 
 @Component({
   selector: 'page-event-list',
@@ -30,7 +32,8 @@ export class EventListPage {
     private database:AngularFireDatabase, 
     public actionsheetCtrl: ActionSheetController,
     public db:AngularFireDatabase,
-    private superTabsCtrl: SuperTabsController
+    private superTabsCtrl: SuperTabsController,
+    public modalCtrl: ModalController
     ) {
     //this.superTabsCtrl.showToolbar(true);
     this.eventListRef$ = this.database.list('Event-List');
@@ -53,6 +56,10 @@ export class EventListPage {
     });
    
   }
+presentModal() {
+    let modal = this.modalCtrl.create(EventDetailsPage);
+    modal.present();
+  }
 
 ionViewDidLoad() {
     console.log('ionViewDidLoad EventDetailsPage');
@@ -70,7 +77,9 @@ ionViewDidLoad() {
   }
   goToEventDetails(eventItem:EventItem){
     console.log(eventItem.$key)
-    this.navCtrl.push(EventDetailsPage,{eventId: eventItem.$key})
+    //this.navCtrl.push(EventDetailsPage,{eventId: eventItem.$key})
+    let modal = this.modalCtrl.create(EventDetailsPage,{eventId: eventItem.$key});
+    modal.present();
   }
 
   openMenu(eventItem:EventItem) {
