@@ -56,10 +56,7 @@ export class EventListPage {
     });
    
   }
-presentModal() {
-    let modal = this.modalCtrl.create(EventDetailsPage);
-    modal.present();
-  }
+
 
 ionViewDidLoad() {
     console.log('ionViewDidLoad EventDetailsPage');

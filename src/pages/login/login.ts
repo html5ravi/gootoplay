@@ -16,7 +16,7 @@ import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databas
 export class LoginPage {
   profile = {} as Profile;
   public loadingLogo:boolean = false;
-   profileDataRef$: FirebaseListObservable<Profile>;
+  profileDataRef$: FirebaseListObservable<Profile>;
   public loginData:any;
   public errorMsg:string;
   user = {} as User;

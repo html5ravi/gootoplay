@@ -1,4 +1,12 @@
 page-event-details {
+    a {
+        &:link,
+        &:hover,
+        &:visited,
+        &:active {
+            outline: none;
+        }
+    }
     .back-button-text {
         padding: 0 15px;
         font-size: 2rem;

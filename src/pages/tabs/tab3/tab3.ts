@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,ModalController } from 'ionic-angular';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {EventItem,FavItem} from '../../../models/event-item/event-item.interface';
 import {MyFav} from '../../../models/myfav';
-
+import { EventDetailsPage } from '../../event-details/event-details';
 
 @Component({
   selector: 'page-tab3',
@@ -29,6 +29,7 @@ export class Tab3Page {
     public navCtrl: NavController, 
     public navParams: NavParams,
     private db:AngularFireDatabase, 
+    public modalCtrl: ModalController
   ) {
     this.eventListRef$ = this.db.list('Event-List');
     this.eventFavRef$ = this.db.list(`profile/${this.currentUser.uid}/myfavs/`);
@@ -62,7 +63,13 @@ export class Tab3Page {
       }else{
         this.db.list(`profile/${this.currentUser.uid}/myfavs`).remove(item.$key);
       }        
-  }
+  };
+   goToEventDetails(eventItem:EventItem){
+    console.log(eventItem.$key)
+    //this.navCtrl.push(EventDetailsPage,{eventId: eventItem.$key})
+    let modal = this.modalCtrl.create(EventDetailsPage,{eventId: eventItem.$key});
+    modal.present();
+  };
   
 
 }

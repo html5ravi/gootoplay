@@ -11,13 +11,19 @@
 
 
 <ion-content padding>
-
-    <button ion-button (click)="takePhoto()">upload pic</button>
+    <ion-list text-wrap>
+        <ion-item>
+            <ion-avatar item-start (click)="takePhoto()">
+                <img src="{{ (userData | async)?.photoURL }}" onerror="this.src='assets/img/profile.jpg'" alt="avatar">
+            </ion-avatar>
+            <h2>{{ (profileData | async)?.displayName }}</h2>
+            <h3>Non Medalist</h3>
+            <p>{{ (profileData | async)?.phoneNumber }}</p>
+        </ion-item>
+    </ion-list>
 
     <ion-list>
-        <ion-item>Full Name: {{ (profileData | async)?.displayName }}</ion-item>
         <ion-item>Email: {{ (profileData | async)?.email }}</ion-item>
         <ion-item>Address: {{ (profileData | async)?.address }}</ion-item>
-        <ion-item>Mobile: {{ (profileData | async)?.phoneNumber }}</ion-item>
     </ion-list>
 </ion-content>

@@ -1,14 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, MenuController, Nav, App, ToastController,NavController } from 'ionic-angular';
+import {IonicPage, Platform, MenuController, Nav, App, ToastController,NavController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {FirebaseObjectObservable,AngularFireDatabase} from 'angularfire2/database';
-import { LoginPage } from '../login/login';
+import { WelcomePage } from '../welcome/welcome';
 import { AddEventPage } from '../add-event/add-event';
 import { DashboardHomePage } from '../dashboard-home/dashboard-home';
 import { ProfilePage } from '../profile/profile';
 import {User} from '../../models/user.models';
 // import {Facebook } from '@ionic-native/facebook'; inauguraloffer bigbox10
 
+@IonicPage()
 @Component({
   selector: 'dashboard',
   templateUrl: 'dashboard.html'
@@ -40,6 +41,7 @@ export class DashboardPage {
   }
   ionViewWillLoad(){
     this.afAuth.authState.subscribe(data=>{
+      console.log(data);
       if(data && data.email && data.uid){
         localStorage.setItem("currentUser",JSON.stringify(data));
         this.userData = this.db.object(`profile/${data.uid}/user`);
@@ -70,7 +72,7 @@ export class DashboardPage {
   async logout(){
         // Remove API token 
         this.afAuth.auth.signOut();
-        this.navCtrl.push(LoginPage);
+        this.navCtrl.push(WelcomePage);
         localStorage.clear();
   };
   //For Device back button prevention
