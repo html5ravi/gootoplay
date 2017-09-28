@@ -4,5 +4,7 @@ export interface User{
     displayName:string,
     phoneNumber?:number,
     address?:string,
-    photoURL?:string
+    url?:{
+        photoURL?:string
+    }
 }

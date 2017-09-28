@@ -12,9 +12,9 @@
 
 <ion-content padding>
     <ion-list text-wrap>
-        <ion-item>
+        <ion-item class="profile">
             <ion-avatar item-start (click)="takePhoto()">
-                <img src="{{ (userData | async)?.photoURL }}" onerror="this.src='assets/img/profile.jpg'" alt="avatar">
+                <img src="{{photoURL}}" onerror="this.src='assets/img/profile.jpg'" alt="avatar">
             </ion-avatar>
             <h2>{{ (profileData | async)?.displayName }}</h2>
             <h3>Non Medalist</h3>

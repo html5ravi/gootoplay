@@ -46,9 +46,7 @@ export class EventListPage {
       }else{
         console.log("past")
       }
-{
-//Date greater than today's date 
-}
+
     //this.superTabsCtrl.showToolbar(true);
     this.eventListRef$ = this.database.list('Event-List');
     this.eventFavRef$ = this.database.list(`profile/${this.currentUser.uid}/myfavs/`);

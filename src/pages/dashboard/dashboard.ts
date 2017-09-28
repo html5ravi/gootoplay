@@ -8,6 +8,7 @@ import { DashboardHomePage } from '../dashboard-home/dashboard-home';
 import { ProfilePage } from '../profile/profile';
 import {User} from '../../models/user.models';
 // import {Facebook } from '@ionic-native/facebook'; inauguraloffer bigbox10
+// import { storage} from 'firebase';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ export class DashboardPage {
   rootPages:any = DashboardHomePage;
   pages: Array<{title: string, component: any, icons:string}>;
   public userData:FirebaseObjectObservable<User>;;
-  
+  public photoURL:string;
   constructor(
     public afAuth:AngularFireAuth,
     public toast:ToastController,
@@ -37,14 +38,17 @@ export class DashboardPage {
       { title: 'Profile', component: ProfilePage, icons:'person' }
     ];
     this.initializeApp();
+
+    //get Profile Pic
     
   }
   ionViewWillLoad(){
     this.afAuth.authState.subscribe(data=>{
-      console.log(data);
+      //console.log(data);
       if(data && data.email && data.uid){
         localStorage.setItem("currentUser",JSON.stringify(data));
         this.userData = this.db.object(`profile/${data.uid}/user`);
+        console.log(this.userData);        
         this.db.object(`profile/${data.uid}/myfavs`).subscribe(data=>{
           localStorage.setItem("currentUserMyFavs",JSON.stringify(data));
         });
