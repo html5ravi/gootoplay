@@ -19,6 +19,10 @@ export class EventListPage {
   myFav = {} as MyFav;
   myFavst : any = [];
   newList:any =[];
+  
+  public today = new Date().getTime();
+  public getDate = new Date("2016-08-20").getTime(); 
+
   public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
   public myFavs:any = JSON.parse(localStorage.getItem("currentUserMyFavs"));
   public dummyArrs : any;
@@ -35,6 +39,16 @@ export class EventListPage {
     private superTabsCtrl: SuperTabsController,
     public modalCtrl: ModalController
     ) {
+      
+      
+      if(this.getDate >= this.today){
+        console.log("upcoming")
+      }else{
+        console.log("past")
+      }
+{
+//Date greater than today's date 
+}
     //this.superTabsCtrl.showToolbar(true);
     this.eventListRef$ = this.database.list('Event-List');
     this.eventFavRef$ = this.database.list(`profile/${this.currentUser.uid}/myfavs/`);
@@ -57,6 +71,22 @@ export class EventListPage {
    
   }
 
+upcomingEvent(dates){
+  let item = new Date(dates).getTime();
+  if(item >= this.today){
+    return true;
+  }else{
+    return false;
+  }  
+};
+pastEvent(dates){
+  let item = new Date(dates).getTime();
+  if(item <= this.today){
+    return true;
+  }else{
+    return false;
+  }  
+};
 
 ionViewDidLoad() {
     console.log('ionViewDidLoad EventDetailsPage');

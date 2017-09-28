@@ -34,7 +34,7 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
-      let user = JSON.parse(localStorage.getItem("currentUser"));
+      let user = JSON.parse(localStorage.getItem("currentUser")) || {};
       if(user.uid){
         this.nav.setRoot(DashboardPage);
       }else{
