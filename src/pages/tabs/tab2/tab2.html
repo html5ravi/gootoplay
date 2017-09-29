@@ -19,7 +19,7 @@
     </section>-->
 
     <section *ngFor="let carouselItem of carousel" class="eventVideos">
-        <h4>{{carouselItem.eventTitle}} <span>{{carouselItem.eventDate}}</span> </h4>
+        <h4>{{carouselItem.eventTitle}} <br><span>{{carouselItem.eventDate}}</span> <a href="#">View more</a></h4>
         <!--<ion-content class="slider">-->
         <ion-slides class="image-slider" loop="true" slidesPerView="2" centeredSlides="true" spaceBetween="7">
             <ion-slide *ngFor="let item of carouselItem.videos; let i=index;">
