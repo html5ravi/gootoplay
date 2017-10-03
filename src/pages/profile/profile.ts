@@ -17,7 +17,7 @@ export class ProfilePage {
    public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
    profileData:FirebaseObjectObservable<User>;
    public photoURL:string;
-
+   public imageLoaded:boolean = false;
 
   constructor(
     public afauth:AngularFireAuth, 
@@ -30,8 +30,10 @@ export class ProfilePage {
      const photo = storage().ref().child(`users/${this.currentUser.uid}`);     
      photo.getDownloadURL().then(data=> {
         this.photoURL = data;
-        console.log(this.photoURL)
-      });
+        this.imageLoaded = true;
+      }).catch(()=>{
+        this.imageLoaded = true;
+      })
   }
 
   ionViewWillLoad(){

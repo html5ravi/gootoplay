@@ -8,7 +8,8 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {IonicImageViewerModule} from 'ionic-img-viewer';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
+import { Screenshot } from '@ionic-native/screenshot';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -61,7 +62,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SuperTabsModule.forRoot(),
-    IonicImageViewerModule  ],
+    IonicImageViewerModule
+  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -83,6 +85,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     // AngularFireAuth,
     // AngularFireDatabase,
     Camera,
+    SocialSharing,
+    Screenshot,
     YoutubeVideoPlayer,    
     ScreenOrientation,
     GooglePlus,

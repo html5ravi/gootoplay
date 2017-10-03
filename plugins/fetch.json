@@ -131,5 +131,21 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-x-socialsharing": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-x-socialsharing"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.darktalker.cordova.screenshot": {
+        "source": {
+            "type": "registry",
+            "id": "com.darktalker.cordova.screenshot"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

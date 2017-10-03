@@ -50,6 +50,12 @@
         },
         "cordova-plugin-youtube-video-player": {
             "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
+        },
+        "com.darktalker.cordova.screenshot": {
+            "PACKAGE_NAME": "io.ionic.gootoplay"
         }
     },
     "dependent_plugins": {

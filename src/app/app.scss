@@ -2,11 +2,17 @@
     background: color($colors, light);
 }
 
+button:focus {
+    box-shadow: none !important;
+    border-color: rgba(0, 0, 0, 0) !important;
+    outline: none !important;
+}
+
 a {
     &:link,
     &:hover,
     &:visited,
     &:active {
-        outline: none;
+        outline: none !important;
     }
 }
