@@ -4,23 +4,26 @@ import {AngularFireDatabase } from 'angularfire2/database';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 
+
 @Component({
   selector: 'page-event-details',
   templateUrl: 'event-details.html',
 })
 export class EventDetailsPage {
-
+  
   screen:any;
   state:boolean =false;
    public eventListRef$:any;
    public eventObj:any;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase,private viewCtrl:ViewController,private share: SocialSharing, private ss:Screenshot) {
+   public getScreenShot:any;
+   public option:any = {};
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase,private viewCtrl:ViewController,private shared: SocialSharing, private ss:Screenshot) {
     let eventId = navParams.get('eventId');
     this.eventListRef$ = this.db.object(`Event-List/${eventId}`);
     this.eventListRef$.subscribe(data=>{
       this.eventObj = data;
       //console.log(data);
-    });    
+    });
   }
 
   reset(){
@@ -31,23 +34,19 @@ export class EventDetailsPage {
   };
 
   doShare(obj){
-    //let message="Test message", subject="Badminton Event", file="assets/img/profile.jpg", url="http://www.gootoplay.com";
-    // this.share.share('message', 'subject', 'assets/img/profile.jpg', 'http://www.gootoplay.com').then(data =>{
-    //   console.log("success"+data)
-    // }).catch(() => {
-    //   console.log("error")
-    // });
-    console.log("working")
-    this.ss.save('jpg', 80, 'myscreenshot.jpg').then((data)=>{
-      console.log(data.filePath)
-      this.screen = data.filePath;
-      this.share.shareViaWhatsApp(obj.general.title,'http://rootaccez.com/assets/team/ravi.jpg',null).then(data=>{ }).catch(error=>{ });
+    this.ss.URI(80).then((res)=>{  
+      const file = res.URI;  
+      //localStorage.setItem("tempBase64",res.URI);
+      this.option.message = 'Badminton Event: ' + obj.general.title+" on: "+ obj.general.startdate;
+      this.option.subject = 'Badminton Event';
+      this.option.file = file;
+      this.option.url = "gootoplay.com";
+      this.shared.share(this.option.message,this.option.subject,this.option.file,this.option.url); 
       this.reset();
-    });
-
-
-    
-  }
+    }).catch((error)=>{
+      console.error(error);
+    })
+  };
 
   ionViewDidLoad() {
     //this.superTabsCtrl.showToolbar(false)
