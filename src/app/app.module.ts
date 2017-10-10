@@ -10,6 +10,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {IonicImageViewerModule} from 'ionic-img-viewer';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
+import { FCM } from '@ionic-native/fcm/';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -35,6 +36,7 @@ import { DashboardHomePage } from '../pages/dashboard-home/dashboard-home';
 import { Tab1Page } from '../pages/tabs/tab1/tab1';
 import { Tab2Page } from '../pages/tabs/tab2/tab2';
 import { Tab3Page } from '../pages/tabs/tab3/tab3';
+import { PushProvider } from '../providers/push';
 
 firebase.initializeApp(FIREBASE_CONFIG);
 
@@ -84,6 +86,7 @@ firebase.initializeApp(FIREBASE_CONFIG);
     Facebook,
     // AngularFireAuth,
     // AngularFireDatabase,
+    FCM,
     Camera,
     SocialSharing,
     Screenshot,
@@ -92,7 +95,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     GooglePlus,
     StatusBar,
     SplashScreen,    
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PushProvider
   ]
 })
 export class AppModule {}

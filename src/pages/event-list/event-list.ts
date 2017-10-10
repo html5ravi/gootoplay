@@ -42,9 +42,9 @@ export class EventListPage {
       
       
       if(this.getDate >= this.today){
-        console.log("upcoming")
+        //console.log("upcoming")
       }else{
-        console.log("past")
+        //console.log("past")
       }
 
     //this.superTabsCtrl.showToolbar(true);
@@ -87,7 +87,7 @@ pastEvent(dates){
 };
 
 ionViewDidLoad() {
-    console.log('ionViewDidLoad EventDetailsPage');
+    //console.log('ionViewDidLoad EventDetailsPage');
     this.superTabsCtrl.showToolbar(true);
   }
   
@@ -101,7 +101,7 @@ ionViewDidLoad() {
       }        
   }
   goToEventDetails(eventItem:EventItem){
-    console.log(eventItem.$key)
+    //console.log(eventItem.$key)
     //this.navCtrl.push(EventDetailsPage,{eventId: eventItem.$key})
     let modal = this.modalCtrl.create(EventDetailsPage,{eventId: eventItem.$key});
     modal.present();

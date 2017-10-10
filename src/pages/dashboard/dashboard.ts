@@ -48,7 +48,7 @@ export class DashboardPage {
       if(data && data.email && data.uid){
         localStorage.setItem("currentUser",JSON.stringify(data));
         this.userData = this.db.object(`profile/${data.uid}/user`);
-        console.log(this.userData);        
+        //console.log(this.userData);        
         this.db.object(`profile/${data.uid}/myfavs`).subscribe(data=>{
           localStorage.setItem("currentUserMyFavs",JSON.stringify(data));
         });
