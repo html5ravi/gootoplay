@@ -1,0 +1,128 @@
+<ion-header>
+
+    <ion-navbar>
+        <div class="toolbar-content toolbar-content-md" ng-reflect-klass="toolbar-content" ng-reflect-ng-class="toolbar-content-md">
+            <ion-title class="title title-md">
+                <button (click)="dismissModal()" class="back-button disable-hover bar-button bar-button-md back-button-md bar-button-default bar-button-default-md show-back-button" ion-button="bar-button" ng-reflect-klass="back-button" ng-reflect-ng-class="back-button-md"><span class="button-inner"><ion-icon class="back-button-icon icon icon-md back-button-icon-md ion-md-arrow-back" role="img" ng-reflect-klass="back-button-icon" ng-reflect-ng-class="back-button-icon-md" aria-label="arrow back" ng-reflect-name="md-arrow-back"></ion-icon><span class="back-button-text back-button-text-md">{{eventObj.general.title}}</span></span></button>
+            </ion-title>
+        </div>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-card class="eventDetails">
+        <!--<div class="banner">
+            <img src="assets/img/banner1.jpeg" />
+        </div>-->
+        <ion-card-content>
+            <h5>{{eventObj.general.title}}</h5>
+            <ul>
+                <li>
+                    <label for="">Start Date</label>
+                    <span>: {{eventObj.general.startdate}}</span>
+                </li>
+                <li>
+                    <label for="">Start Time</label>
+                    <span>: {{eventObj.general.timeStarts}}</span>
+                </li>
+                <li>
+                    <label for="">End Date</label>
+                    <span>: {{eventObj.general.enddate}}</span>
+                </li>
+                <li>
+                    <label for="">End Time</label>
+                    <span>: {{eventObj.general.timeEnds}}</span>
+                </li>
+                <li>
+                    <label for="">Venue</label>
+                    <span>: {{eventObj.general.where}}</span>
+                </li>
+            </ul>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="eventDetails">
+        <ion-card-content>
+            <h5>Contacts</h5>
+            <ul>
+                <li *ngFor="let item of eventObj.contacts">
+                    <label for="">{{item.name}}</label>
+                    <span>: {{item.mobile}}</span>
+                </li>
+            </ul>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="eventDetails">
+        <ion-card-content>
+            <h5>Trophy Details</h5>
+            <ul>
+                <li *ngIf="eventObj.trophy.trophy">
+                    <label>Trophy</label>
+                    <span>: Yes</span>
+                </li>
+                <li *ngIf="eventObj.trophy.refreshment">
+                    <label>Refreshment</label>
+                    <span>: Yes</span>
+                </li>
+                <li *ngIf="eventObj.trophy.lunch">
+                    <label>Lunch</label>
+                    <span>: Yes</span>
+                </li>
+                <li *ngIf="eventObj.trophy.medal">
+                    <label>Medal</label>
+                    <span>: Yes</span>
+                </li>
+                <li *ngIf="eventObj.trophy.certificate">
+                    <label>Certificate</label>
+                    <span>: Yes</span>
+                </li>
+                <li *ngIf="eventObj.trophy.goodies">
+                    <label>Sport Goodies</label>
+                    <span>: Yes</span>
+                </li>
+            </ul>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card class="eventDetails">
+        <ion-card-content>
+            <h5>Match Details</h5>
+            <ul *ngFor="let item of eventObj.matchList">
+                <li>
+                    <label>Event Type</label>
+                    <span>: {{item.eventType}}</span>
+                </li>
+                <li>
+                    <label for="">Age Category</label>
+                    <span>: {{item.ageCategory}}</span>
+                </li>
+                <li>
+                    <label for="">Match Type</label>
+                    <span>: {{item.matchType}}</span>
+                </li>
+                <li>
+                    <label for="">Entry Fee</label>
+                    <span>: {{item.entryFee}}</span>
+                </li>
+                <li *ngFor="let p of item.prize">
+                    <label for="">{{p.name}}</label>
+                    <span>: {{p.amount}}</span>
+                </li>
+            </ul>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-fab right bottom>
+        <button ion-fab mini (click)="doShare(eventObj)" class="button"><ion-icon name="md-share"></ion-icon></button>
+        <button ion-fab mini>Pay</button>
+        <!--<ion-fab-list side="top">
+            <button ion-fab (click)="facebookShare(eventObj)"><ion-icon color="facebook" name="logo-facebook"></ion-icon></button>
+            <button ion-fab (click)="twitterShare(eventObj)"><ion-icon color="twitter" name="logo-twitter"></ion-icon></button>
+            <button ion-fab (click)="whatsAppShare(eventObj)"><ion-icon color="whatsapp" name="logo-whatsapp"></ion-icon></button>
+        </ion-fab-list>-->
+    </ion-fab>
+
+</ion-content>

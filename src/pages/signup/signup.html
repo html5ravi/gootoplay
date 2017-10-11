@@ -1,12 +1,53 @@
-<ion-header>
+<ion-content class="loginpage">
+    <ion-card>
+        <ion-card-content>
+            <form [formGroup]="signupForm">
+                <ion-list no-lines>
+                    <ion-item>
+                        <ion-label floating>Display Name</ion-label>
+                        <ion-input type="text" [(ngModel)]="profile.displayName" formControlName="displayName"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="displayName.hasError('required') && displayName.touched">
+                        <p> *Display Name is required</p>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Mobile Number</ion-label>
+                        <ion-input type="number" [(ngModel)]="profile.phoneNumber" formControlName="phoneNumber"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="phoneNumber.hasError('required') && phoneNumber.touched">
+                        <p>*Phone Number is requried</p>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Email Address</ion-label>
+                        <ion-input type="text" [(ngModel)]="user.email" formControlName="email"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="email.hasError('required') && email.touched">
+                        <p>*Email is requried</p>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Password</ion-label>
+                        <ion-input type="password" [(ngModel)]="user.password" formControlName="password"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="password.hasError('required') && password.touched">
+                        <p>*Password is requried</p>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label floating>Address</ion-label>
+                        <ion-input type="text" [(ngModel)]="profile.address" formControlName="address"></ion-input>
+                    </ion-item>
+                    <ion-item *ngIf="address.hasError('required') && address.touched">
+                        <p>*Address is requried</p>
+                    </ion-item>
+                    <button ion-button (click)="register(user)">Signup</button>
+                </ion-list>
+                <div class="b">
+                    OR
+                </div>
+                <button ion-button color="fb" (click)="fblogin(user)">
+                    <ion-icon ios="logo-facebook" md="logo-facebook"> </ion-icon>  &nbsp; Login with Facebook
+                </button>
+            </form>
+        </ion-card-content>
+    </ion-card>
 
-    <ion-navbar>
-        <ion-title>signup</ion-title>
-    </ion-navbar>
-
-</ion-header>
-
-
-<ion-content padding>
-    <h2>Signup</h2>
 </ion-content>

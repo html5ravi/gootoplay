@@ -29,9 +29,26 @@ page-dashboard {}
         background: #fff;
         position: relative;
         overflow: hidden;
+        .profilePic {
+            position: absolute;
+            top: 10px;
+            right: 95px;
+            z-index: 999;
+            border: 3px solid #fff;
+            height: 110px;
+            width: 110px;
+            border-radius: 50%;
+            text-align: center;
+            overflow: hidden;
+            img {
+                vertical-align: middle;
+                filter: blur(0px);
+            }
+        }
         img {
             width: 100%;
             z-index: 1;
+            filter: blur(4px);
         }
         span {
             position: absolute;
@@ -39,8 +56,8 @@ page-dashboard {}
             width: 100%;
             z-index: 10;
             left: 0;
-            top: 0;
-            background: rgba(0, 0, 0, 0.6);
+            bottom: 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.9));
         }
         p {
             font-size: 16px;

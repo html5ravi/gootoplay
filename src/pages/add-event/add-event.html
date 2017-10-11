@@ -7,6 +7,9 @@
 <ion-header>
 
     <ion-navbar color="primary">
+        <button ion-button menuToggle icon-only>
+            <ion-icon name='menu'></ion-icon>
+        </button>
         <ion-title>Create Event</ion-title>
     </ion-navbar>
 
@@ -32,20 +35,24 @@
                     <ion-input type="text" placeholder="Enter tournament title" [(ngModel)]="saveEventData.title"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label>Start date</ion-label>
-                    <ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>
+                    <ion-label for="#startdate">Start date</ion-label>
+                    <!--<ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>-->
+                    <ion-input type="date" id="startdate" [(ngModel)]="saveEventData.startdate"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label>Start Time</ion-label>
-                    <ion-datetime placeholder="10:00 Am" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeStarts"></ion-datetime>
+                    <ion-label for="#starttime">Start Time</ion-label>
+                    <!--<ion-datetime placeholder="10:00 Am" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeStarts"></ion-datetime>-->
+                    <ion-input type="time" id="starttime" [(ngModel)]="saveEventData.timeStarts"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label>End date</ion-label>
-                    <ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose end date" [(ngModel)]="saveEventData.enddate"></ion-datetime>
+                    <ion-label for="#enddate">End date</ion-label>
+                    <!--<ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose end date" [(ngModel)]="saveEventData.enddate"></ion-datetime>-->
+                    <ion-input type="date" id="enddate" [(ngModel)]="saveEventData.enddate"></ion-input>
                 </ion-item>
                 <ion-item>
-                    <ion-label>End Time</ion-label>
-                    <ion-datetime placeholder="06:00 Pm" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeEnds"></ion-datetime>
+                    <ion-label for="#endtime">End Time</ion-label>
+                    <!--<ion-datetime placeholder="06:00 Pm" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeEnds"></ion-datetime>-->
+                    <ion-input type="time" id="endtime" [(ngModel)]="saveEventData.timeEnds"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label color="primary" stacked>Where</ion-label>
@@ -62,43 +69,26 @@
             Contact Details
         </ion-card-header>
 
-        <ion-card-content>
-            <ion-list *ngFor="let item of contacts;let i = index">
+        <ion-card-content text-center>
+            <ion-list *ngFor="let item of contacts;let i = index" class="contactCard">
                 <ion-item>
                     <ion-label>Name</ion-label>
                     <ion-input type="text" [(ngModel)]="contacts[i].name"></ion-input>
                 </ion-item>
                 <ion-item>
                     <ion-label>Mobile</ion-label>
-                    <ion-input type="number" [(ngModel)]="contacts[i].mobile"></ion-input>
+                    <ion-input type="tel" maxlength="10" clearInput [(ngModel)]="contacts[i].mobile"></ion-input>
                 </ion-item>
-                <button ion-button round color="danger" (click)="removeContactField(i)">X</button>
+                <button ion-button class="closeBtn" color="danger" outline (click)="removeContactField(i)"><ion-icon name="close"></ion-icon></button>
             </ion-list>
 
-            <button ion-button block color="success" (click)="addContactField()">Add Contact</button>
+            <button ion-button color="success" class="addCircle" (click)="addContactField()">
+                <ion-icon name="add"></ion-icon>
+            </button>
         </ion-card-content>
     </ion-card>
 
-    <!--Prize Details-->
-    <!--<ion-card>
-        <ion-card-header>
-            Prize Details
-        </ion-card-header>
-        <ion-card-content>
-            <ion-list *ngFor="let item of prize;let i = index">
-                <ion-item>
-                    <ion-label>Enter prize name</ion-label>
-                    <ion-input type="text" [(ngModel)]="prize[i].name" placeholder="1st Prize"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Prize Amount</ion-label>
-                    <ion-input type="number" [(ngModel)]="prize[i].amount" placeholder="10,000"></ion-input>
-                </ion-item>
-                <button ion-button round color="danger" (click)="removePrizeField(i)">X</button>
-            </ion-list>
-            <button ion-button block color="success" (click)="addPrizeField()">Add Prize</button>
-        </ion-card-content>
-    </ion-card>-->
+
 
     <!--Trophy Information-->
     <ion-card>
@@ -114,6 +104,10 @@
             <ion-item>
                 <ion-label> Medal</ion-label>
                 <ion-toggle checked="false" [(ngModel)]="trophys.medal"></ion-toggle>
+            </ion-item>
+            <ion-item>
+                <ion-label> Sports Goodies</ion-label>
+                <ion-toggle checked="false" [(ngModel)]="trophys.goodies"></ion-toggle>
             </ion-item>
             <ion-item>
                 <ion-label> Certificate</ion-label>
@@ -134,14 +128,14 @@
     <ion-card>
 
         <ion-card-header>
-            Match Details
+            Match Category
         </ion-card-header>
 
-        <ion-card-content>
+        <ion-card-content text-center>
             <ion-item>
                 <ion-label>Event Type</ion-label>
                 <ion-select interface="popover" [(ngModel)]="tourneyCategorySave.eventType">
-                    <ion-option value="{{item.id}}" *ngFor="let item of tourneyCategory$ | async">{{item.name}}</ion-option>
+                    <ion-option value="{{item.name}}" *ngFor="let item of tourneyCategory$ | async">{{item.name}}</ion-option>
                 </ion-select>
             </ion-item>
 
@@ -195,24 +189,29 @@
                     <ion-input type="number" [(ngModel)]="category.entryFee" placeholder="1000"></ion-input>
                 </ion-item>
             </ion-list>
-            <ion-list *ngFor="let item of prize;let i = index">
-                <ion-item>
-                    <ion-label>Enter prize name</ion-label>
-                    <ion-input type="text" [(ngModel)]="prize[i].name" placeholder="1st Prize"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label>Prize Amount</ion-label>
-                    <ion-input type="number" [(ngModel)]="prize[i].amount" placeholder="10,000"></ion-input>
-                </ion-item>
-                <button ion-button round color="danger" (click)="removePrizeField(i)">X</button>
-            </ion-list>
-            <button ion-button block color="success" (click)="addPrizeField()">Add Prize</button>
-
-            <button ion-button round color="success" (click)="addCategory(category)">Add category</button>
-
+            <!--<hr>-->
+            <div class="prizeDetails">
+                <ion-list *ngFor="let item of prize;let i = index" class="prizeCard">
+                    <ion-item>
+                        <ion-label>Enter prize name</ion-label>
+                        <ion-input type="text" [(ngModel)]="prize[i].name" placeholder="1st Prize"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Prize Amount</ion-label>
+                        <ion-input type="number" [(ngModel)]="prize[i].amount" placeholder="10,000"></ion-input>
+                    </ion-item>
+                    <button ion-button class="closeBtn" outline color="danger" (click)="removePrizeField(i)"><ion-icon name="close"></ion-icon></button>
+                </ion-list>
+                <button ion-button class="addCircle" (click)="addPrizeField()">
+                <ion-icon name="add"></ion-icon>
+            </button>
+            </div>
+            <button ion-button block color="dark" outline (click)="addCategory(category)">Add category</button>
         </ion-card-content>
 
     </ion-card>
+    <div text-center>
+        <button ion-button (click)="AddEvent()">Add Event</button>
+    </div>
 
-    <button ion-button block color="success" (click)="AddEvent()">Add Event</button>
 </ion-content>

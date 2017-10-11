@@ -2,14 +2,17 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {EventItem,TournamentCatory, AgeCategory, MatchCategory, MatchType, ShuttleType, ShuttleBrand} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-
+import {AngularFireAuth} from 'angularfire2/auth';
+// import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'page-add-event',
   templateUrl: 'add-event.html',
 })
 export class AddEventPage {
-   
+  public currentDate: string = new Date().toLocaleDateString();
+
+
   public saveEventData:any = {};
   public contacts:any = [{mobile:"",name:""}];
   public prize:any =[{amount:"",name:""}];
@@ -17,7 +20,8 @@ export class AddEventPage {
   public trophys:any ={};
   public tourneyCategorySave:any = {};
   public matchList:any =[];
-
+  public uid: any;
+  
   eventItem = {} as EventItem;
   
   eventItemRef$: FirebaseListObservable<EventItem[]>;
@@ -29,7 +33,7 @@ export class AddEventPage {
   shuttleType$:FirebaseListObservable<ShuttleType[]>;
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database:AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private database:AngularFireDatabase,public afauth:AngularFireAuth) {
     this.eventItemRef$ = this.database.list('Event-List');
     this.tourneyCategory$ = this.database.list(`tourneyCategory`);
     this.ageCategory$ = this.database.list(`ageCategory`);
@@ -37,17 +41,31 @@ export class AddEventPage {
     this.matchType$ = this.database.list(`matchType`);
     this.shuttleBrand$ = this.database.list(`shuttleBrand`);
     this.shuttleType$ = this.database.list(`shuttleType`);
+
+    this.afauth.authState.take(1).subscribe(data => {
+      this.uid = data.uid;
+    });
+    
+    this.saveEventData.startdate=this.currentDate;
+    console.log(this.currentDate)
   }
+
+  
 
   AddEvent(eventItem:EventItem){
     var date = new Date();
-    this.eventItemRef$.push({
-      created_at:date.toString(),
-      contacts:this.contacts,
-      general:this.saveEventData,
-      trophy:this.trophys,
-      matchList:this.matchList
-    });
+    if(this.uid){
+      this.eventItemRef$.push({
+        favourite:false,
+        created_at:date.toString(),
+        userId:this.uid,
+        contacts:this.contacts,
+        general:this.saveEventData,
+        trophy:this.trophys,
+        matchList:this.matchList
+        
+      });
+    }
     //Making fields empty!
     this.eventItem= {} as EventItem;
     //Navigate to Event List page
@@ -68,6 +86,7 @@ export class AddEventPage {
   }
   addCategory(obj) {
       obj.prize = this.prize;
+      obj.eventType = this.tourneyCategorySave.eventType;
       this.matchList.push(obj);
       this.category = {};
       this.prize = [{amount:"",name:""}];

@@ -18,7 +18,7 @@
     "cordova-plugin-splashscreen": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-splashscreen@~4.0.1"
+            "id": "cordova-plugin-splashscreen@^4.0.3"
         },
         "is_top_level": true,
         "variables": {}
@@ -88,6 +88,64 @@
             "id": "cordova-plugin-compat@^1.0.0"
         },
         "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-googleplus": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-googleplus@~5.1.1"
+        },
+        "is_top_level": true,
+        "variables": {
+            "REVERSED_CLIENT_ID": "com.googleusercontent.apps.90319476280-hh8s1ekqhqtn31tdacn3rs3tjabdrcu7"
+        }
+    },
+    "cordova-plugin-screen-orientation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-screen-orientation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "es6-promise-plugin": {
+        "source": {
+            "type": "registry",
+            "id": "https://github.com/vstirbu/PromisesPlugin.git"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-youtube-video-player": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-youtube-video-player"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-x-socialsharing": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-x-socialsharing"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.darktalker.cordova.screenshot": {
+        "source": {
+            "type": "registry",
+            "id": "com.darktalker.cordova.screenshot"
+        },
+        "is_top_level": true,
         "variables": {}
     }
 }

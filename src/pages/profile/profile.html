@@ -1,0 +1,29 @@
+<ion-header>
+
+    <ion-navbar>
+        <button ion-button menuToggle icon-only>
+            <ion-icon name='menu'></ion-icon>
+        </button>
+        <ion-title>Profile</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list text-wrap>
+        <ion-item class="profile">
+            <ion-avatar item-start (click)="takePhoto()">
+                <img *ngIf="imageLoaded" src="{{photoURL}}" onerror="this.src='assets/img/profile.jpg'" alt="avatar">
+            </ion-avatar>
+            <h2>{{ (profileData | async)?.displayName }}</h2>
+            <h3>Non Medalist</h3>
+            <p>{{ (profileData | async)?.phoneNumber }}</p>
+        </ion-item>
+    </ion-list>
+
+    <ion-list>
+        <ion-item>Email: {{ (profileData | async)?.email }}</ion-item>
+        <ion-item>Address: {{ (profileData | async)?.address }}</ion-item>
+    </ion-list>
+</ion-content>

@@ -2,27 +2,78 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import firebase from 'firebase';
 import {Facebook } from '@ionic-native/facebook';
+import {GooglePlus } from '@ionic-native/google-plus';
 import { DashboardPage } from '../dashboard/dashboard';
+import {User} from '../../Models/user.models';
+import {Profile} from '../../models/profile';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, private facebook:Facebook) {
+  profile = {} as Profile;
+  public loadingLogo:boolean = false;
+  profileDataRef$: FirebaseListObservable<Profile>;
+  public loginData:any;
+  public errorMsg:string;
+  user = {} as User;
+  constructor(public afAuth:AngularFireAuth,
+    public navCtrl: NavController, public navParams: NavParams, private facebook:Facebook, public googleplus:GooglePlus,public afauth:AngularFireAuth, 
+    public db:AngularFireDatabase) {
+      
   }
 
-  login() {
-    this.facebook.login(['email']).then((info)=>{
+  fblogin() {
+    this.loadingLogo = true;
+    this.facebook.login(['email', 'public_profile']).then((info)=>{
       let credential = firebase.auth.FacebookAuthProvider.credential(info.authResponse.accessToken);
       firebase.auth().signInWithCredential(credential).then((result)=>{
         alert(JSON.stringify(result));
+        this.loginData = JSON.stringify(result);
+        this.profile.displayName = result.displayName;
+        this.profile.email = result.email;
+        this.profile.phoneNumber = result.phoneNumber;
+        this.profile.photoURL = result.photoURL;
+        this.db.object(`profile/${result.uid}/user`).set(this.profile);
+        this.navCtrl.setRoot(DashboardPage);
+        this.loadingLogo = false;
       })
     })
   }
-  dummylogin(){
-    this.navCtrl.push(DashboardPage);
+  glogin(){
+    this.googleplus.login({
+      'webClientId':'90319476280-hh8s1ekqhqtn31tdacn3rs3tjabdrcu7.apps.googleusercontent.com',
+      'offline':true
+    }).then(res=>{
+      firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken)).then(res=>{
+        alert("Login Success");
+      }).catch(error=>{
+        alert(error);
+      })
+    })
+  }
+  async login(user:User){
+    //console.log(user.email);
+    this.loadingLogo = true;
+   user.email = 'ravi@ravi.com'; user.password = 'mmmmmmmm';
+    if( user.email == undefined || user.password == undefined){
+      this.errorMsg ="Email or Password fields must not be empty!";
+    }else{
+      try{
+        const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password);
+        if(result){
+          this.navCtrl.setRoot(DashboardPage);
+          this.loadingLogo = false;
+        }
+      }
+      catch(e){
+        this.errorMsg ="Email or Password is incorrect!";
+      }
+    }
+    
   }
 
 

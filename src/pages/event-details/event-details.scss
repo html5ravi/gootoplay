@@ -1,0 +1,55 @@
+page-event-details {
+    button:focus {
+        box-shadow: none !important;
+        border-color: rgba(0, 0, 0, 0) !important;
+        outline: none !important;
+    }
+    a {
+        &:link,
+        &:hover,
+        &:visited,
+        &:active {
+            outline: none !important;
+        }
+    }
+    .back-button-text {
+        padding: 0 15px;
+        font-size: 2rem;
+        font-weight: 500;
+        text-transform: capitalize;
+    }
+    .eventDetails {
+        .banner {
+            height: 100px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px #cacaca;
+        }
+        h5 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+        ul {
+            margin: 10px 0 0 0;
+            padding: 0px;
+            li {
+                list-style-type: none;
+                line-height: 30px;
+                border-bottom: 1px solid #e2e2e2;
+                font-size: 1.3rem;
+                label {
+                    width: 100px;
+                    display: table-cell;
+                    font-weight: 400;
+                }
+                span {
+                    display: table-cell;
+                    font-weight: 300;
+                }
+                &:last-child {
+                    border-bottom: 0px;
+                }
+            }
+        }
+    }
+}

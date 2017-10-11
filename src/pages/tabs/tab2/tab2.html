@@ -1,0 +1,25 @@
+<ion-content padding>
+    <section *ngFor="let carouselItem of carousel" class="eventVideos">
+        <h4>{{carouselItem.eventTitle}} <br><span>{{carouselItem.eventDate}}</span> <a href="#">View more</a></h4>
+        <ion-slides class="image-slider" loop="true" slidesPerView="2" centeredSlides="true" spaceBetween="7">
+            <ion-slide *ngFor="let item of carouselItem.videos; let i=index;">
+                <div class="backdrop">
+                    <div class="shadow">
+                        <a (click)="openVideo()">
+                            <ion-icon name="play" icon-only></ion-icon>
+                        </a>
+                    </div>
+                    <img src="http://img.youtube.com/vi/{{item.id}}/mqdefault.jpg">
+                </div>
+
+                <div class="thumb-cont">
+                    <h3>{{item.title}}</h3>
+                    <p>{{item.players}}</p>
+                </div>
+            </ion-slide>
+        </ion-slides>
+    </section>
+
+
+
+</ion-content>
