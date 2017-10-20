@@ -1,4 +1,11 @@
 page-signup {
+    .item-md {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .label-md[floating] {
+        margin-left: 10px;
+    }
     p {
         font-size: 0.8em;
         color: #d2d2d2;
@@ -59,5 +66,29 @@ page-signup {
     .b:after {
         left: 0.5em;
         margin-right: -50%;
+    }
+    .alert {
+        background: #f2edda;
+        padding: 7px;
+        margin: 0px;
+        font-size: .9em;
+        display: inline-block;
+        animation: 2s alertAnim forwards;
+    }
+    @keyframes alertAnim {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+    .item-md.item-input.ng-invalid ion-input {
+        border: 1px solid #f53d3d;
+    }
+    .item-md.item-block .item-inner {
+        padding-right: 1px;
     }
 }

@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -65,7 +66,9 @@ firebase.initializeApp(FIREBASE_CONFIG);
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     SuperTabsModule.forRoot(),
-    IonicImageViewerModule
+    IonicImageViewerModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

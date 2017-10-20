@@ -4,11 +4,11 @@ import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from '../../models/user.models';
 // import { ProfilePage} from '../profile/profile';
 import {Profile} from '../../models/profile';
-// import {LoginPage} from '../login/login';
+ import {LoginPage} from '../login/login';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {Facebook } from '@ionic-native/facebook';
 import { DashboardPage } from '../dashboard/dashboard';
-import { FormBuilder, FormGroup, Validators,AbstractControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'page-signup',
@@ -21,12 +21,12 @@ export class SignupPage {
   public loadingLogo:boolean = false;
   public loginData:any;
   signupForm:FormGroup;
-  displayName:AbstractControl;
-  phoneNumber:AbstractControl;
-  email:AbstractControl;
-  password:AbstractControl;
-  address:AbstractControl;
-
+  displayName:String = '';
+  phoneNumber:Number = null;
+  email:String = '';
+  password:String = '';
+  address:String = '';
+  requiredVal:string = "This field is required";
 
   constructor(
     public toast:ToastController, 
@@ -35,31 +35,21 @@ export class SignupPage {
     public afauth:AngularFireAuth, 
     public db:AngularFireDatabase,
     private facebook:Facebook,
-    public formbuilder:FormBuilder
+    public fb:FormBuilder
   ) {
-    this.signupForm = formbuilder.group({
-      displayName:['',Validators.required],
-      phoneNumber:['',Validators.required],
-      email:['',Validators.required,Validators.email],
-      password:['',Validators.required],
-      address:['',Validators.required]
+    this.signupForm = fb.group({
+      'displayName':[null,Validators.required],
+      'phoneNumber':[null,Validators.compose([Validators.required,Validators.minLength(10),Validators.maxLength(10)])],
+      'email':[null,Validators.compose([Validators.required,Validators.email])],
+      'password':[null,Validators.required],
+      'address':[null,Validators.required]
     });
-    this.displayName = this.signupForm.controls['displayName'];
-    this.phoneNumber = this.signupForm.controls['phoneNumber'];
-    this.email = this.signupForm.controls['email'];
-    this.password = this.signupForm.controls['password'];
-    this.address = this.signupForm.controls['address'];
 
   }
 
-  register(user:User) {
-   
-     if(!this.signupForm.valid){
-        console.log(this.signupForm.value);
-    }else {
-        console.log("success!");
-    }
-    /*try{
+  async register(user:User) {
+   console.log(user);
+     try{
       const result = await this.afauth.auth.createUserWithEmailAndPassword(user.email,user.password);
         this.navCtrl.push(LoginPage);
         if(result){
@@ -76,7 +66,7 @@ export class SignupPage {
       console.log(data);
       this.profile.email = user.email;      
       this.db.object(`profile/${data.uid}/user`).set(this.profile);
-    });*/
+    });
   };
 
   fblogin() {
