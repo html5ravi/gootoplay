@@ -21,6 +21,7 @@ import {Facebook } from '@ionic-native/facebook';
 import {GooglePlus } from '@ionic-native/google-plus';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import {Camera} from '@ionic-native/camera';
+import {Network} from '@ionic-native/network';
 
 import {TimeAgoPipe} from 'time-ago-pipe';
 
@@ -84,8 +85,7 @@ firebase.initializeApp(FIREBASE_CONFIG);
   ],
   providers: [
     Facebook,
-    // AngularFireAuth,
-    // AngularFireDatabase,
+    Network,
     FCM,
     Camera,
     SocialSharing,

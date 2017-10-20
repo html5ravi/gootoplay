@@ -43,24 +43,14 @@ export class LoginPage {
       })
     })
   }
-  glogin(){
-    this.googleplus.login({
-      'webClientId':'90319476280-hh8s1ekqhqtn31tdacn3rs3tjabdrcu7.apps.googleusercontent.com',
-      'offline':true
-    }).then(res=>{
-      firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken)).then(res=>{
-        alert("Login Success");
-      }).catch(error=>{
-        alert(error);
-      })
-    })
-  }
+ 
   async login(user:User){
     //console.log(user.email);
     this.loadingLogo = true;
-   user.email = 'ravi@ravi.com'; user.password = 'mmmmmmmm';
+   //user.email = 'ravi@ravi.com'; user.password = '123456';
     if( user.email == undefined || user.password == undefined){
       this.errorMsg ="Email or Password fields must not be empty!";
+      this.loadingLogo = false;
     }else{
       try{
         const result = await this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password);
@@ -71,6 +61,7 @@ export class LoginPage {
       }
       catch(e){
         this.errorMsg ="Email or Password is incorrect!";
+        this.loadingLogo = false;
       }
     }
     

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController,Platform } from 'ionic-angular';
 import { SuperTabsController } from 'ionic2-super-tabs';
 import { AddEventPage } from '../add-event/add-event';
 import { EventListPage } from '../event-list/event-list';
@@ -8,6 +8,7 @@ import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databas
 // import { Tab1Page } from '../tabs/tab1/tab1';
 import { Tab2Page } from '../tabs/tab2/tab2';
 import { Tab3Page } from '../tabs/tab3/tab3';
+import {Network} from '@ionic-native/network';
 
 @Component({
   selector: 'page-dashboard-home',
@@ -22,6 +23,9 @@ export class DashboardHomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private database:AngularFireDatabase,
+    private network:Network,
+    public platform: Platform, 
+    private alert:AlertController,
     private superTabsCtrl: SuperTabsController) {
       this.eventListRef$ = this.database.list('Event-List');
       //alert(this.eventListRef$)
@@ -36,8 +40,29 @@ export class DashboardHomePage {
   }
 
   ionViewDidLoad() {
-    
+    // this.network.onConnect().subscribe(res=>{
+    //   //console.log(res);
+    //   this.networkStatus(res.type);
+    // });
+    this.network.onDisconnect().subscribe(res=>{
+      //console.log(res);
+      this.networkStatus(res.type);
+    });
   }
+  networkStatus(status:String){
+    this.alert.create({
+      message:`Inernet connection is ${status}. Please connect internet then try!`,
+      enableBackdropDismiss: false,
+      title: 'Confirm',
+      cssClass: 'networkAlert',
+      buttons: [{
+        text: 'Ok',
+        role: 'cancel',
+        cssClass: 'cancelAlertBtn'
+      }]
+    }).present();
+  }
+ 
   //For Super Tabs
  
   

@@ -1,10 +1,11 @@
 import { Component,ViewChild } from '@angular/core';
-import { Platform,Nav } from 'ionic-angular';
+import { Platform,Nav, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
+import {Network} from '@ionic-native/network';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +19,9 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen,
-    public screenOrientation: ScreenOrientation
+    public screenOrientation: ScreenOrientation,
+    private network:Network,
+    private alert:AlertController
     ) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -29,6 +32,18 @@ export class MyApp {
     });
     this.initializeApp();
   }
+  ionViewDidLoad() {
+    alert("working")
+    this.network.onConnect().subscribe(res=>{
+      //console.log(res);
+      this.networkStatus(res.type);
+    });
+    this.network.onDisconnect().subscribe(res=>{
+      //console.log(res);
+      this.networkStatus(res.type);
+    });
+  }
+  
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -46,6 +61,29 @@ export class MyApp {
       
     });
   }
+
+  networkStatus(status:String){
+    this.alert.create({
+      message:`Inernet connection is now ${status}. Please try again!`,
+      enableBackdropDismiss: false,
+      title: 'Confirm',
+      cssClass: 'networkAlert',
+      buttons: [{
+        text: 'Cancel',
+        role: 'cancel',
+        cssClass: 'cancelAlertBtn'
+      },
+      {
+        text: 'Exit',
+        cssClass: 'exitAlertBtn',
+        handler: () => {
+          this.platform.exitApp();
+        }
+      }]
+    }).present();
+  }
+
+ 
 
 }
 
