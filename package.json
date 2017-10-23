@@ -53,6 +53,7 @@
         "cordova-plugin-youtube-video-player": "^1.0.6",
         "cordova-universal-links-plugin": "^1.2.1",
         "date-ago-pipe": "^1.0.2",
+        "device": "^0.3.8",
         "es6-promise-plugin": "git+https://github.com/vstirbu/PromisesPlugin.git",
         "firebase": "^4.3.0",
         "ionic-angular": "3.6.0",

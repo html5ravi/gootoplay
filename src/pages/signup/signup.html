@@ -1,36 +1,40 @@
 <ion-content class="loginpage">
     <ion-card>
         <ion-card-content>
-            <form [formGroup]="signupForm" (ngSubmit)="register(signupForm.value)">
+            <h2 class="text-center">Signup</h2>
+            <form [formGroup]="signupForm" (ngSubmit)="register(signupForm.value)" class="ng-touched">
 
                 <ion-list no-lines>
                     <ion-item>
                         <ion-label floating>Display Name</ion-label>
-                        <ion-input type="text" [(ngModel)]="profile.displayName" formControlName="displayName"></ion-input>
+                        <ion-input type="text" [(ngModel)]="profile.displayName" formControlName="displayName" required></ion-input>
                     </ion-item>
                     <!--<div class="alert" *ngIf="!signupForm.controls['displayName'].valid && signupForm.controls['displayName'].touched">{{requiredVal}}</div>-->
 
                     <ion-item>
                         <ion-label floating>Mobile Number</ion-label>
-                        <ion-input type="tel" maxlength="10" [(ngModel)]="profile.phoneNumber" formControlName="phoneNumber"></ion-input>
+                        <ion-input type="tel" maxlength="10" [(ngModel)]="profile.phoneNumber" formControlName="phoneNumber" required></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label floating>Email Address</ion-label>
-                        <ion-input type="text" [(ngModel)]="user.email" formControlName="email"></ion-input>
+                        <ion-input type="text" [(ngModel)]="user.email" formControlName="email" required></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label floating>Password</ion-label>
-                        <ion-input type="password" [(ngModel)]="user.password" formControlName="password"></ion-input>
+                        <ion-input type="password" [(ngModel)]="user.password" formControlName="password" required></ion-input>
                     </ion-item>
                     <ion-item>
                         <ion-label floating>Address / City / Area</ion-label>
-                        <ion-input type="text" [(ngModel)]="profile.address" formControlName="address"></ion-input>
+                        <ion-input type="text" [(ngModel)]="profile.address" formControlName="address" required></ion-input>
                     </ion-item>
-                    <input ion-button type="submit" [disabled]="!signupForm.valid" value="Signup">
+
+                    <input ion-button type="submit" [disabled]="!signupForm.valid" value="Signup" class="mt20">
+
                 </ion-list>
                 <div class="b">
                     OR
                 </div>
+                <p>Already a member? <a (click)="login()">Click here</a></p>
                 <button ion-button color="fb" (click)="fblogin(user)">
                     <ion-icon ios="logo-facebook" md="logo-facebook"> </ion-icon>  &nbsp; Login with Facebook
                 </button>

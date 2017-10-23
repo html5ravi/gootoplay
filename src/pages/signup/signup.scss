@@ -85,10 +85,18 @@ page-signup {
             transform: translateY(0px);
         }
     }
-    .item-md.item-input.ng-invalid ion-input {
+    .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) .item-inner ion-input {
         border: 1px solid #f53d3d;
     }
     .item-md.item-block .item-inner {
         padding-right: 1px;
+    }
+    .mt20 {
+        margin-top: 20px;
+    }
+    p {
+        a {
+            color: color($colors, primary) !important;
+        }
     }
 }

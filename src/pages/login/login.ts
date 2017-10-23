@@ -8,7 +8,7 @@ import {User} from '../../Models/user.models';
 import {Profile} from '../../models/profile';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-
+import { SignupPage } from '../signup/signup';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -25,6 +25,9 @@ export class LoginPage{
     public navCtrl: NavController, public navParams: NavParams, private facebook:Facebook, public googleplus:GooglePlus,public afauth:AngularFireAuth, 
     public db:AngularFireDatabase) {
       
+  }
+  signup(){
+    this.navCtrl.push(SignupPage);
   }
 
   fblogin() {

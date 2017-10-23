@@ -69,6 +69,11 @@ export class SignupPage {
     });
   };
 
+
+  login(){
+    this.navCtrl.push(LoginPage);
+  };
+
   fblogin() {
     this.loadingLogo = true;
     this.facebook.login(['email', 'public_profile']).then((info)=>{
