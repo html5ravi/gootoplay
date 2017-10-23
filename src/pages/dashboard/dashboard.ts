@@ -8,7 +8,7 @@ import { DashboardHomePage } from '../dashboard-home/dashboard-home';
 import { ProfilePage } from '../profile/profile';
 import {User} from '../../models/user.models';
 // import {Facebook } from '@ionic-native/facebook'; inauguraloffer bigbox10
-// import { storage} from 'firebase';
+//import { Firebase} from 'firebase';
 
 @IonicPage()
 @Component({
@@ -21,6 +21,9 @@ export class DashboardPage {
   pages: Array<{title: string, component: any, icons:string}>;
   public userData:FirebaseObjectObservable<User>;;
   public photoURL:string;
+  // firebaseUrl: string;
+  //   ref: Firebase;
+  subscription:any;
   constructor(
     public afAuth:AngularFireAuth,
     public toast:ToastController,
@@ -42,8 +45,8 @@ export class DashboardPage {
     //get Profile Pic
     
   }
-  ionViewWillLoad(){
-    this.afAuth.authState.subscribe(data=>{
+  ngOnInit(){
+    this.subscription = this.afAuth.authState.subscribe(data=>{
       //console.log(data);
       if(data && data.email && data.uid){
         localStorage.setItem("currentUser",JSON.stringify(data));
@@ -52,9 +55,7 @@ export class DashboardPage {
         this.db.object(`profile/${data.uid}/myfavs`).subscribe(data=>{
           localStorage.setItem("currentUserMyFavs",JSON.stringify(data));
         });
-       
-        
-        this.toast.create({
+       this.toast.create({
           message:'Welcome to Gootoplay Events',
           duration:3000
         }).present();
@@ -67,17 +68,20 @@ export class DashboardPage {
       }
     })
   }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+}
   openPage(page) {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
-  async logout(){
+  logout(){
         // Remove API token 
         this.afAuth.auth.signOut();
-        this.navCtrl.push(WelcomePage);
         localStorage.clear();
+        this.navCtrl.push(WelcomePage);
   };
   //For Device back button prevention
   initializeApp() {

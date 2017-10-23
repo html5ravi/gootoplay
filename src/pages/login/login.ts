@@ -13,12 +13,13 @@ import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databas
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage{
   profile = {} as Profile;
   public loadingLogo:boolean = false;
   profileDataRef$: FirebaseListObservable<Profile>;
   public loginData:any;
   public errorMsg:string;
+  
   user = {} as User;
   constructor(public afAuth:AngularFireAuth,
     public navCtrl: NavController, public navParams: NavParams, private facebook:Facebook, public googleplus:GooglePlus,public afauth:AngularFireAuth, 
@@ -47,7 +48,7 @@ export class LoginPage {
   async login(user:User){
     //console.log(user.email);
     this.loadingLogo = true;
-   //user.email = 'ravi@ravi.com'; user.password = '123456';
+   user.email = 'ravi@ravi.com'; user.password = 'mmmmmmmm';
     if( user.email == undefined || user.password == undefined){
       this.errorMsg ="Email or Password fields must not be empty!";
       this.loadingLogo = false;
