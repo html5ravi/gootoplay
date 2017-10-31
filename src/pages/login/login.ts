@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
 import firebase from 'firebase';
 import {Facebook } from '@ionic-native/facebook';
 import {GooglePlus } from '@ionic-native/google-plus';
@@ -9,6 +9,7 @@ import {Profile} from '../../models/profile';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { SignupPage } from '../signup/signup';
+import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
@@ -21,9 +22,13 @@ export class LoginPage{
   public errorMsg:string;
   
   user = {} as User;
-  constructor(public afAuth:AngularFireAuth,
-    public navCtrl: NavController, public navParams: NavParams, private facebook:Facebook, public googleplus:GooglePlus,public afauth:AngularFireAuth, 
-    public db:AngularFireDatabase) {
+  constructor(
+    public afAuth:AngularFireAuth,
+    public navCtrl: NavController, 
+    public navParams: NavParams, private facebook:Facebook, public googleplus:GooglePlus,public afauth:AngularFireAuth, 
+    public db:AngularFireDatabase,
+    public modalCtrl:ModalController
+    ) {
       
   }
   signup(){
@@ -68,8 +73,14 @@ export class LoginPage{
         this.loadingLogo = false;
       }
     }
-    
-  }
+  };
 
+ 
+  goToForgetPassword(){
+    //console.log(eventItem.$key)
+    //this.navCtrl.push(EventDetailsPage,{eventId: eventItem.$key})
+    let modal = this.modalCtrl.create(ForgotPasswordPage,{});
+    modal.present();
+  }
 
 }

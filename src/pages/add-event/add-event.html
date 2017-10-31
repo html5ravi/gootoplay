@@ -202,14 +202,36 @@
                     </ion-item>
                     <button ion-button class="closeBtn" outline color="danger" (click)="removePrizeField(i)"><ion-icon name="close"></ion-icon></button>
                 </ion-list>
-                <button ion-button class="addCircle" (click)="addPrizeField()">
+                <a (click)="addPrizeField()" class="link">Add Prize</a>
+                <!--<button ion-button class="addCircle" (click)="addPrizeField()">
                 <ion-icon name="add"></ion-icon>
-            </button>
+            </button>-->
             </div>
-            <button ion-button block color="dark" outline (click)="addCategory(category)">Add category</button>
+            <!--<button ion-button block color="dark" outline (click)="addCategory(category)">Add category</button>-->
+
         </ion-card-content>
 
     </ion-card>
+    <div class="text-center">
+        <a (click)="addCategory(category)" class="link">Add another category?</a>
+    </div>
+
+    <!--Terms Information-->
+    <ion-card>
+        <ion-card-header>
+            Terms Details
+        </ion-card-header>
+
+        <ion-card-content>
+            <ion-item>
+                <ion-label>Terms</ion-label>
+                <ion-select [(ngModel)]="terms" multiple="true">
+                    <ion-option value="{{item.id}}" *ngFor="let item of terms$ | async">{{item.name}}</ion-option>
+                </ion-select>
+            </ion-item>
+        </ion-card-content>
+    </ion-card>
+
     <div text-center>
         <button ion-button (click)="AddEvent()">Add Event</button>
     </div>

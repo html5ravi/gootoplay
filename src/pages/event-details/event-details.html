@@ -115,6 +115,17 @@
         </ion-card-content>
     </ion-card>
 
+    <ion-card class="eventDetails">
+        <ion-card-content>
+            <h5>Terms Details</h5>
+            <ul>
+                <li *ngFor="let item of eventObj.terms">
+                    <span>{{getTerm(item)}}</span>
+                </li>
+            </ul>
+        </ion-card-content>
+    </ion-card>
+
     <ion-fab right bottom>
         <button ion-fab mini (click)="doShare(eventObj)" class="button"><ion-icon name="md-share"></ion-icon></button>
         <button ion-fab mini>Pay</button>

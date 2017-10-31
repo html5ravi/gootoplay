@@ -56,7 +56,7 @@ export class SignupPage {
           this.toast.create({
             message:'Successfully registered! Please do login!',
             duration:3000
-          }).present();          
+          }).present();
         }
     }
     catch(e){

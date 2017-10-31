@@ -33,6 +33,7 @@ import { DashboardPage } from '../pages/dashboard/dashboard';
 import { EventListPage } from '../pages/event-list/event-list';
 import { EventDetailsPage } from '../pages/event-details/event-details';
 import { AddEventPage } from '../pages/add-event/add-event';
+import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { ProfilePage } from '../pages/profile/profile';
 import { DashboardHomePage } from '../pages/dashboard-home/dashboard-home';
 import { Tab1Page } from '../pages/tabs/tab1/tab1';
@@ -57,7 +58,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     Tab1Page,
     Tab2Page,
     Tab3Page,
-    EventDetailsPage
+    EventDetailsPage,
+    ForgotPasswordPage
   ],
   imports: [
     BrowserModule,
@@ -84,6 +86,7 @@ firebase.initializeApp(FIREBASE_CONFIG);
     Tab1Page,
     Tab2Page,
     Tab3Page,
+    ForgotPasswordPage,
     EventDetailsPage
   ],
   providers: [

@@ -20,10 +20,22 @@ export class EventDetailsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public db:AngularFireDatabase,private viewCtrl:ViewController,private shared: SocialSharing, private ss:Screenshot) {
     let eventId = navParams.get('eventId');
     this.eventListRef$ = this.db.object(`Event-List/${eventId}`);
+    
     this.eventListRef$.subscribe(data=>{
       this.eventObj = data;
+      console.log(data);
+    });
+  }
+
+
+  getTerm(num){
+    var a = JSON.parse(num);
+    var x = "";
+    this.db.object(`Terms/${num}`).subscribe(data=>{
+      x= data.name;
       //console.log(data);
     });
+    return x;     
   }
 
   reset(){

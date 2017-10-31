@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {EventItem,TournamentCatory, AgeCategory, MatchCategory, MatchType, ShuttleType, ShuttleBrand} from '../../models/event-item/event-item.interface';
+import {EventItem,TournamentCatory, AgeCategory, MatchCategory, MatchType, ShuttleType, ShuttleBrand, Terms} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 // import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
@@ -21,7 +21,7 @@ export class AddEventPage {
   public tourneyCategorySave:any = {};
   public matchList:any =[];
   public uid: any;
-  
+  public terms:any=[];
   eventItem = {} as EventItem;
   
   eventItemRef$: FirebaseListObservable<EventItem[]>;
@@ -31,7 +31,7 @@ export class AddEventPage {
   matchType$:FirebaseListObservable<MatchType[]>;
   shuttleBrand$:FirebaseListObservable<ShuttleBrand[]>;
   shuttleType$:FirebaseListObservable<ShuttleType[]>;
-  
+  terms$:FirebaseListObservable<Terms[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private database:AngularFireDatabase,public afauth:AngularFireAuth) {
     this.eventItemRef$ = this.database.list('Event-List');
@@ -41,13 +41,14 @@ export class AddEventPage {
     this.matchType$ = this.database.list(`matchType`);
     this.shuttleBrand$ = this.database.list(`shuttleBrand`);
     this.shuttleType$ = this.database.list(`shuttleType`);
+    this.terms$ = this.database.list(`Terms`);
 
     this.afauth.authState.take(1).subscribe(data => {
       this.uid = data.uid;
     });
     
     this.saveEventData.startdate=this.currentDate;
-    console.log(this.currentDate)
+    console.log(this.terms$)
   }
 
   
@@ -62,10 +63,11 @@ export class AddEventPage {
         contacts:this.contacts,
         general:this.saveEventData,
         trophy:this.trophys,
-        matchList:this.matchList
-        
+        matchList:this.matchList,
+        terms:this.terms
       });
     }
+    console.log(this.terms);
     //Making fields empty!
     this.eventItem= {} as EventItem;
     //Navigate to Event List page

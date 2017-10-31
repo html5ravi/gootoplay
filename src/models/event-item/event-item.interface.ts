@@ -7,7 +7,11 @@ export interface EventItem{
 export interface FavItem{
     eventId:string
 }
-
+export interface Terms{
+    $key?:string,
+    name:string,
+    id?:number
+}
 export interface TournamentCatory{
     $key?:string,
     name:string,

@@ -1,4 +1,10 @@
 page-add-event {
+    .link {
+        color: #05f !important;
+    }
+    .alert-md .alert-checkbox-label {
+        white-space: normal !important;
+    }
     .addCircle {
         width: 50px;
         height: 50px;
@@ -16,7 +22,6 @@ page-add-event {
         }
     }
     .prizeDetails {
-        background: #b8dcc3;
         padding: 4px;
         margin: 10px -10px;
         .prizeCard {
