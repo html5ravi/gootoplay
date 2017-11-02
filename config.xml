@@ -90,6 +90,7 @@
     <allow-navigation href="http://10.10.0.14:8100" />
     <allow-navigation href="http://192.168.43.119:8100" />
     <allow-navigation href="http://10.10.0.212:8100" />
+    <engine name="android" spec="^6.2.3" />
     <plugin name="com.darktalker.cordova.screenshot" spec="^0.1.6" />
     <plugin name="cordova-plugin-browsertab" spec="^0.2.0" />
     <plugin name="cordova-plugin-buildinfo" spec="^1.1.0" />
@@ -109,5 +110,4 @@
     <plugin name="cordova-plugin-youtube-video-player" spec="^1.0.6" />
     <plugin name="cordova-universal-links-plugin" spec="^1.2.1" />
     <plugin name="ionic-plugin-keyboard" spec="^2.2.1" />
-    <engine name="android" spec="~6.2.3" />
 </widget>
