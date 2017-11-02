@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import firebase from 'firebase';
 import {Facebook } from '@ionic-native/facebook';
-import {GooglePlus } from '@ionic-native/google-plus';
 import { DashboardPage } from '../dashboard/dashboard';
 import {User} from '../../Models/user.models';
 import {Profile} from '../../models/profile';
@@ -25,7 +24,7 @@ export class LoginPage{
   constructor(
     public afAuth:AngularFireAuth,
     public navCtrl: NavController, 
-    public navParams: NavParams, private facebook:Facebook, public googleplus:GooglePlus,public afauth:AngularFireAuth, 
+    public navParams: NavParams, private facebook:Facebook, public afauth:AngularFireAuth, 
     public db:AngularFireDatabase,
     public modalCtrl:ModalController
     ) {

@@ -1,8 +1,11 @@
 {
-  "name": "Gootoplay",
-  "app_id": "",
-  "type": "ionic-angular",
-  "integrations": {
-    "cordova": {}
-  }
+    "name": "Gotoplay",
+    "app_id": "",
+    "type": "ionic-angular",
+    "integrations": {
+        "cordova": {}
+    },
+    "typeRoots": [
+        "node_modules/@types"
+    ]
 }

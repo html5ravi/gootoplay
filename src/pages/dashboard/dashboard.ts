@@ -45,32 +45,7 @@ export class DashboardPage {
     //get Profile Pic
     
   }
-  ngOnInit(){
-    this.subscription = this.afAuth.authState.subscribe(data=>{
-      //console.log(data);
-      if(data && data.email && data.uid){
-        localStorage.setItem("currentUser",JSON.stringify(data));
-        this.userData = this.db.object(`profile/${data.uid}/user`);
-        //console.log(this.userData);        
-        this.db.object(`profile/${data.uid}/myfavs`).subscribe(data=>{
-          localStorage.setItem("currentUserMyFavs",JSON.stringify(data));
-        });
-       this.toast.create({
-          message:'Welcome to Gootoplay Events',
-          duration:3000
-        }).present();
-      }
-      else{
-        this.toast.create({
-          message:`Could not find authentication details!`,
-          duration:3000
-        }).present();
-      }
-    })
-  }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-}
+  
   openPage(page) {
     // close the menu when clicking a link from the menu
     this.menu.close();
@@ -82,6 +57,7 @@ export class DashboardPage {
         this.afAuth.auth.signOut();
         localStorage.clear();
         this.navCtrl.push(WelcomePage);
+        
   };
   //For Device back button prevention
   initializeApp() {

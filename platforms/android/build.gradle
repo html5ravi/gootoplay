@@ -31,12 +31,8 @@ buildscript {
     // and https://issues.apache.org/jira/browse/CB-8143
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.3'
-        // classpath 'com.google.gms:google-services:3.1.0'
-        // // classpath 'com.google.gms:google-services:3.0.0'
     }
 }
-
-
 
 // Allow plugins to declare Maven dependencies via build-extras.gradle.
 allprojects {
@@ -92,7 +88,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "cordova-plugin-browsertab/starter-BrowserTab.gradle"
+apply from: "cordova-plugin-browsertab/gotoplay-BrowserTab.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras = file('build-extras.gradle').exists()
@@ -254,11 +250,11 @@ dependencies {
     // SUB-PROJECT DEPENDENCIES START
     debugCompile(project(path: "CordovaLib", configuration: "debug"))
     releaseCompile(project(path: "CordovaLib", configuration: "release"))
-    compile "com.facebook.android:facebook-android-sdk:4.+"
     compile "com.android.support:customtabs:23.3.0"
+    compile "com.android.support:support-v4:24.1.1+"
+    compile "com.facebook.android:facebook-android-sdk:4.+"
     compile "com.google.android.gms:play-services-auth:+"
     compile "com.google.android.gms:play-services-identity:+"
-    compile "com.android.support:support-v4:24.1.1+"
     // SUB-PROJECT DEPENDENCIES END
 }
 
@@ -321,6 +317,3 @@ for (def func : cdvPluginPostBuildExtras) {
 if (hasProperty('postBuildExtras')) {
     postBuildExtras()
 }
-
-// // ADD THIS AT THE BOTTOM
-// apply plugin: 'com.google.gms.google-services'

@@ -11,7 +11,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {IonicImageViewerModule} from 'ionic-img-viewer';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
-import { FCM } from '@ionic-native/fcm/';
+
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -19,7 +19,6 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {FIREBASE_CONFIG} from './firebase.credentials';
 import firebase from 'firebase';
 import {Facebook } from '@ionic-native/facebook';
-import {GooglePlus } from '@ionic-native/google-plus';
 import { SuperTabsModule } from 'ionic2-super-tabs';
 import {Camera} from '@ionic-native/camera';
 import {Network} from '@ionic-native/network';
@@ -92,13 +91,11 @@ firebase.initializeApp(FIREBASE_CONFIG);
   providers: [
     Facebook,
     Network,
-    FCM,
     Camera,
     SocialSharing,
     Screenshot,
     YoutubeVideoPlayer,    
     ScreenOrientation,
-    GooglePlus,
     StatusBar,
     SplashScreen,    
     {provide: ErrorHandler, useClass: IonicErrorHandler},

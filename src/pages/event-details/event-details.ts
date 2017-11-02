@@ -29,7 +29,7 @@ export class EventDetailsPage {
 
 
   getTerm(num){
-    var a = JSON.parse(num);
+    
     var x = "";
     this.db.object(`Terms/${num}`).subscribe(data=>{
       x= data.name;

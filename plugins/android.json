@@ -7,66 +7,66 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-plugin-statusbar": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-plugin-facebook4": {
-            "APP_ID": "1698384740470458",
-            "APP_NAME": "Gootoplay",
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-plugin-buildinfo": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-universal-links-plugin": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+        "com.darktalker.cordova.screenshot": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
         "cordova-plugin-browsertab": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
-        "cordova-plugin-googleplus": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
-        },
-        "cordova-plugin-screen-orientation": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+        "cordova-plugin-buildinfo": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
         "cordova-plugin-camera": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
-        "cordova-plugin-youtube-video-player": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
-        "cordova-plugin-x-socialsharing": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
-        "com.darktalker.cordova.screenshot": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+        "cordova-plugin-facebook4": {
+            "APP_ID": "361420004311466",
+            "APP_NAME": "Gotoplay",
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-plugin-googleplus": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
         "cordova-plugin-network-information": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-plugin-screen-orientation": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-plugin-x-socialsharing": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-plugin-youtube-video-player": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "cordova-universal-links-plugin": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         }
     },
     "dependent_plugins": {
         "cordova-plugin-compat": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         },
         "es6-promise-plugin": {
-            "PACKAGE_NAME": "io.ionic.gootoplay"
+            "PACKAGE_NAME": "io.ionic.gotoplay"
         }
     }
 }
