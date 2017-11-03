@@ -38,13 +38,19 @@ import { DashboardHomePage } from '../pages/dashboard-home/dashboard-home';
 import { Tab1Page } from '../pages/tabs/tab1/tab1';
 import { Tab2Page } from '../pages/tabs/tab2/tab2';
 import { Tab3Page } from '../pages/tabs/tab3/tab3';
+import { EventsPage } from '../pages/events/events';
+import { VideoPage } from '../pages/video/video';
+import { ClubPage } from '../pages/club/club';
 import { PushProvider } from '../providers/push';
+
 
 firebase.initializeApp(FIREBASE_CONFIG);
 
 @NgModule({
   declarations: [
     MyApp,
+    VideoPage,
+    ClubPage,
     TimeAgoPipe,
     WelcomePage,
     LoginPage,
@@ -58,7 +64,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     Tab2Page,
     Tab3Page,
     EventDetailsPage,
-    ForgotPasswordPage
+    ForgotPasswordPage,
+    EventsPage,
   ],
   imports: [
     BrowserModule,
@@ -74,6 +81,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    VideoPage,
+    ClubPage,
     WelcomePage,
     LoginPage,
     SignupPage,
@@ -86,7 +95,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     Tab2Page,
     Tab3Page,
     ForgotPasswordPage,
-    EventDetailsPage
+    EventDetailsPage,
+    EventsPage
   ],
   providers: [
     Facebook,

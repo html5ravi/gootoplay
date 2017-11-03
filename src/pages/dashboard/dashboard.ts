@@ -5,10 +5,16 @@ import {FirebaseObjectObservable,AngularFireDatabase} from 'angularfire2/databas
 import { WelcomePage } from '../welcome/welcome';
 import { AddEventPage } from '../add-event/add-event';
 import { DashboardHomePage } from '../dashboard-home/dashboard-home';
+import { EventsPage } from '../events/events';
 import { ProfilePage } from '../profile/profile';
 import {User} from '../../models/user.models';
 // import {Facebook } from '@ionic-native/facebook'; inauguraloffer bigbox10
 //import { Firebase} from 'firebase';
+import { VideoPage } from '../video/video';
+import { ClubPage } from '../club/club';
+
+
+
 
 @IonicPage()
 @Component({
@@ -16,10 +22,14 @@ import {User} from '../../models/user.models';
   templateUrl: 'dashboard.html'
 })
 export class DashboardPage {
+  eventPage:any = EventsPage;
+  videoPage:any = VideoPage;
+  clubPage:any = ClubPage;
+  profilePage:any=ProfilePage;
  @ViewChild(Nav) nav: Nav;
-  rootPages:any = DashboardHomePage;
+  //rootPages:any = EventsPage;
   pages: Array<{title: string, component: any, icons:string}>;
-  public userData:FirebaseObjectObservable<User>;;
+  public userData:FirebaseObjectObservable<User>;
   public photoURL:string;
   // firebaseUrl: string;
   //   ref: Firebase;
@@ -50,7 +60,8 @@ export class DashboardPage {
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
+    this.nav.setRoot(page.component);   
+    
   }
   logout(){
         // Remove API token 
@@ -59,6 +70,7 @@ export class DashboardPage {
         this.navCtrl.push(WelcomePage);
         
   };
+  
   //For Device back button prevention
   initializeApp() {
       this.platform.registerBackButtonAction(() => {

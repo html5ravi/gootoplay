@@ -1,0 +1,38 @@
+<ion-menu [content]="content" id="menubar">
+
+    <ion-header>
+        <div class="menuHeader">
+            <div class="profilePic">
+                <img src="{{(userData | async)?.url.photoURL}}" onerror="this.src='assets/img/profile.jpg'" alt="avatar"> `
+            </div>
+
+            <img src="{{(userData | async)?.url.photoURL}}" onerror="this.src='assets/img/profile.jpg'" alt="avatar"> `
+
+            <ion-icon name='person'></ion-icon>
+            <p>
+                <ion-icon name='person'></ion-icon> {{(userData | async)?.displayName}}<br>
+                <ion-icon name='call'></ion-icon> {{(userData | async)?.phoneNumber}}
+            </p>
+            <span></span>
+
+        </div>
+
+    </ion-header>
+
+
+
+    <ion-content>
+        <ion-list>
+            <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+                <ion-icon name='{{p.icons}}'></ion-icon> {{p.title}}
+            </button>
+            <button ion-item (click)="logout()">
+                <ion-icon name='log-out'></ion-icon> Logout
+            </button>
+        </ion-list>
+    </ion-content>
+
+</ion-menu>
+
+<!--<ion-nav #content swipeBackEnabled="false"></ion-nav>-->
+<ion-nav [root]="rootPages" #content swipeBackEnabled="false"></ion-nav>

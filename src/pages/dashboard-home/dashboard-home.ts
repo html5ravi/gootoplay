@@ -21,10 +21,12 @@ export class DashboardHomePage {
   page1: any = EventListPage;
   page2: any = Tab2Page;
   page3: any = Tab3Page;
-  public eventLength:number;
+
+  
+  eventLength:number;
   eventListRef$: FirebaseListObservable<EventItem[]>
-subscription:any;
-public userData:FirebaseObjectObservable<User>;;
+  subscription:any;
+  public userData:FirebaseObjectObservable<User>;;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     private database:AngularFireDatabase,
     private network:Network,
@@ -38,7 +40,7 @@ public userData:FirebaseObjectObservable<User>;;
       //alert(this.eventListRef$)
       this.eventListRef$.subscribe(data =>{
         this.eventLength = data.length;
-        this.superTabsCtrl.setBadge('homeTab', this.eventLength);
+        //this.superTabsCtrl.setBadge('homeTab', this.eventLength);
       });
 
       /** START */
@@ -51,10 +53,10 @@ public userData:FirebaseObjectObservable<User>;;
         this.db.object(`profile/${data.uid}/myfavs`).subscribe(data=>{
           localStorage.setItem("currentUserMyFavs",JSON.stringify(data));
         });
-       this.toast.create({
-          message:'Welcome to Gootoplay Events',
-          duration:3000
-        }).present();
+      //  this.toast.create({
+      //     message:'Welcome to Gootoplay Events',
+      //     duration:3000
+      //   }).present();
       }
       else{
         this.toast.create({
