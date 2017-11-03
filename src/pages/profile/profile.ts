@@ -40,10 +40,10 @@ export class ProfilePage {
     
     this.afauth.authState.subscribe(data=>{
       if(data && data.email && data.uid){
-        this.toast.create({
-          message:'Welcome to Gootoplay Events',
-          duration:3000
-        }).present();
+        // this.toast.create({
+        //   message:'Welcome to Gootoplay Events',
+        //   duration:3000
+        // }).present();
 
         this.profileData = this.db.object(`profile/${data.uid}/user`);
         //console.log(this.profileData);
