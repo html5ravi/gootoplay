@@ -3,8 +3,6 @@ import {IonicPage, Platform, MenuController, Nav, App, ToastController,NavContro
 import {AngularFireAuth} from 'angularfire2/auth';
 import {FirebaseObjectObservable,AngularFireDatabase} from 'angularfire2/database';
 import { WelcomePage } from '../welcome/welcome';
-import { AddEventPage } from '../add-event/add-event';
-import { DashboardHomePage } from '../dashboard-home/dashboard-home';
 import { EventsPage } from '../events/events';
 import { ProfilePage } from '../profile/profile';
 import {User} from '../../models/user.models';
@@ -28,7 +26,7 @@ export class DashboardPage {
   profilePage:any=ProfilePage;
  @ViewChild(Nav) nav: Nav;
   //rootPages:any = EventsPage;
-  pages: Array<{title: string, component: any, icons:string}>;
+  // pages: Array<{title: string, component: any, icons:string}>;
   public userData:FirebaseObjectObservable<User>;
   public photoURL:string;
   // firebaseUrl: string;
@@ -45,24 +43,24 @@ export class DashboardPage {
     public navCtrl: NavController,
   ) {
     // set our app's pages
-    this.pages = [
-      { title: 'Dashboard', component: DashboardHomePage, icons:'apps' },
-      { title: 'Add Event', component: AddEventPage, icons:'add-circle' },
-      { title: 'Profile', component: ProfilePage, icons:'person' }
-    ];
+    // this.pages = [
+    //   { title: 'Dashboard', component: DashboardHomePage, icons:'apps' },
+    //   { title: 'Add Event', component: AddEventPage, icons:'add-circle' },
+    //   { title: 'Profile', component: ProfilePage, icons:'person' }
+    // ];
     this.initializeApp();
 
     //get Profile Pic
     
   }
   
-  openPage(page) {
-    // close the menu when clicking a link from the menu
-    this.menu.close();
-    // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);   
+  // openPage(page) {
+  //   // close the menu when clicking a link from the menu
+  //   this.menu.close();
+  //   // navigate to the new page if it is not the current page
+  //   this.nav.setRoot(page.component);   
     
-  }
+  // }
   logout(){
         // Remove API token 
         this.afAuth.auth.signOut();

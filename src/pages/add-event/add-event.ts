@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController,IonicPage, NavParams } from 'ionic-angular';
 import {EventItem,TournamentCatory, AgeCategory, MatchCategory, MatchType, ShuttleType, ShuttleBrand, Terms} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
 // import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
-
+@IonicPage()
 @Component({
   selector: 'page-add-event',
   templateUrl: 'add-event.html',

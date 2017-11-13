@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ToastController } from 'ionic-angular';
+import { NavController, IonicPage, NavParams,ToastController } from 'ionic-angular';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from '../../models/user.models';
 import { storage} from 'firebase';
 // import {DashboardPage} from '../dashboard/dashboard';
 import {AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Camera, CameraOptions} from '@ionic-native/camera';
-
+@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',
