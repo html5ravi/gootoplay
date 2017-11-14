@@ -17,7 +17,9 @@
             <img src="assets/img/banner1.jpeg" />
         </div>-->
         <ion-card-content>
-            <h5>{{eventObj.general.title}}</h5>
+            <h5>{{eventObj.general.title}}
+                <span>{{eventObj.general.subTitle}}</span>
+            </h5>
             <ul>
                 <li>
                     <label for="">Start Date</label>
@@ -37,7 +39,7 @@
                 </li>
                 <li>
                     <label for="">Venue</label>
-                    <span>: {{eventObj.general.where}}</span>
+                    <span class="address">: {{eventObj.general.where}}</span>
                 </li>
             </ul>
         </ion-card-content>
@@ -95,7 +97,7 @@
                     <label>Event Type</label>
                     <span>: {{item.eventType}}</span>
                 </li>
-                <li>
+                <li class="header">
                     <label for="">Age Category</label>
                     <span>: {{item.ageCategory}}</span>
                 </li>
@@ -108,8 +110,8 @@
                     <span>: {{item.entryFee}}</span>
                 </li>
                 <li *ngFor="let p of item.prize">
-                    <label for="">{{p.name}}</label>
-                    <span>: {{p.amount}}</span>
+                    <label for="">{{p?.name}}</label>
+                    <span>: {{p?.amount}}</span>
                 </li>
             </ul>
         </ion-card-content>

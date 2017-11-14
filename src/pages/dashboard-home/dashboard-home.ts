@@ -89,9 +89,9 @@ export class DashboardHomePage {
       title: 'Confirm',
       cssClass: 'networkAlert',
       buttons: [{
-        text: 'Ok',
+          text: 'Ok',
         role: 'cancel',
-        cssClass: 'cancelAlertBtn'
+          cssClass: 'cancelAlertBtn'
       }]
     }).present();
   }

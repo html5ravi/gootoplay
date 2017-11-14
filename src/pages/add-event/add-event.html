@@ -35,6 +35,10 @@
                     <ion-input type="text" placeholder="Enter tournament title" [(ngModel)]="saveEventData.title"></ion-input>
                 </ion-item>
                 <ion-item>
+                    <ion-label color="primary" stacked>Sub Title</ion-label>
+                    <ion-input type="text" placeholder="Optional" [(ngModel)]="saveEventData.subTitle"></ion-input>
+                </ion-item>
+                <ion-item>
                     <ion-label for="#startdate">Start date</ion-label>
                     <!--<ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>-->
                     <ion-input type="date" id="startdate" [(ngModel)]="saveEventData.startdate"></ion-input>

@@ -14,7 +14,7 @@ page-event-details {
     }
     .back-button-text {
         padding: 0 15px;
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: 500;
         text-transform: capitalize;
     }
@@ -28,6 +28,12 @@ page-event-details {
             font-size: 1.5rem;
             font-weight: 500;
             text-transform: capitalize;
+            span {
+                font-size: 12px;
+                color: #555;
+                font-weight: 400;
+                display: block;
+            }
         }
         ul {
             margin: 10px 0 0 0;
@@ -37,6 +43,14 @@ page-event-details {
                 line-height: 30px;
                 border-bottom: 1px solid #e2e2e2;
                 font-size: 1.3rem;
+                &.header {
+                    background: #c3f3dc;
+                    span,
+                    label {
+                        font-weight: bold;
+                        color: #222;
+                    }
+                }
                 label {
                     width: 100px;
                     display: table-cell;
@@ -45,6 +59,9 @@ page-event-details {
                 span {
                     display: table-cell;
                     font-weight: 300;
+                }
+                span.address {
+                    line-height: 21px;
                 }
                 &:last-child {
                     border-bottom: 0px;

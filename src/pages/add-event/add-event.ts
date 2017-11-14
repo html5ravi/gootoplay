@@ -71,7 +71,7 @@ export class AddEventPage {
     //Making fields empty!
     this.eventItem= {} as EventItem;
     //Navigate to Event List page
-    this.navCtrl.pop();
+    this.navCtrl.setRoot("DashboardPage");
   }
   
   addContactField() {
