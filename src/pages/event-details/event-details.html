@@ -51,7 +51,7 @@
             <ul>
                 <li *ngFor="let item of eventObj.contacts">
                     <label for="">{{item.name}}</label>
-                    <span>: {{item.mobile}}</span>
+                    <span>: <a href="tel:{{item.mobile}}" class="button button-positive">{{item.mobile}}</a></span>
                 </li>
             </ul>
         </ion-card-content>
@@ -93,21 +93,22 @@
         <ion-card-content>
             <h5>Match Details</h5>
             <ul *ngFor="let item of eventObj.matchList">
-                <li>
-                    <label>Event Type</label>
-                    <span>: {{item.eventType}}</span>
-                </li>
                 <li class="header">
                     <label for="">Age Category</label>
                     <span>: {{item.ageCategory}}</span>
                 </li>
+                <li>
+                    <label>Event Type</label>
+                    <span>: {{item.eventType}}</span>
+                </li>
+
                 <li>
                     <label for="">Match Type</label>
                     <span>: {{item.matchType}}</span>
                 </li>
                 <li>
                     <label for="">Entry Fee</label>
-                    <span>: {{item.entryFee}}</span>
+                    <span>:₹{{item.entryFee}}</span>
                 </li>
                 <li *ngFor="let p of item.prize">
                     <label for="">{{p?.name}}</label>
