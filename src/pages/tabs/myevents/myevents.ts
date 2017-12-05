@@ -6,10 +6,10 @@ import {MyFav} from '../../../models/myfav';
 import { EventDetailsPage } from '../../event-details/event-details';
 
 @Component({
-  selector: 'page-tab3',
-  templateUrl: 'tab3.html',
+  selector: 'page-myevents',
+  templateUrl: 'myevents.html',
 })
-export class Tab3Page {
+export class MyeventsPage {
   public eventIds:any;
   public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
   eventListRef$: FirebaseListObservable<EventItem[]>

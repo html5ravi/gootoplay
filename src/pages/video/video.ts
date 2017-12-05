@@ -80,7 +80,7 @@ public videoURL:any;
   }
 
   ionViewDidLoad() {
-    //console.log('ionViewDidLoad Tab2Page');
+   
     //url = 'http://img.youtube.com/vi/' + thumb + '/default.jpg';
  
     

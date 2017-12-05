@@ -23,49 +23,44 @@
     **************************************************************************************** -->
 
     <!--General Information-->
-    <ion-card>
-        <ion-card-header>
-            General Details
-        </ion-card-header>
+    <!--<h4>General Details</h4>-->
+    <ion-list>
+        <ion-item>
+            <ion-label>Title</ion-label>
+            <ion-input type="text" placeholder="Enter tournament title" [(ngModel)]="saveEventData.title"></ion-input>
+        </ion-item>
+        <span class="error" *ngIf="!saveEventData.title">This field is required</span>
+        <ion-item>
+            <ion-label>Sub Title</ion-label>
+            <ion-input type="text" placeholder="Optional" [(ngModel)]="saveEventData.subTitle"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label for="#startdate">Start date</ion-label>
+            <ion-input type="date" id="startdate" [(ngModel)]="saveEventData.startdate"></ion-input>
+        </ion-item>
+        <span class="error" *ngIf="!saveEventData.startdate">This field is required</span>
+        <ion-item>
+            <ion-label for="#starttime">Start Time</ion-label>
+            <ion-input type="time" id="starttime" [(ngModel)]="saveEventData.timeStarts"></ion-input>
+        </ion-item>
+        <span class="error" *ngIf="!saveEventData.timeStarts">This field is required</span>
+        <ion-item>
+            <ion-label for="#enddate">End date</ion-label>
+            <ion-input type="date" id="enddate" [(ngModel)]="saveEventData.enddate"></ion-input>
+        </ion-item>
+        <span class="error" *ngIf="!saveEventData.enddate">This field is required</span>
+        <ion-item>
+            <ion-label for="#endtime">End Time</ion-label>
+            <ion-input type="time" id="endtime" [(ngModel)]="saveEventData.timeEnds"></ion-input>
+        </ion-item>
+        <span class="error" *ngIf="!saveEventData.timeEnds">This field is required</span>
+        <ion-item>
+            <ion-label>Where</ion-label>
+            <ion-input type="text" placeholder="Enter address" [(ngModel)]="saveEventData.where"></ion-input>
+        </ion-item>
+        <span class="error" *ngIf="!saveEventData.where">This field is required</span>
+    </ion-list>
 
-        <ion-card-content class="outer-content">
-            <ion-list>
-                <ion-item>
-                    <ion-label color="primary" stacked>Title</ion-label>
-                    <ion-input type="text" placeholder="Enter tournament title" [(ngModel)]="saveEventData.title"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label color="primary" stacked>Sub Title</ion-label>
-                    <ion-input type="text" placeholder="Optional" [(ngModel)]="saveEventData.subTitle"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label for="#startdate">Start date</ion-label>
-                    <!--<ion-datetime displayFormat="MMM/DD/YYYY" placeholder="Choose start date" [(ngModel)]="saveEventData.startdate"></ion-datetime>-->
-                    <ion-input type="date" id="startdate" [(ngModel)]="saveEventData.startdate"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label for="#starttime">Start Time</ion-label>
-                    <!--<ion-datetime placeholder="10:00 Am" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeStarts"></ion-datetime>-->
-                    <ion-input type="time" id="starttime" [(ngModel)]="saveEventData.timeStarts"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label for="#enddate">End date</ion-label>
-                    <!--<ion-datetime displayFormat="DD/MMM/YYYY" placeholder="Choose end date" [(ngModel)]="saveEventData.enddate"></ion-datetime>-->
-                    <ion-input type="date" id="enddate" [(ngModel)]="saveEventData.enddate"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label for="#endtime">End Time</ion-label>
-                    <!--<ion-datetime placeholder="06:00 Pm" displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="saveEventData.timeEnds"></ion-datetime>-->
-                    <ion-input type="time" id="endtime" [(ngModel)]="saveEventData.timeEnds"></ion-input>
-                </ion-item>
-                <ion-item>
-                    <ion-label color="primary" stacked>Where</ion-label>
-                    <ion-input type="text" placeholder="Enter address" [(ngModel)]="saveEventData.where"></ion-input>
-                </ion-item>
-            </ion-list>
-        </ion-card-content>
-
-    </ion-card>
 
     <!--Contact Information-->
     <ion-card>
@@ -136,12 +131,14 @@
         </ion-card-header>
 
         <ion-card-content text-center>
-            <ion-item>
-                <ion-label>Event Type</ion-label>
-                <ion-select interface="popover" [(ngModel)]="tourneyCategorySave.eventType">
-                    <ion-option value="{{item.name}}" *ngFor="let item of tourneyCategory$ | async">{{item.name}}</ion-option>
-                </ion-select>
-            </ion-item>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Event Type</ion-label>
+                    <ion-select interface="popover" [(ngModel)]="tourneyCategorySave.eventType">
+                        <ion-option value="{{item.name}}" *ngFor="let item of tourneyCategory$ | async">{{item.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
 
             <ul class="categoryList" *ngFor="let item of matchList; let i =index">
                 <li>
@@ -227,12 +224,14 @@
         </ion-card-header>
 
         <ion-card-content>
-            <ion-item>
-                <ion-label>Terms</ion-label>
-                <ion-select [(ngModel)]="terms" multiple="true">
-                    <ion-option value="{{item.id}}" *ngFor="let item of terms$ | async">{{item.name}}</ion-option>
-                </ion-select>
-            </ion-item>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Terms</ion-label>
+                    <ion-select [(ngModel)]="terms" multiple="true">
+                        <ion-option value="{{item.id}}" *ngFor="let item of terms$ | async">{{item.name}}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
         </ion-card-content>
     </ion-card>
 

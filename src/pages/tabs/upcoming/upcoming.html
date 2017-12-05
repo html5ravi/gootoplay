@@ -1,7 +1,7 @@
 <ion-content padding>
-    <h3>Past Events</h3>
-    <section class="eventList" *ngFor="let item of newList">
-        <div class="event_container" *ngIf="pastEvent(item.general.startdate)">
+    upcoming
+    <section class="eventList" *ngFor="let item of eventObj">
+        <div class="event_container" *ngIf="upcomingEvent(item.general.startdate)">
             <div class="date_time">
                 <time datetime="2014-07-20 0000">
                     <span class="day">{{item.general.startdate | date:'dd'}}</span>
@@ -31,7 +31,4 @@
             </article>
         </div>
     </section>
-
-
-
 </ion-content>

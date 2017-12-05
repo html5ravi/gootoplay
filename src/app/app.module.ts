@@ -29,20 +29,20 @@ import { WelcomePage } from '../pages/welcome/welcome';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { DashboardPage } from '../pages/dashboard/dashboard';
-import { EventListPage } from '../pages/event-list/event-list';
+import { OngoingPage } from '../pages/tabs/ongoing/ongoing';
 import { EventDetailsPage } from '../pages/event-details/event-details';
 import { AddEventPage } from '../pages/add-event/add-event';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { ProfilePage } from '../pages/profile/profile';
 import { DashboardHomePage } from '../pages/dashboard-home/dashboard-home';
-import { Tab1Page } from '../pages/tabs/tab1/tab1';
-import { Tab2Page } from '../pages/tabs/tab2/tab2';
-import { Tab3Page } from '../pages/tabs/tab3/tab3';
+import { UpcomingPage } from '../pages/tabs/upcoming/upcoming';
+import { PastEventPage } from '../pages/tabs/pastevent/pastevent';
+import { MyeventsPage } from '../pages/tabs/myevents/myevents';
 import { EventsPage } from '../pages/events/events';
 import { VideoPage } from '../pages/video/video';
 import { ClubPage } from '../pages/club/club';
 import { PushProvider } from '../providers/push';
-
+import { DatabaseProvider } from '../providers/database';
 
 firebase.initializeApp(FIREBASE_CONFIG);
 
@@ -56,13 +56,13 @@ firebase.initializeApp(FIREBASE_CONFIG);
     LoginPage,
     SignupPage,
     DashboardPage,
-    EventListPage,
+    OngoingPage,
     AddEventPage,
     ProfilePage,
     DashboardHomePage,
-    Tab1Page,
-    Tab2Page,
-    Tab3Page,
+    UpcomingPage,
+    PastEventPage,
+    MyeventsPage,
     EventDetailsPage,
     ForgotPasswordPage,
     EventsPage,
@@ -89,13 +89,13 @@ firebase.initializeApp(FIREBASE_CONFIG);
     LoginPage,
     SignupPage,
     DashboardPage,
-    EventListPage,
+    OngoingPage,
     AddEventPage,
     ProfilePage,
     DashboardHomePage,
-    Tab1Page,
-    Tab2Page,
-    Tab3Page,
+    UpcomingPage,
+    PastEventPage,
+    MyeventsPage,
     ForgotPasswordPage,
     EventDetailsPage,
     EventsPage
@@ -109,7 +109,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
     YoutubeVideoPlayer,    
     ScreenOrientation,
     StatusBar,
-    SplashScreen,    
+    SplashScreen,
+    DatabaseProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PushProvider
   ]

@@ -1,4 +1,33 @@
 page-add-event {
+    ion-item {
+        padding-right: 16px !important;
+        background: transparent !important;
+        .item-inner {
+            box-shadow: none !important;
+        }
+    }
+    ion-card-content {
+        ion-list {
+            ion-item {
+                padding-right: 0px !important;
+                padding-left: 0px !important;
+                border-bottom: 1px solid #ccc !important;
+            }
+        }
+    }
+    .error {
+        font-size: 12px;
+        color: red;
+        padding-top: 6px;
+        display: block;
+        margin-right: 16px;
+        margin-left: 16px;
+        border-top: 1px solid red;
+    }
+    h4 {
+        text-align: center;
+        font-size: 1.8rem;
+    }
     .link {
         color: #05f !important;
     }
@@ -36,43 +65,42 @@ page-add-event {
             }
         }
     }
-}
-
-.categoryList {
-    margin: 0 0 15px 0;
-    padding: 0 0 10px 0;
-    border-bottom: 1px solid #ccc;
-    li {
-        margin: 0;
-        padding: 0;
-        list-style-type: none;
-        font-size: 1.5rem;
-        line-height: 25px;
-        position: relative;
-        a {
-            position: absolute;
-            top: 0px;
-            right: 0px;
-            z-index: 100;
-            padding: 1px 10px;
-            color: #fff;
-            text-decoration: none;
-            background: red;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        label {
+    .categoryList {
+        margin: 0 0 15px 0;
+        padding: 0 0 10px 0;
+        border-bottom: 1px solid #ccc;
+        li {
             margin: 0;
             padding: 0;
-            width: 120px;
-            display: inline-block;
-            color: #555;
-        }
-        span {
-            color: #488aff;
-            margin: 0;
-            padding: 0;
-            font-size: 1.4rem;
+            list-style-type: none;
+            font-size: 1.5rem;
+            line-height: 25px;
+            position: relative;
+            a {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                z-index: 100;
+                padding: 1px 10px;
+                color: #fff;
+                text-decoration: none;
+                background: red;
+                border-radius: 50%;
+                cursor: pointer;
+            }
+            label {
+                margin: 0;
+                padding: 0;
+                width: 120px;
+                display: inline-block;
+                color: #555;
+            }
+            span {
+                color: #488aff;
+                margin: 0;
+                padding: 0;
+                font-size: 1.4rem;
+            }
         }
     }
 }

@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController,Platform,ToastController } from 'ionic-angular';
 import { SuperTabsController } from 'ionic2-super-tabs';
 import { AddEventPage } from '../add-event/add-event';
-import { EventListPage } from '../event-list/event-list';
+import { OngoingPage } from '../tabs/ongoing/ongoing';
 import {EventItem} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
-// import { Tab1Page } from '../tabs/tab1/tab1';
-import { Tab2Page } from '../tabs/tab2/tab2';
-import { Tab3Page } from '../tabs/tab3/tab3';
+import { UpcomingPage } from '../tabs/upcoming/upcoming';
+import { PastEventPage } from '../tabs/pastevent/pastevent';
+import { MyeventsPage } from '../tabs/myevents/myevents';
 import {Network} from '@ionic-native/network';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {User} from '../../models/user.models';
@@ -18,9 +18,10 @@ import {User} from '../../models/user.models';
   templateUrl: 'dashboard-home.html',
 })
 export class DashboardHomePage {
-  page1: any = EventListPage;
-  page2: any = Tab2Page;
-  page3: any = Tab3Page;
+  page1: any = UpcomingPage;
+  page2: any = PastEventPage;
+  page3: any = MyeventsPage;
+  page4: any = OngoingPage;
 
   
   eventLength:number;

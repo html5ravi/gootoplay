@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController,IonicPage, NavParams } from 'ionic-angular';
+import { Nav,IonicPage, NavParams } from 'ionic-angular';
 import {EventItem,TournamentCatory, AgeCategory, MatchCategory, MatchType, ShuttleType, ShuttleBrand, Terms} from '../../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {AngularFireAuth} from 'angularfire2/auth';
+import { DashboardPage } from '../dashboard/dashboard';
+import { DatabaseProvider } from '../../providers/database';
 // import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
 @IonicPage()
 @Component({
@@ -33,7 +35,7 @@ export class AddEventPage {
   shuttleType$:FirebaseListObservable<ShuttleType[]>;
   terms$:FirebaseListObservable<Terms[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private database:AngularFireDatabase,public afauth:AngularFireAuth) {
+  constructor(public dbp:DatabaseProvider, public navCtrl: Nav, public navParams: NavParams, private database:AngularFireDatabase,public afauth:AngularFireAuth) {
     this.eventItemRef$ = this.database.list('Event-List');
     this.tourneyCategory$ = this.database.list(`tourneyCategory`);
     this.ageCategory$ = this.database.list(`ageCategory`);
@@ -47,7 +49,7 @@ export class AddEventPage {
       this.uid = data.uid;
     });
     
-    this.saveEventData.startdate=this.currentDate;
+    //this.saveEventData.startdate=this.currentDate;
     console.log(this.terms$)
   }
 
@@ -55,8 +57,7 @@ export class AddEventPage {
 
   AddEvent(eventItem:EventItem){
     var date = new Date();
-    if(this.uid){
-      this.eventItemRef$.push({
+    let addObj= {
         favourite:false,
         created_at:date.toString(),
         userId:this.uid,
@@ -65,13 +66,30 @@ export class AddEventPage {
         trophy:this.trophys,
         matchList:this.matchList,
         terms:this.terms
-      });
+      };
+    if(this.uid){
+      this.dbp.addToDatabase(addObj).then((data)=>{
+        this.eventItem= {} as EventItem;
+        //Navigate to Event List page
+        this.navCtrl.setRoot(DashboardPage);    
+      })
+      // this.eventItemRef$.push({
+      //   favourite:false,
+      //   created_at:date.toString(),
+      //   userId:this.uid,
+      //   contacts:this.contacts,
+      //   general:this.saveEventData,
+      //   trophy:this.trophys,
+      //   matchList:this.matchList,
+      //   terms:this.terms
+      // }).then((data)=>{
+      //   this.eventItem= {} as EventItem;
+      //   //Navigate to Event List page
+      //   this.navCtrl.setRoot(DashboardPage);    
+      // })
     }
-    console.log(this.terms);
-    //Making fields empty!
-    this.eventItem= {} as EventItem;
-    //Navigate to Event List page
-    this.navCtrl.setRoot("DashboardPage");
+    //console.log(this.terms);
+    //Making fields empty!    
   }
   
   addContactField() {

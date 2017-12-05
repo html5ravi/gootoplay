@@ -1,53 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+// import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from "rxjs/Observable";
+import {EventItem,FavItem} from '../models/event-item/event-item.interface';
+import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 
 
 @Injectable()
 export class DatabaseProvider {
-
-   constructor(public http: Http)
+    eventListRef$: FirebaseListObservable<EventItem[]>
+   constructor(private database:AngularFireDatabase, )
    {
    }
 
 
-
-   renderMovies() : Observable<any>
+   //: Observable<any>
+   renderEvents() : Promise<any>
     {
-
-        return new Observable(observer =>
+        return new Promise((resolve) =>
         {
-            let films : any = [];
-            firebase.database().ref('films').orderByKey().once('value', (items : any) =>
-            {
-                items.forEach((item) =>
-                {
-                films.push({
-                    id        : item.key,
-                    actors    : item.val().actors,
-                    date      : item.val().date,
-                    duration  : item.val().duration,
-                    genres    : item.val().genres,
-                    image     : item.val().image,
-                    rating    : item.val().rating,
-                    summary   : item.val().summary,
-                    title     : item.val().title
-                });
-                });
-
-                observer.next(films);
-                observer.complete();
-            },
-            (error) =>
-            {
-                console.log("Observer error: ", error);
-                console.dir(error);
-                observer.error(error)
+            this.eventListRef$ = this.database.list('Event-List');
+            this.eventListRef$.subscribe(data=>{
+                resolve(data);
             });
-
-        });
+        });                       
+        
     }
 
 
@@ -64,12 +42,12 @@ export class DatabaseProvider {
 
 
 
-   addToDatabase(movieObj) : Promise<any>
+   addToDatabase(eventObj) : Promise<any>
     {
         return new Promise((resolve) =>
         {
-            let addRef = firebase.database().ref('films');
-            addRef.push(movieObj);
+            let addRef = firebase.database().ref('Event-List');
+            addRef.push(eventObj);
             resolve(true);
         });
     }

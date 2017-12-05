@@ -5,29 +5,26 @@ import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databas
 import {MyFav} from '../../../models/myfav';
 import { EventDetailsPage } from '../../event-details/event-details';
 import { SuperTabsController } from 'ionic2-super-tabs';      
-
+import { DatabaseProvider } from '../../../providers/database';    
 
 
 @Component({
-  selector: 'page-tab1',
-  templateUrl: 'tab1.html',
+  selector: 'page-upcoming',
+  templateUrl: 'upcoming.html',
 })
-export class Tab1Page {
+export class UpcomingPage {
 public isFavourite: boolean = false;
   myFav = {} as MyFav;
-  myFavst : any = [];
-  newList:any =[];
+  eventObj:any = [];
   
   public today = new Date().getTime();
   public getDate = new Date("2016-08-20").getTime(); 
 
   public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
   public myFavs:any = JSON.parse(localStorage.getItem("currentUserMyFavs"));
-  public dummyArrs : any;
+  
   eventListRef$: FirebaseListObservable<EventItem[]>
   eventFavRef$: FirebaseListObservable<FavItem[]>
-  public oneObj:any;
-  public twoObj:any =[];
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
@@ -35,36 +32,15 @@ public isFavourite: boolean = false;
     public actionsheetCtrl: ActionSheetController,
     public db:AngularFireDatabase,
     private superTabsCtrl: SuperTabsController,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    private data:DatabaseProvider
     ) {
       
       
-      if(this.getDate >= this.today){
-        //console.log("upcoming")
-      }else{
-        //console.log("past")
-      }
-
-    //this.superTabsCtrl.showToolbar(true);
-    this.eventListRef$ = this.database.list('Event-List');
-    this.eventFavRef$ = this.database.list(`profile/${this.currentUser.uid}/myfavs/`);
-
-    this.eventListRef$.subscribe(data=>{
-      //console.log(data)
-      this.newList = data;
-       this.eventFavRef$.subscribe(data=>{
-        //console.log(data)
-        this.twoObj=data;
-        for(let i=0;i<this.newList.length;i++){
-          for(let j=0;j<this.twoObj.length;j++){
-            if(this.newList[i].$key == this.twoObj[j].eventId){
-              this.newList[i].favourite = true;
-            }
-          }
-        }
+      this.data.renderEvents().then(data=>{
+        console.log(data)
+        this.eventObj = data;
       });
-    });
-   
   }
 
 upcomingEvent(dates){
@@ -105,41 +81,41 @@ ionViewDidLoad() {
     modal.present();
   }
 
-  openMenu(eventItem:EventItem) {
-    let actionSheet = this.actionsheetCtrl.create({
-      title: `${eventItem.eventName}`,
-      cssClass: 'action-sheets-basic-page',
-      buttons: [
-        {
-          text: 'Delete',
-          role: 'destructive',
-          handler: () => {
-            //console.log('Delete clicked');
-            this.eventListRef$.remove(eventItem.$key);
-          }
-        },
-        {
-          text: 'Edit',
-          handler: () => {
-            //this.navCtrl.push(EditEventPage,{eventId: eventItem.$key})
-          }
-        },
-        {
-          text: 'Favorite',
-          handler: () => {
-            //console.log('Favorite clicked');
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel', // will always sort to be on the bottom
-          handler: () => {
-            //console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
+  // openMenu(eventItem:EventItem) {
+  //   let actionSheet = this.actionsheetCtrl.create({
+  //     title: `${eventItem.eventName}`,
+  //     cssClass: 'action-sheets-basic-page',
+  //     buttons: [
+  //       {
+  //         text: 'Delete',
+  //         role: 'destructive',
+  //         handler: () => {
+  //           //console.log('Delete clicked');
+  //           this.eventListRef$.remove(eventItem.$key);
+  //         }
+  //       },
+  //       {
+  //         text: 'Edit',
+  //         handler: () => {
+  //           //this.navCtrl.push(EditEventPage,{eventId: eventItem.$key})
+  //         }
+  //       },
+  //       {
+  //         text: 'Favorite',
+  //         handler: () => {
+  //           //console.log('Favorite clicked');
+  //         }
+  //       },
+  //       {
+  //         text: 'Cancel',
+  //         role: 'cancel', // will always sort to be on the bottom
+  //         handler: () => {
+  //           //console.log('Cancel clicked');
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   actionSheet.present();
+  // }
 
 }

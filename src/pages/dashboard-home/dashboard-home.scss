@@ -3,4 +3,8 @@ page-dashboard-home {
         overflow-y: auto;
         overflow-x: hidden;
     }
+    .homepage super-tab-button {
+        font-size: 12px !important;
+        text-transform: capitalize !important;
+    }
 }

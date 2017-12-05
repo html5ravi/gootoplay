@@ -1,7 +1,8 @@
 <ion-content class="homepage">
     <super-tabs id="mainTabs" selectedTabIndex="0" tabsPlacement="top" toolbarColor="light" toolbarBackground="dark" indicatorColor="light" badgeColor="light" [config]="{ sideMenu: 'left' }" (tabSelect)="onTabSelect($event)">
-        <super-tab [root]="page1" title="Upcoming" id="homeTab"></super-tab>
         <super-tab [root]="page2" title="Past" id="locationTab"></super-tab>
+        <super-tab [root]="page1" title="Upcoming" id="homeTab"></super-tab>
+        <super-tab [root]="page4" title="Ongoing" id="OngoingTab"></super-tab>
         <super-tab [root]="page3" title="My Events" id="favouritesTab"></super-tab>
     </super-tabs>
 </ion-content>

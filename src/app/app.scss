@@ -1,6 +1,10 @@
 .tabs-md-primary .tab-button[aria-selected=true] ion-icon,
 .tabs-md-primary .tab-button[aria-selected=true] span {
-    color: #111 !important;
+    color: #f9f78b !important;
+}
+
+.tab-button-icon {
+    color: #fff !important;
 }
 
 .content-md {
@@ -19,6 +23,8 @@ a {
     &:visited,
     &:active {
         outline: none !important;
+        border-bottom: 0px;
+        text-decoration: none !important;
     }
 }
 
