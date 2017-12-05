@@ -42,9 +42,11 @@ export class OngoingPage {
       });
   }
 
+
+
 ongoingEvent(dates){
-  let item = new Date(dates).getTime();
-  if(item <= this.today){
+  let todayDate = new Date().toISOString().slice(0,10);
+  if(todayDate == dates){
     return true;
   }else{
     return false;
@@ -64,43 +66,5 @@ ongoingEvent(dates){
     let modal = this.modalCtrl.create(EventDetailsPage,{eventId: eventItem.$key});
     modal.present();
   }
-/*
-  openMenu(eventItem:EventItem) {
-    let actionSheet = this.actionsheetCtrl.create({
-      title: `${eventItem.eventName}`,
-      cssClass: 'action-sheets-basic-page',
-      buttons: [
-        {
-          text: 'Delete',
-          role: 'destructive',
-          handler: () => {
-            //console.log('Delete clicked');
-            this.eventListRef$.remove(eventItem.$key);
-          }
-        },
-        {
-          text: 'Edit',
-          handler: () => {
-            this.navCtrl.push(EditEventPage,{eventId: eventItem.$key})
-          }
-        },
-        {
-          text: 'Favorite',
-          handler: () => {
-            //console.log('Favorite clicked');
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel', // will always sort to be on the bottom
-          handler: () => {
-            //console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-    actionSheet.present();
-  }
-*/
  
 }
