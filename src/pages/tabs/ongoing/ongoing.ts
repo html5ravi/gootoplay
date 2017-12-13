@@ -1,12 +1,11 @@
+
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController,ModalController } from 'ionic-angular';
-import {EventItem,FavItem} from '../../../models/event-item/event-item.interface';
-import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-// import { EditEventPage} from '../../../edit-event/edit-event';
-import {MyFav} from '../../../models/myfav';
+import { ModalController } from 'ionic-angular';
+import { EventItem } from '../../../models/event-item/event-item.interface';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { MyFav } from '../../../models/myfav';
 import { EventDetailsPage } from '../../event-details/event-details';
-import { SuperTabsController } from 'ionic2-super-tabs';      
-import { DatabaseProvider } from '../../../providers/database';
+import { DatabaseProvider } from '../../../providers/database';      
 
 
 @Component({
@@ -14,9 +13,9 @@ import { DatabaseProvider } from '../../../providers/database';
   templateUrl: 'ongoing.html',
 })
 export class OngoingPage {
-
-  public isFavourite: boolean = false;
+public isFavourite: boolean = false;
   myFav = {} as MyFav;
+  searchText:string = '';
   eventObj:any = [];
   public today = new Date().getTime();
   public getDate = new Date("2016-08-20").getTime(); 
@@ -24,25 +23,20 @@ export class OngoingPage {
   public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
   public myFavs:any = JSON.parse(localStorage.getItem("currentUserMyFavs"));
   
-  eventListRef$: FirebaseListObservable<EventItem[]>
-  eventFavRef$: FirebaseListObservable<FavItem[]>
+  
+  
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private database:AngularFireDatabase, 
-    public actionsheetCtrl: ActionSheetController,
     public db:AngularFireDatabase,
-    private superTabsCtrl: SuperTabsController,
     public modalCtrl: ModalController,
     private data:DatabaseProvider
-    ) {
+    ) {      
       
       this.data.renderEvents().then(data=>{
+        console.log(data)
         this.eventObj = data;
-      });
+      })
+   
   }
-
-
 
 ongoingEvent(dates){
   let todayDate = new Date().toISOString().slice(0,10);
@@ -52,7 +46,6 @@ ongoingEvent(dates){
     return false;
   }  
 };
-
 
   isFavouriteFun(item){    
     item.favourite = !item.favourite;
@@ -66,5 +59,9 @@ ongoingEvent(dates){
     let modal = this.modalCtrl.create(EventDetailsPage,{eventId: eventItem.$key});
     modal.present();
   }
- 
+
+
 }
+
+
+

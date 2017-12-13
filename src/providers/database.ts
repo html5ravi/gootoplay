@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 // import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Observable } from "rxjs/Observable";
-import {EventItem,FavItem} from '../models/event-item/event-item.interface';
+// import { Observable } from "rxjs/Observable";
+import {EventItem} from '../models/event-item/event-item.interface';
 import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import * as firebase from 'firebase';
 

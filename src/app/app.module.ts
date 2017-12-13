@@ -12,6 +12,8 @@ import {IonicImageViewerModule} from 'ionic-img-viewer';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 
+import { FilterPipe }from '../providers/filter.pipe';
+// import { Pipe, PipeTransform } from '@angular/core';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -66,6 +68,7 @@ firebase.initializeApp(FIREBASE_CONFIG);
     EventDetailsPage,
     ForgotPasswordPage,
     EventsPage,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,7 @@ firebase.initializeApp(FIREBASE_CONFIG);
     MyeventsPage,
     ForgotPasswordPage,
     EventDetailsPage,
-    EventsPage
+    EventsPage,
   ],
   providers: [
     Facebook,

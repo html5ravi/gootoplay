@@ -1,5 +1,5 @@
-<ion-content padding>
-    my events
+<ion-content padding id="events">
+
     <section *ngFor="let itemd of eventIds">
         <div *ngFor="let item of newList">
             <div class="event_container" *ngIf="item.$key == itemd.eventId">
@@ -33,4 +33,37 @@
             </div>
         </div>
     </section>
+    <article *ngFor="let item of eventIds">
+        <section class="eventList" *ngIf="pastEvent(item.general.startdate)">
+            <div class="event_container">
+                <div class="date_time">
+                    <time datetime="2014-07-20 0000">
+                    <span class="day">{{item.general.startdate | date:'dd'}}</span>
+                    <span class="month">{{item.general.startdate | date:'MMM'}}</span>
+                    <span class="year">{{item.general.startdate | date:'yyyy'}}</span>
+                </time>
+
+                </div>
+                <article class="event_cont">
+                    <img src="assets/img/{{item.banner}}" alt="">
+                    <div class="blur"></div>
+                    <a class="favourite" (click)="isFavouriteFun(item)">
+                        <div *ngIf="item.favourite;then yesTrue else noFalse"></div>
+                        <ng-template #yesTrue>
+                            <ion-icon name="heart"></ion-icon>
+                        </ng-template>
+                        <ng-template #noFalse>
+                            <ion-icon name="heart-outline"></ion-icon>
+                        </ng-template>
+                    </a>
+                    <a (click)="goToEventDetails(item)" class="infoAnkr">
+                        <div class="info">
+                            <p class="title">{{item.general.title}} <span>{{item.general.subTitle}}</span> <span class="time">{{item.created_at | timeAgo}}</span> </p>
+                            <label>Venue: <span>{{item.general.where}}</span></label>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </article>
 </ion-content>

@@ -1,6 +1,11 @@
-<ion-content padding>
-    <h3>Past Events</h3>
-    <article *ngFor="let item of eventObj">
+<ion-content padding id="events">
+
+    <div class="search">
+        <input [(ngModel)]="searchText" placeholder="Search: Title, sub title.." />
+        <ion-icon ios="ios-search" md="md-search"></ion-icon>
+    </div>
+
+    <article *ngFor="let item of eventObj | filter:searchText">
         <section class="eventList" *ngIf="pastEvent(item.general.startdate)">
             <div class="event_container">
                 <div class="date_time">
@@ -25,7 +30,7 @@
                     </a>
                     <a (click)="goToEventDetails(item)" class="infoAnkr">
                         <div class="info">
-                            <p class="title">{{item.general.title}} <span>{{item.created_at | timeAgo}}</span> </p>
+                            <p class="title">{{item.general.title}} <span>{{item.general.subTitle}}</span> <span class="time">{{item.created_at | timeAgo}}</span> </p>
                             <label>Venue: <span>{{item.general.where}}</span></label>
                         </div>
                     </a>
