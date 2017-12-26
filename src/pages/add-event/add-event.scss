@@ -1,4 +1,15 @@
 page-add-event {
+    .banner {
+        height: 100px;
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+        border: 1px solid red;
+        overflow: hidden;
+        img {
+            width: 100%;
+        }
+    }
     ion-item {
         padding-right: 16px !important;
         background: transparent !important;

@@ -5,7 +5,9 @@ import {AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databas
 import {AngularFireAuth} from 'angularfire2/auth';
 import { DashboardPage } from '../dashboard/dashboard';
 import { DatabaseProvider } from '../../providers/database';
+import { Camera, CameraOptions} from '@ionic-native/camera';
 // import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms';
+import { storage} from 'firebase';
 @IonicPage()
 @Component({
   selector: 'page-add-event',
@@ -14,7 +16,7 @@ import { DatabaseProvider } from '../../providers/database';
 export class AddEventPage {
   public currentDate: string = new Date().toLocaleDateString();
 
-
+  public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
   public saveEventData:any = {};
   public contacts:any = [{mobile:"",name:""}];
   public prize:any =[{amount:"",name:""}];
@@ -25,6 +27,9 @@ export class AddEventPage {
   public uid: any;
   public terms:any=[];
   eventItem = {} as EventItem;
+
+  public photoURL:string;
+  public imageLoaded:boolean = false;
   
   eventItemRef$: FirebaseListObservable<EventItem[]>;
   tourneyCategory$: FirebaseListObservable<TournamentCatory[]>;
@@ -34,8 +39,11 @@ export class AddEventPage {
   shuttleBrand$:FirebaseListObservable<ShuttleBrand[]>;
   shuttleType$:FirebaseListObservable<ShuttleType[]>;
   terms$:FirebaseListObservable<Terms[]>;
-
-  constructor(public dbp:DatabaseProvider, public navCtrl: Nav, public navParams: NavParams, private database:AngularFireDatabase,public afauth:AngularFireAuth) {
+  stateItem:any = [];
+  cityItem:any = [];
+  city:any;
+  banner:string;
+  constructor(public dbp:DatabaseProvider, public navCtrl: Nav, public navParams: NavParams, private database:AngularFireDatabase,public afauth:AngularFireAuth, public camera:Camera) {
     this.eventItemRef$ = this.database.list('Event-List');
     this.tourneyCategory$ = this.database.list(`tourneyCategory`);
     this.ageCategory$ = this.database.list(`ageCategory`);
@@ -49,11 +57,56 @@ export class AddEventPage {
       this.uid = data.uid;
     });
     
-    //this.saveEventData.startdate=this.currentDate;
-    console.log(this.terms$)
+    this.dbp.getState().then((data)=>{
+      this.stateItem= data;
+    });
+    this.dbp.getCity().then((data)=>{
+      this.cityItem= data;
+    });
+
+    const photo = storage().ref().child(`users/${this.currentUser.uid}`);     
+     photo.getDownloadURL().then(data=> {
+        this.photoURL = data;
+        this.imageLoaded = true;
+      }).catch(()=>{
+        this.imageLoaded = true;
+      })
+    
   }
 
   
+  async takePhoto(){
+    try{
+      const cameraOptions : CameraOptions = {
+             //sourceType         : this.camera.PictureSourceType.PHOTOLIBRARY,
+             destinationType    : this.camera.DestinationType.DATA_URL,
+             quality            : 100,
+             targetWidth        : 320,
+             targetHeight       : 240,
+             encodingType       : this.camera.EncodingType.JPEG,
+             correctOrientation : true,
+             mediaType:this.camera.MediaType.PICTURE
+         };
+      const result = await this.camera.getPicture(cameraOptions);
+      const img = `data:image/jpeg;base64,${result}`;
+      const pics = storage().ref(`users/${this.currentUser.uid}`);
+      pics.putString(img,'data_url');
+           
+      storage().ref().child(`users/${this.currentUser.uid}`).getDownloadURL().then(url=> {
+        this.database.object(`profile/${this.currentUser.uid}/user/url/`).set({'photoURL':url});
+      });
+           
+     
+    }
+    catch(e){
+      console.error(e);
+    }
+  }
+
+
+  selectState(id){
+   this.city = this.cityItem.filter((item)=> item.state_id == id);
+  }
 
   AddEvent(eventItem:EventItem){
     var date = new Date();
@@ -91,6 +144,8 @@ export class AddEventPage {
     //console.log(this.terms);
     //Making fields empty!    
   }
+
+
   
   addContactField() {
     this.contacts.push({mobile:"",name:""});

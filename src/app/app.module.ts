@@ -12,6 +12,8 @@ import {IonicImageViewerModule} from 'ionic-img-viewer';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { Screenshot } from '@ionic-native/screenshot';
 
+
+import { ReversePipe }from '../pipes/reverse';
 import { FilterPipe }from '../providers/filter.pipe';
 // import { Pipe, PipeTransform } from '@angular/core';
 
@@ -33,6 +35,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { DashboardPage } from '../pages/dashboard/dashboard';
 import { OngoingPage } from '../pages/tabs/ongoing/ongoing';
 import { EventDetailsPage } from '../pages/event-details/event-details';
+import { EventResultsPage } from '../pages/event-results/event-results';
 import { AddEventPage } from '../pages/add-event/add-event';
 import { ForgotPasswordPage } from '../pages/forgot-password/forgot-password';
 import { ProfilePage } from '../pages/profile/profile';
@@ -66,9 +69,11 @@ firebase.initializeApp(FIREBASE_CONFIG);
     PastEventPage,
     MyeventsPage,
     EventDetailsPage,
+    EventResultsPage,
     ForgotPasswordPage,
     EventsPage,
-    FilterPipe
+    FilterPipe,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
@@ -101,6 +106,7 @@ firebase.initializeApp(FIREBASE_CONFIG);
     MyeventsPage,
     ForgotPasswordPage,
     EventDetailsPage,
+    EventResultsPage,
     EventsPage,
   ],
   providers: [

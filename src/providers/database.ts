@@ -10,6 +10,8 @@ import * as firebase from 'firebase';
 @Injectable()
 export class DatabaseProvider {
     eventListRef$: FirebaseListObservable<EventItem[]>
+    public states:any;
+    public cities:any;
    constructor(private database:AngularFireDatabase, )
    {
    }
@@ -26,6 +28,28 @@ export class DatabaseProvider {
             });
         });                       
         
+    }
+
+    getState() : Promise<any>
+    {
+        return new Promise((resolve) =>
+        {
+            this.states = this.database.list('states');
+            this.states.subscribe(data=>{
+                resolve(data);
+            });
+        });
+    }
+
+    getCity() : Promise<any>
+    {
+        return new Promise((resolve) =>
+        {
+            this.cities = this.database.list('cities');
+            this.cities.subscribe(data=>{
+                resolve(data);
+            });
+        });        
     }
 
 

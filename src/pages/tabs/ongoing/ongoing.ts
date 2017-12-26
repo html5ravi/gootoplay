@@ -19,7 +19,7 @@ public isFavourite: boolean = false;
   eventObj:any = [];
   public today = new Date().getTime();
   public getDate = new Date("2016-08-20").getTime(); 
-
+  noEvents:boolean = false;
   public currentUser:any = JSON.parse(localStorage.getItem("currentUser"));
   public myFavs:any = JSON.parse(localStorage.getItem("currentUserMyFavs"));
   
@@ -41,8 +41,10 @@ public isFavourite: boolean = false;
 ongoingEvent(dates){
   let todayDate = new Date().toISOString().slice(0,10);
   if(todayDate == dates){
+    this.noEvents = false;
     return true;
   }else{
+    this.noEvents = true;
     return false;
   }  
 };

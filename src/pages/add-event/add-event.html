@@ -24,6 +24,15 @@
 
     <!--General Information-->
     <!--<h4>General Details</h4>-->
+    <div padding>
+        <div class="banner" clickable id="bannerImg">
+            <label for="poster" (click)="takePhoto()">
+                <!--<input type="file" name="poster" id="poster" style="display:none;"/>-->
+                <img *ngIf="imageLoaded" src="{{photoURL}}" id="poster" onerror="assets/img/banner2.jpeg">
+            </label>
+
+        </div>
+    </div>
     <ion-list>
         <ion-item>
             <ion-label>Title</ion-label>
@@ -55,7 +64,19 @@
         </ion-item>
         <span class="error" *ngIf="!saveEventData.timeEnds">This field is required</span>
         <ion-item>
-            <ion-label>Where</ion-label>
+            <ion-label>State </ion-label>
+            <ion-select interface="popover" [(ngModel)]="saveEventData.state" (ngModelChange)="selectState($event.id)">
+                <ion-option [value]="item.id" *ngFor="let item of stateItem">{{item.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>City</ion-label>
+            <ion-select interface="popover" [(ngModel)]="saveEventData.city">
+                <ion-option value="{{item.id}}" *ngFor="let item of city">{{item.name}}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>Area</ion-label>
             <ion-input type="text" placeholder="Enter address" [(ngModel)]="saveEventData.where"></ion-input>
         </ion-item>
         <span class="error" *ngIf="!saveEventData.where">This field is required</span>

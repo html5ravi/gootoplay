@@ -4,6 +4,7 @@ import { EventItem } from '../../../models/event-item/event-item.interface';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { MyFav } from '../../../models/myfav';
 import { EventDetailsPage } from '../../event-details/event-details';
+import { EventResultsPage } from '../../event-results/event-results';
 import { DatabaseProvider } from '../../../providers/database';      
 
 
@@ -56,6 +57,10 @@ pastEvent(dates){
   }
   goToEventDetails(eventItem:EventItem){
     let modal = this.modalCtrl.create(EventDetailsPage,{eventId: eventItem.$key});
+    modal.present();
+  }
+  results(eventItem:EventItem){
+    let modal = this.modalCtrl.create(EventResultsPage,{eventId: eventItem.$key});
     modal.present();
   }
 

@@ -21,6 +21,17 @@ Then, to run it, cd into `myTutorial` and run:
 $ ionic cordova platform add ios
 $ ionic cordova run ios
 ```
+### how to update manually 
+npm install -g ionic@latest
+npm install -g cordova@latest
+npm install -g cordova-android@latest
+ionic cordova platform rm android
+ionic cordova platform add android //my version is 6.3.0
+cordova plugin rm cordova-plugin-compat --force
+cordova plugin add cordova-plugin-compat@1.2
+
+#Add plugin facebook
+ionic cordova plugin add cordova-plugin-facebook4 --variable APP_ID="361420004311466" --variable APP_NAME="Gotoplay"
 
 Substitute ios for android if not on a Mac.
 

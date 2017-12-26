@@ -1,7 +1,7 @@
 <ion-content padding id="events">
 
-    <section *ngFor="let itemd of eventIds">
-        <div *ngFor="let item of newList">
+    <section *ngFor="let itemd of eventIds | reverse">
+        <div *ngFor="let item of newList | reverse">
             <div class="event_container" *ngIf="item.$key == itemd.eventId">
                 <div class="date_time">
                     <time datetime="2014-07-20 0000">

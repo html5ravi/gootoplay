@@ -3,8 +3,9 @@
         <input [(ngModel)]="searchText" placeholder="Search: Title, sub title.." />
         <ion-icon ios="ios-search" md="md-search"></ion-icon>
     </div>
+    <span *ngIf="noEvents">No events today!</span>
+    <article *ngFor="let item of eventObj | filter:searchText | reverse">
 
-    <article *ngFor="let item of eventObj | filter:searchText">
         <section class="eventList" *ngIf="ongoingEvent(item.general.startdate)">
             <div class="event_container">
                 <div class="date_time">
@@ -36,6 +37,7 @@
                 </article>
             </div>
         </section>
+
     </article>
 
 

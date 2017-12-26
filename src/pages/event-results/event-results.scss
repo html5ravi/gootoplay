@@ -1,0 +1,199 @@
+page-event-results {
+    .content-md {
+        background: #fff;
+        h5 {
+            text-align: center;
+        }
+    }
+    .eventResults {
+        ion-col {
+            text-align: center;
+        }
+        .bdr ion-col {
+            border-bottom: 1px solid #0e9d58;
+            padding-bottom: 20px;
+            padding-top: 16px;
+        }
+        .fix ion-col {
+            &:first-child {
+                &::before {
+                    position: absolute;
+                    width: 3px;
+                    height: 10px;
+                    background: #111;
+                    z-index: 999;
+                    top: -10px;
+                    right: 0px;
+                    content: "";
+                }
+                &::after {
+                    position: absolute;
+                    width: 50%;
+                    height: 3px;
+                    background: #111;
+                    z-index: 999;
+                    top: -2px;
+                    right: 0px;
+                    content: "";
+                }
+            }
+            &:nth-child(2) {
+                &::after {
+                    position: absolute;
+                    width: 50%;
+                    height: 3px;
+                    background: #111;
+                    z-index: 999;
+                    top: -2px;
+                    left: 0px;
+                    content: "";
+                }
+            }
+            &:nth-child(3) {
+                &::before {
+                    position: absolute;
+                    width: 3px;
+                    height: 10px;
+                    background: #111;
+                    z-index: 999;
+                    top: -10px;
+                    right: 0px;
+                    content: "";
+                }
+                &::after {
+                    position: absolute;
+                    width: 50%;
+                    height: 3px;
+                    background: #111;
+                    z-index: 999;
+                    top: -2px;
+                    right: 0px;
+                    content: "";
+                }
+            }
+            &:nth-child(4) {
+                &::after {
+                    position: absolute;
+                    width: 50%;
+                    height: 3px;
+                    background: #111;
+                    z-index: 999;
+                    top: -2px;
+                    left: 0px;
+                    content: "";
+                }
+            }
+        }
+    }
+    .players {
+        margin: 0;
+        padding: 0;
+        li {
+            font-size: 12px;
+            display: block;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            line-height: 1em;
+            label {
+                display: block;
+                font-size: 10px;
+            }
+            span {
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                overflow: hidden;
+                display: inline-block;
+                border: 1px solid gray;
+                margin: 0px -2px;
+                img {
+                    width: 100%;
+                }
+            }
+            &.lost span {
+                opacity: 0.5;
+            }
+        }
+    }
+    ul.fnl {
+        li.wns {
+            position: relative;
+            .one {
+                z-index: 100;
+                position: absolute;
+                top: 10px;
+                right: 100px;
+                height: 30px;
+                width: 30px;
+            }
+            .two {
+                z-index: 100;
+                position: absolute;
+                left: 90px;
+                top: 30px;
+                height: 30px;
+                width: 30px;
+            }
+            .three {
+                z-index: 100;
+                position: absolute;
+                left: 120px;
+                top: 5px;
+                height: 25px;
+                width: 25px;
+            }
+            ion-icon {
+                font-size: 2em;
+                color: #f2b632;
+            }
+        }
+    }
+    ul.sem {
+        li.wns {
+            position: relative;
+            .one {
+                z-index: 100;
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                height: 30px;
+                width: 30px;
+            }
+            .two {
+                z-index: 100;
+                position: absolute;
+                top: 20px;
+                left: 10px;
+                height: 30px;
+                width: 30px;
+            }
+            .three {
+                z-index: 100;
+                position: absolute;
+                top: 0px;
+                left: 40px;
+                height: 25px;
+                width: 25px;
+            }
+            ion-icon {
+                font-size: 1.5em;
+                color: #00a9ff;
+            }
+        }
+        li {
+            span {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+    ul.qtr {
+        li {
+            span {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    }
+}

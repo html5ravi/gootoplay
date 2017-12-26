@@ -4,7 +4,7 @@
         <ion-icon ios="ios-search" md="md-search"></ion-icon>
     </div>
 
-    <article *ngFor="let item of eventObj | filter:searchText">
+    <article *ngFor="let item of eventObj | filter:searchText | reverse">
         <section class="eventList" *ngIf="upcomingEvent(item.general.startdate)">
             <div class="event_container">
                 <div class="date_time">

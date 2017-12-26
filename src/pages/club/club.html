@@ -6,9 +6,18 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Club</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Club
+            <ion-select [(ngModel)]="toppings">
+                <ion-option>Bacon</ion-option>
+                <ion-option>Black Olives</ion-option>
+                <ion-option>Extra Cheese</ion-option>
+                <ion-option>Mushrooms</ion-option>
+                <ion-option>Pepperoni</ion-option>
+                <ion-option>Sausage</ion-option>
+            </ion-select>
+        </ion-title>
+    </ion-navbar>
 
 </ion-header>
 

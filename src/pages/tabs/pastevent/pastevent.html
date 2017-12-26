@@ -5,7 +5,7 @@
         <ion-icon ios="ios-search" md="md-search"></ion-icon>
     </div>
 
-    <article *ngFor="let item of eventObj | filter:searchText">
+    <article *ngFor="let item of eventObj | filter:searchText | reverse">
         <section class="eventList" *ngIf="pastEvent(item.general.startdate)">
             <div class="event_container">
                 <div class="date_time">
@@ -17,7 +17,7 @@
 
                 </div>
                 <article class="event_cont">
-                    <img src="assets/img/{{item.banner}}" alt="">
+                    <img src="assets/img/banner1.jpeg" alt="">
                     <div class="blur"></div>
                     <a class="favourite" (click)="isFavouriteFun(item)">
                         <div *ngIf="item.favourite;then yesTrue else noFalse"></div>
@@ -34,6 +34,11 @@
                             <label>Venue: <span>{{item.general.where}}</span></label>
                         </div>
                     </a>
+                    <ul class="links">
+                        <li><a (click)="results(item)">Results</a></li>
+                        <li><a (click)="results(item)">Photos</a></li>
+                        <li><a (click)="results(item)">Videos</a></li>
+                    </ul>
                 </article>
             </div>
         </section>

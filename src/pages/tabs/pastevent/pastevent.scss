@@ -1,1 +1,16 @@
-page-pastevent {}
+page-pastevent {
+    .links {
+        margin: 0px;
+        padding: 0px;
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        z-index: 999;
+        li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 0px 0px 0 10px;
+            padding: 0px;
+        }
+    }
+}
